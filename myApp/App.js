@@ -28,7 +28,7 @@ const App= () => {
 
       </View>
         <Text>
-          test
+          Hi, there
         </Text>
 
     </>
