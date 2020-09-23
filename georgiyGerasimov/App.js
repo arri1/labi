@@ -1,48 +1,61 @@
-
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
-
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const App= () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <ScrollView style={styles.scrollView}>
-
-      </ScrollView>
-      <View>
-
-      </View>
-        <Text>
-          test
-        </Text>
-
-    </>
-  );
-};
+import React, {useState} from 'react';
+import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-});
+    container: {
+        flex: 1,
+        width: '100%',
+        height: 600
+    },
+    item: {
+        flex: 1,
+        minHeight: 200,
+        borderRadius: 20,
+        margin: 24,
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
 
+})
+
+const data = [
+    {
+        backgroundColor: 'pink'
+    },
+    {
+        backgroundColor: 'black'
+    },
+    {
+        backgroundColor: 'red'
+    },
+    {
+        backgroundColor: 'blue'
+    }
+
+]
+
+const App = () => {
+    const [backgroundColor, setBackgroundColor] = useState('yellow')
+    return (
+        <View style={styles.container}>
+            <ScrollView>
+                {data.map((item) => {
+                    return (
+                        <TouchableOpacity
+                            style={[styles.item, {backgroundColor}]}
+                            onPress={() => {
+                                setBackgroundColor(item.backgroundColor)
+                            }}
+                        >
+                            <Text style={{color: item.backgroundColor}}>
+                                {item.backgroundColor}
+                            </Text>
+                        </TouchableOpacity>
+                    )
+                })}
+
+            </ScrollView>
+        </View>
+    )
+}
 export default App;
