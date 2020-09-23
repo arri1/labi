@@ -1,68 +1,40 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, Button, Alert} from 'react-native';
 
-import React from 'react';
-import {View, Text} from 'react-native';
+const App = () => {
+  const [colorState, setColorState] = useState('green');
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+  function onGreenButton() {
+    setColorState('green');
+  }
+  function onRedButton() {
+    setColorState('red');
+  }
 
-const App = (props) => {
   return (
-    <>
-      <View>
-        <Text>test</Text>
-      </View>
-    </>
+    <View style={styles.container}>
+      <Text>Test app</Text>
+
+      <View
+        style={{
+          position: 'absolute',
+          width: '100%',
+          height: '100%',
+          backgroundColor: colorState,
+        }}
+      />
+      <Button title="Make color red" color="red" onPress={onRedButton} />
+      <Button title="Make color green" color="green" onPress={onGreenButton} />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+  container: {
+    flex: 1,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
