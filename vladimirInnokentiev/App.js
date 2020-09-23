@@ -1,29 +1,32 @@
+import React, { useState } from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-import React, {useStates} from 'react';
+const App = () => {
+  const [count, setCount] = useState(0);
+  const onPress = () => setCount(prevCount => prevCount + 1);
 
-import { View, Text, StyleSheet, Button, TextInput} from 'react-native';
-
-
-const App= () => {
-  var str = "Жми"
-  function strChange()
-  {
-        str = "Жми"
-        alert("Молодец!");
-  }
   return (
-  <>
-  <View style={styles.container}>
-        <Button onClick={strChange} title = "Кнопка"/>
-        <Text>ВАЙ АЙ Ю ДОН ВОРКИН?</Text>
-  </View>
-  </>
+    <View style={styles.container}>
+        <Text>Сифра: {count}</Text>
+      <TouchableOpacity style={styles.button} onPress={onPress}>
+        <Text>Кнопка</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-container:{
-flex:1,
-alignItems: "center",
-justifyContent: "center"}})
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 10
+  },
+  button: {
+    alignItems: "center",
+    backgroundColor: "#0e60e6",
+    padding: 10
+  }
+});
+
 export default App;
