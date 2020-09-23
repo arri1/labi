@@ -1,35 +1,29 @@
- /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import React, {useStates} from 'react';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import { View, Text, StyleSheet, Button, TextInput} from 'react-native';
 
-const App: () => React$Node = () => {
+
+const App= () => {
+  var str = "Жми"
+  function strChange()
+  {
+        str = "Жми"
+        alert("Молодец!");
+  }
   return (
-    <>
-      <Text>Hello World!</Text>
-    </>
+  <>
+  <View style={styles.container}>
+        <Button onClick={strChange} title = "Кнопка"/>
+        <Text>ВАЙ АЙ Ю ДОН ВОРКИН?</Text>
+  </View>
+  </>
   );
 };
 
+const styles = StyleSheet.create({
+container:{
+flex:1,
+alignItems: "center",
+justifyContent: "center"}})
 export default App;
