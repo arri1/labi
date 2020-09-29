@@ -1,0 +1,48 @@
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+
+platform :ios, '10.0'
+
+<<<<<<< HEAD:alexeiLi/ios/Podfile
+target 'AlexeiLi' do
+=======
+target 'PeteFilippov' do
+>>>>>>> 3ebf266... PlusMinus function:PeteFilippov/ios/Podfile
+  config = use_native_modules!
+
+  use_react_native!(:path => config["reactNativePath"])
+
+<<<<<<< HEAD:alexeiLi/ios/Podfile
+  target 'AlexeiLiTests' do
+=======
+  target 'PeteFilippovTests' do
+>>>>>>> 3ebf266... PlusMinus function:PeteFilippov/ios/Podfile
+    inherit! :complete
+    # Pods for testing
+  end
+
+  # Enables Flipper.
+  #
+  # Note that if you have use_frameworks! enabled, Flipper will not work and
+  # you should disable these next few lines.
+  use_flipper!
+  post_install do |installer|
+    flipper_post_install(installer)
+  end
+end
+
+<<<<<<< HEAD:alexeiLi/ios/Podfile
+target 'AlexeiLi-tvOS' do
+  # Pods for AlexeiLi-tvOS
+
+  target 'AlexeiLi-tvOSTests' do
+=======
+target 'PeteFilippov-tvOS' do
+  # Pods for PeteFilippov-tvOS
+
+  target 'PeteFilippov-tvOSTests' do
+>>>>>>> 3ebf266... PlusMinus function:PeteFilippov/ios/Podfile
+    inherit! :search_paths
+    # Pods for testing
+  end
+end

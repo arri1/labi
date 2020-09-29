@@ -1,0 +1,7 @@
+<<<<<<< HEAD:alexeiLi/android/settings.gradle
+rootProject.name = 'AlexeiLi'
+=======
+rootProject.name = 'PeteFilippov'
+>>>>>>> 3ebf266... PlusMinus function:PeteFilippov/android/settings.gradle
+apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
+include ':app'
