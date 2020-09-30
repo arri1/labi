@@ -31,7 +31,7 @@ const App: () => React$Node = () => {
     <View style={styles.Block}>
       <View style = {styles.blockRow}>
         <TouchableOpacity onPress={() => { setColor1(randomHex()); }}>
-          <View style = {{ backgroundColor: color1, width: SIZE, height: SIZE}}></View>
+          <View style = {{ backgroundColor: color1, width: SIZE, height: SIZE}}/>
         </TouchableOpacity>
       </View>
     </View>
