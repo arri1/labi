@@ -1,49 +1,30 @@
-import React, {useState} from 'react';
-import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native'
-import Item from './components/item'
+import React from 'react';
+import {Dimensions, StyleSheet} from 'react-native'
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Lab2 from "./screens/lab2"
+import Lab3 from "./screens/lab3"
+
+const {width, height} = Dimensions.get('screen')
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        width: '100%',
-        height: 600
+        width,
+        height
     }
-
 })
 
-const data = [
-    {
-        backgroundColor: 'pink'
-    },
-    {
-        backgroundColor: 'black'
-    },
-    {
-        backgroundColor: 'red'
-    },
-    {
-        backgroundColor: 'blue'
-    }
-
-]
+const Tab = createBottomTabNavigator();
 
 const App = () => {
-    const [backgroundColor, setBackgroundColor] = useState('yellow')
     return (
-        <View style={styles.container}>
-            <ScrollView>
-                {data.map((item) => {
-                    return (
-                      <Item
-                          backgroundColor={backgroundColor}
-                          setBackgroundColor={setBackgroundColor}
-                          item={item}
-                      />
-                    )
-                })}
+        <NavigationContainer>
+            <Tab.Navigator>
+                <Tab.Screen name="Lab2" component={Lab2}/>
+                <Tab.Screen name="Lab3" component={Lab3}/>
+            </Tab.Navigator>
+        </NavigationContainer>
 
-            </ScrollView>
-        </View>
     )
 }
 export default App;
