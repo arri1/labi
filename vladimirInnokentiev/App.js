@@ -5,7 +5,7 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
 } from 'react-native';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
@@ -17,7 +17,7 @@ const App: () => React$Node = () => {
 
   const [color1,setColor1]=useState(Colors.white);
 
-  let randomHex = () => {
+  const randomHex = () => {
     let letters = "0123456789ABCDEF";
     let color = "#";
     for (let i = 0; i < 6; i++) 
@@ -52,10 +52,6 @@ const styles = StyleSheet.create({
     height: SIZE, 
     borderRadius: SIZE /2
   },
-  blockRow: {
-    flexDirection: 'row',
-  },
-
 });
 
 export default App;
