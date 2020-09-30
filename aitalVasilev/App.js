@@ -15,7 +15,7 @@ const App = () => {
         <View style={styles.container}>
             <Text>Test app</Text>
 
-            <View style={(styles.testView, { backgroundColor: colorState })} />
+            <View style={{ ...styles.testView, backgroundColor: colorState }} />
             <Button title="Make color red" color="red" onPress={onRedButton} />
             <Button title="Make color green" color="green" onPress={onGreenButton} />
         </View>
@@ -32,8 +32,7 @@ const styles = StyleSheet.create({
     testView: {
         position: 'absolute',
         width: '100%',
-        height: '100%',
-        backgroundColor: colorState
+        height: '100%'
     }
 })
 
