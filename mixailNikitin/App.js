@@ -10,16 +10,16 @@ import {
 
 const App: () => React$Node = () => {
   return (
-    <View style = {styles.omegalul}>
-    <Text>
-      Я люблю крепкий чай
-    </Text>
+    <View style = {styles.text}>
+      <Text>
+        Я люблю крепкий чай
+      </Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  omegalul: {
+  text: {
     textAlign: "center",
     alignItems: "center",
     flex: 1,
