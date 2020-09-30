@@ -6,71 +6,74 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
   Text,
-  StatusBar,
+  TouchableOpacity,
+  Button
 } from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
 const App= () => {
+  const [backgroundColor, setBackgroungColor] = useState('yellow')
+
   return (
-    <View>
-      <Text>
-        Проект Евгении
-      </Text>
+    <View style={styles.container}>
+      <ScrollView>
+        {data.map((item, index) => {
+          return(
+            <TouchableOpacity
+              key={index}
+              style={[styles.item, {backgroundColor}]}
+              onPress={() => {
+                setBackgroungColor(item.backgroundColor)
+              }}
+            >
+              <Text style={{color: item.backgroundColor}}>
+                {item.backgroundColor}
+              </Text>
+            </TouchableOpacity>
+          )
+        })}
+
+      </ScrollView>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  container: {
+    flex: 1,
+    width: '100%',
+    height: 600
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
+  item: {
+    flex: 1,
+    minHeight: 200,
+    borderRadius: 20,
+    margin: 24,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
 });
 
+const data = [
+  {
+    backgroundColor: 'red'
+  },
+  {
+    backgroundColor: 'green'
+  },
+  {
+    backgroundColor: 'blue'
+  },
+  {
+    backgroundColor: 'pink'
+  },
+  {
+    backgroundColor: 'black'
+  }
+]
 export default App;
