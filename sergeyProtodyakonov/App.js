@@ -16,8 +16,8 @@ const App: () => React$Node = () => {
   const [color3, setColor3] = useState('#00FFFF');
   const [color4, setColor4] = useState('#FFA500');
 
-  let randomHex = () => {
-    let letters = "0123456789ABCDEF";
+  const randomHex = () => {
+    const letters = "0123456789ABCDEF";
     let color = "#";
     for (let i = 0; i < 6; i++) {
       color += letters[Math.floor(Math.random() * 16)];
