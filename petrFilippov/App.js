@@ -1,12 +1,9 @@
 import React, { Component, useState } from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
   Text,
-  StatusBar,
-  TouchableHighlight,
   TouchableOpacity,
 } from 'react-native'
 
