@@ -8,7 +8,7 @@ import {
   StatusBar,
   TouchableHighlight,
   TouchableOpacity,
-} from 'react-native';
+} from 'react-native'
 
 
 const styles = StyleSheet.create({
@@ -36,12 +36,7 @@ const styles = StyleSheet.create({
   containers:{
     flexDirection: "row",
   },
-});
-export class Touchables extends Component{
-  _onPressButton(){
-    alert('You tapped the button')
-  }
-}
+})
 
 const App = () => {
   const [count, setCount] = useState(0)
@@ -51,22 +46,21 @@ const App = () => {
 
   return(
     <>
-      <View style={styles.centrify}>
-        <View style={styles.txtContainer}>
-          <Text>Count: {count}</Text>
+      <ScrollView>
+        <View style={styles.centrify}>
+          <View style={styles.txtContainer}>
+            <Text>Count: {count}</Text>
+          </View>
+          <View style={styles.containers}>
+            <TouchableOpacity onPress={minusPress} style={styles.plusMinusStyle}>
+              <Text>Minus</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={plusPress} style={styles.plusMinusStyle}>
+              <Text>Plus</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <View style={styles.containers}>
-          <TouchableOpacity onPress={minusPress} style={styles.plusMinusStyle}>
-            <Text>Minus</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={plusPress} style={styles.plusMinusStyle}>
-            <Text>Plus</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={changeColor} style={styles.plusMinusStyle}>
-            <Text>Change Color</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+      </ScrollView>
     </>
   )
 }
