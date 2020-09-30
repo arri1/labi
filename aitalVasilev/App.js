@@ -1,39 +1,21 @@
-import React, { useState } from 'react'
-import { View, Text, StyleSheet, Button, Alert } from 'react-native'
+import 'react-native-gesture-handler'
+import React from 'react'
+import Lab2 from './screens/Lab2'
+import Lab3 from './screens/Lab3'
+import { NavigationContainer } from '@react-navigation/native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+
+const Tab = createBottomTabNavigator()
 
 const App = () => {
-    const [colorState, setColorState] = useState('green')
-
-    onGreenButton = () => {
-        setColorState('green')
-    }
-    onRedButton = () => {
-        setColorState('red')
-    }
-
     return (
-        <View style={styles.container}>
-            <Text>Test app</Text>
-
-            <View style={{ ...styles.testView, backgroundColor: colorState }} />
-            <Button title="Make color red" color="red" onPress={onRedButton} />
-            <Button title="Make color green" color="green" onPress={onGreenButton} />
-        </View>
+        <NavigationContainer>
+            <Tab.Navigator>
+                <Tab.Screen name="Lab2" component={Lab2} options={{ title: 'Lab 2' }} />
+                <Tab.Screen name="Lab3" component={Lab3} options={{ title: 'Lab 3' }} />
+            </Tab.Navigator>
+        </NavigationContainer>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        width: '100%',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    testView: {
-        position: 'absolute',
-        width: '100%',
-        height: '100%'
-    }
-})
 
 export default App
