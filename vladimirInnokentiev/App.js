@@ -15,7 +15,7 @@ const SIZE = width * 0.9;
 
 const App: () => React$Node = () => {
 
-  const [color1,setColor1]=useState('#000000');
+  const [color1,setColor1]=useState(Colors.white);
 
   let randomHex = () => {
     let letters = "0123456789ABCDEF";
@@ -31,7 +31,7 @@ const App: () => React$Node = () => {
     <View style={styles.Block}>
       <View style = {styles.blockRow}>
         <TouchableOpacity onPress={() => { setColor1(randomHex()); }}>
-          <View style = {{ backgroundColor: color1, width: SIZE, height: SIZE}}/>
+          <View style = {{ backgroundColor: color1, width: SIZE, height: SIZE, borderRadius: SIZE /2}}/>
         </TouchableOpacity>
       </View>
     </View>
@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
   Block: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    borderRadius: SIZE/2
   },
   body: {
     backgroundColor: Colors.white,
