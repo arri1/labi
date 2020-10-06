@@ -1,22 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
-  ScrollView,
   View,
   Text,
-  StatusBar,
+  TouchableOpacity,
 } from 'react-native';
 
 const App: () => React$Node = () => {
+  const [backgroundColor, setBackgroundColor] = useState('cyan')
+  let s = 0;
   return (
-	<View>
-		<Text style={styles.text}>Ассаламалейкумм</Text>
+	<View style={[styles.main, { backgroundColor }]}>
+		  <Text style={styles.text}>Ассаламалейкумм</Text>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() =>{
+              s = Math.floor(Math.random() * 4);
+              if(s == 3){
+                setBackgroundColor('yellow')
+              }
+              else if(s == 2){
+                setBackgroundColor('green')
+              }
+              else if(s == 1){
+                setBackgroundColor('blue')
+              }
+              }}
+            >
+              <Text style={styles.square}></Text>
+          </TouchableOpacity>
 	</View>
   );
 };
 
 const styles = StyleSheet.create({
+  main: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  button: {
+    alignItems: "center",
+    backgroundColor: "red",
+    padding: 10,
+  },
   text: {
   	textAlign: 'center',
   	fontSize: 40,
@@ -24,6 +50,11 @@ const styles = StyleSheet.create({
   	justifyContent: 'center',
   	fontFamily: 'times new roman',
   	fontStyle: 'italic',
+  },
+  square: {
+    width: 200,
+    height: 100,
+    backgroundColor: "red",
   },
 });
 
