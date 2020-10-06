@@ -1,79 +1,39 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React from 'react'
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import Lab2 from './src/screens/lab2'
+import Lab3 from './src/screens/lab3'
 
-import React, { useState } from 'react';
-import {
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  TouchableOpacity,
-  Button
-} from 'react-native';
+const Tab = createBottomTabNavigator();
+const Lab2Stack = createStackNavigator();
+const Lab3Stack = createStackNavigator();
 
-const App= () => {
-  const [backgroundColor, setBackgroungColor] = useState('yellow')
-
+const Lab2StackScreen = () => {
   return (
-    <View style={styles.container}>
-      <ScrollView>
-        {data.map((item, index) => {
-          return(
-            <TouchableOpacity
-              key={index}
-              style={[styles.item, {backgroundColor}]}
-              onPress={() => {
-                setBackgroungColor(item.backgroundColor)
-              }}
-            >
-              <Text style={{color: item.backgroundColor}}>
-                {item.backgroundColor}
-              </Text>
-            </TouchableOpacity>
-          )
-        })}
-
-      </ScrollView>
-    </View>
+    <Lab2Stack.Navigator>
+        <Lab2Stack.Screen name="Lab 2" component={Lab2} />
+    </Lab2Stack.Navigator>
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: '100%',
-    height: 600
-  },
-  item: {
-    flex: 1,
-    minHeight: 200,
-    borderRadius: 20,
-    margin: 24,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-});
+const Lab3StackScreen = () => {
+  return (
+    <Lab3Stack.Navigator>
+        <Lab2Stack.Screen name="Lab 3" component={Lab3} />
+    </Lab3Stack.Navigator>
+  )
+}
 
-const data = [
-  {
-    backgroundColor: 'red'
-  },
-  {
-    backgroundColor: 'green'
-  },
-  {
-    backgroundColor: 'blue'
-  },
-  {
-    backgroundColor: 'pink'
-  },
-  {
-    backgroundColor: 'black'
-  }
-]
+const App = () => {
+    return (
+        <NavigationContainer>
+            <Tab.Navigator>
+                <Tab.Screen name="Lab 2" component={Lab2StackScreen} />
+                <Tab.Screen name="Lab 3" component={Lab3StackScreen} />
+            </Tab.Navigator>
+        </NavigationContainer>
+    )
+}
 export default App;
