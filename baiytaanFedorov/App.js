@@ -1,48 +1,21 @@
-import React, { useState } from 'react';
-import {
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  View
-} from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Lab2 from "./screens/lab2"
+import Lab3 from "./screens/lab3"
+
+const Tab = createBottomTabNavigator();
 
 const App = () => {
-  const [backgroundColor, setBackgroundColor] = useState('white')
   return (
-    <View style={[styles.body, { backgroundColor }]}>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => {
-          if (backgroundColor == 'white') {
-            setBackgroundColor('black')
-          }
-          else setBackgroundColor('white')
-        }}
-      >
-        <Text style={styles.text}>Press Here</Text>
-      </TouchableOpacity>
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="𝕃𝔸𝔹𝟚" component={Lab2} />
+        <Tab.Screen name="𝕃𝔸𝔹𝟛" component={Lab3} />
+      </Tab.Navigator>
+    </NavigationContainer>
   )
 }
-
-const styles = StyleSheet.create({
-  body: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
-  button: {
-    alignItems: "center",
-    backgroundColor: "rgba(170,170,200,.3)",
-    padding: 10
-  },
-  text:{
-    color: '#9C846A',
-    fontSize: 20,
-    fontFamily: 'calibri',
-    fontStyle: 'italic',
-    fontWeight: 'bold'
-  }
-});
 
 export default App;
