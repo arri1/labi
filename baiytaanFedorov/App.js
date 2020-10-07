@@ -2,6 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Home from "./screens/home"
 import Lab2 from "./screens/lab2"
 import Lab3 from "./screens/lab3"
 
@@ -29,6 +30,7 @@ const App = () => {
           showIcon: false
         }}
       >
+        <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="𝕃𝔸𝔹𝟚" component={Lab2} />
         <Tab.Screen name="𝕃𝔸𝔹𝟛" component={Lab3} />
       </Tab.Navigator>
