@@ -14,13 +14,13 @@ const App = () => {
         tabBarOptions={{
           style: {
             height: 40,
-            backgroundColor: '#cfd6e6',
+            backgroundColor: '#757575',
             borderTopWidth: 0.5,
             borderTopColor: '#fb9800',
           },
           labelStyle: {
-            fontSize: 20,
-            color: 'black',
+            fontSize: 15,
+            color: '#f2f2f2',
             fontWeight: 'bold'
           },
           tabStyle: {
