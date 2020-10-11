@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Home from "./screens/home";
@@ -33,7 +32,7 @@ const App = () => {
             height: 50,
             backgroundColor: '#757575',
             borderTopWidth: 0.5,
-            borderTopColor: '#fb9800'
+            borderTopColor: '#757575'
           },
           labelStyle: {
             fontSize: 12,
@@ -52,6 +51,6 @@ const App = () => {
       </Tab.Navigator>
     </NavigationContainer>
   )
-}
+};
 
 export default App;

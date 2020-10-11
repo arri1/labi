@@ -25,7 +25,7 @@ const Lab2 = () => {
       </TouchableOpacity>
     </View>
   )
-}
+};
 
 const styles = StyleSheet.create({
   body: {

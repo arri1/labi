@@ -13,7 +13,7 @@ const Home = () => {
             </Text>
         </View>
     )
-}
+};
 
 const styles = StyleSheet.create({
     body: {

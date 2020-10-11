@@ -2,28 +2,35 @@ import React from 'react';
 import {
     Text,
     StyleSheet,
-    View
+    ScrollView,
+    View,
+    SafeAreaView,
+    Platform,
+    StatusBar
 } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import TaskItem from "../components/taskItem";
+
+const Stack = createStackNavigator();
 
 const Lab3 = () => {
     return (
-        <View style={styles.body}>
-            <Text style={styles.text}>
-                Hi, there
-            </Text>
-        </View>
+        <SafeAreaView style={styles.body}>
+            <TaskItem />
+            <TaskItem />
+        </SafeAreaView>
     )
-}
+};
 
 const styles = StyleSheet.create({
     body: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        //paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
     },
     text: {
         color: '#9C846A',
         fontSize: 20,
+        padding: 10,
         fontFamily: 'calibri',
         fontStyle: 'italic',
         fontWeight: 'bold'
