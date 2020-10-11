@@ -16,9 +16,9 @@ const App = () => {
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
 
-            if (route.name === 'ℍ𝕆𝕄𝔼') {
+            if (route.name === 'HOME') {
               iconName = 'home-filled';
-            } else if (route.name === '𝕃𝔸𝔹𝟚' || route.name === '𝕃𝔸𝔹𝟛') {
+            } else if (route.name === 'Lab 2' || route.name === 'Lab 3') {
               iconName = 'format-list-bulleted';
             }
             color = focused ? '#fff' : '#dcdcdc';
@@ -35,7 +35,8 @@ const App = () => {
             borderTopColor: '#757575'
           },
           labelStyle: {
-            fontSize: 12,
+            fontSize: 13,
+            fontFamily: 'times new roman',
             fontWeight: 'bold'
           },
           tabStyle: {
@@ -45,9 +46,9 @@ const App = () => {
           inactiveTintColor: '#dcdcdc'
         }}
       >
-        <Tab.Screen name='ℍ𝕆𝕄𝔼' component={Home} />
-        <Tab.Screen name='𝕃𝔸𝔹𝟚' component={Lab2} />
-        <Tab.Screen name='𝕃𝔸𝔹𝟛' component={Lab3} />
+        <Tab.Screen name='HOME' component={Home} />
+        <Tab.Screen name='Lab 2' component={Lab2} />
+        <Tab.Screen name='Lab 3' component={Lab3} />
       </Tab.Navigator>
     </NavigationContainer>
   )
