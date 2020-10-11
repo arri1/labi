@@ -9,15 +9,14 @@ import {
     StatusBar
 } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import TaskItem from "../components/taskItem";
+import TaskList from "../components/taskList";
 
 const Stack = createStackNavigator();
 
 const Lab3 = () => {
     return (
         <SafeAreaView style={styles.body}>
-            <TaskItem />
-            <TaskItem />
+            <TaskList />
         </SafeAreaView>
     )
 };
