@@ -3,8 +3,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Home from "./screens/home";
-import Lab2 from "./screens/lab2";
-import Lab3 from "./screens/lab3";
+import Lab2 from "./screens/Lab2";
+import Lab3 from "./screens/Lab3";
 
 const Tab = createBottomTabNavigator();
 

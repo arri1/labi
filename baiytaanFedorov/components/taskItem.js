@@ -9,8 +9,8 @@ import {
 const TaskItem = ({ title, isComplete, complete, remove }) => {
     return (
         <View style={styles.body}>
-            <View style={styles.text}>
-                <Text style={isComplete && styles.textComplete}>
+            <View style={styles.textContainer}>
+                <Text style={[styles.text, isComplete && styles.textComplete]}>
                     {title}
                 </Text>
             </View>
@@ -53,11 +53,17 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         borderBottomWidth: StyleSheet.hairlineWidth
     },
-    text: {
+    textContainer: {
         flex: 1
     },
+    text: {
+        fontSize: 16,
+        color: '#000',
+        fontFamily: 'times new roman'
+    },
     textComplete: {
-        textDecorationLine: 'line-through'
+        textDecorationLine: 'line-through',
+        color: '#757575'
     },
     button: {
         minWidth: 100,
