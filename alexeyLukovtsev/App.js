@@ -19,10 +19,10 @@ const App: () => React$Node = () => {
               if(s == 3){
                 setBackgroundColor('yellow')
               }
-              else if(s == 2){
+              if(s == 2){
                 setBackgroundColor('green')
               }
-              else if(s == 1){
+              if(s == 1){
                 setBackgroundColor('blue')
               }
               }}
