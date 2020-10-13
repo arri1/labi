@@ -26,25 +26,26 @@ const styles = StyleSheet.create({
 const Lab2= (props) => {
   const [backgroundColor, setBackgroungColor] = useState('yellow')
   return (
-    <View style={styles.container}>
-      <ScrollView>
-        {data.map((item, index) => {
-          return(
-            <TouchableOpacity
-              key={index}
-              style={[styles.item, {backgroundColor}]}
-              onPress={() => {
-                setBackgroungColor(item.backgroundColor)
-              }}
-            >
-              <Text style={{color: item.backgroundColor}}>
-                {item.backgroundColor}
-              </Text>
-            </TouchableOpacity>
-          )
-        })}
-
-      </ScrollView>
+    <View
+      style={styles.container}>
+        <ScrollView>
+          {data.map((item, index) => {
+            return(
+              <TouchableOpacity
+                key={index}
+                style={[styles.item, {backgroundColor}]}
+                onPress={() => {
+                  setBackgroungColor(item.backgroundColor)
+                }}
+              >
+                <Text
+                  style={{color: item.backgroundColor}}>
+                    {item.backgroundColor}
+                </Text>
+              </TouchableOpacity>
+            )
+          })}
+        </ScrollView>
     </View>
   )
 }

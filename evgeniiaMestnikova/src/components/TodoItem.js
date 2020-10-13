@@ -12,7 +12,8 @@ const TodoItem = (props) =>{
     }, [])
 
     return (
-        <Card style={styles.item}>
+        <Card
+            style={styles.item}>
             <Card.Title
                 title={props.item.title}
                 titleNumberOfLines={2}
