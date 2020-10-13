@@ -1,48 +1,57 @@
-import React, { useState } from 'react';
-import {
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  View
-} from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Home from "./screens/home";
+import Lab2 from "./screens/Lab2";
+import Lab3 from "./screens/Lab3";
+
+const Tab = createBottomTabNavigator();
 
 const App = () => {
-  const [backgroundColor, setBackgroundColor] = useState('white')
   return (
-    <View style={[styles.body, { backgroundColor }]}>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => {
-          if (backgroundColor == 'white') {
-            setBackgroundColor('black')
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === 'HOME') {
+              iconName = 'home-filled';
+            } else if (route.name === 'Lab 2' || route.name === 'Lab 3') {
+              iconName = 'format-list-bulleted';
+            }
+            color = focused ? '#fff' : '#dcdcdc';
+            size = focused ? 25 : 22;
+
+            return <MaterialIcons name={iconName} size={size} color={color} />;
           }
-          else setBackgroundColor('white')
+        })}
+        tabBarOptions={{
+          style: {
+            height: 50,
+            backgroundColor: '#757575',
+            borderTopWidth: 0.5,
+            borderTopColor: '#757575'
+          },
+          labelStyle: {
+            fontSize: 13,
+            fontFamily: 'times new roman',
+            fontWeight: 'bold'
+          },
+          tabStyle: {
+            justifyContent: 'center'
+          },
+          activeTintColor: '#fff',
+          inactiveTintColor: '#dcdcdc'
         }}
       >
-        <Text style={styles.text}>Press Here</Text>
-      </TouchableOpacity>
-    </View>
+        <Tab.Screen name='HOME' component={Home} />
+        <Tab.Screen name='Lab 2' component={Lab2} />
+        <Tab.Screen name='Lab 3' component={Lab3} />
+      </Tab.Navigator>
+    </NavigationContainer>
   )
-}
-
-const styles = StyleSheet.create({
-  body: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
-  button: {
-    alignItems: "center",
-    backgroundColor: "rgba(170,170,200,.3)",
-    padding: 10
-  },
-  text:{
-    color: '#9C846A',
-    fontSize: 20,
-    fontFamily: 'calibri',
-    fontStyle: 'italic',
-    fontWeight: 'bold'
-  }
-});
+};
 
 export default App;
