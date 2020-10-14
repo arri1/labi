@@ -1,32 +1,31 @@
-import React, {Component} from 'react'
-import { View, TouchableOpacity, TouchableNativeFeedback, Text, StyleSheet, Button, Alert } from 'react-native'
+import React from 'react';
+import { View, TouchableOpacity, Text, StyleSheet, Button } from 'react-native';
 
-export default class ButtonBasics extends Component {  
-  render(){
-    const handlePress = () => false
-    return(
-      <View>
-        <View style={styles.fixToText}>
-        <Button
-          title="Left button"
-        />
-        <Button
-          onPress = {handlePress}
-          title="Right button"
-        />
-      </View>
+
+ 
+const App = () =>{    
+  const handle = () => false
+  return(
+  <View>
+    <View style={styles.fixToText}>
+    <Button
+      title="button"
+    />
+    <Button
+      onPress = {handle}
+      title="звук"
+    />
+    </View>
       <View style={styles.container}>
         <TouchableOpacity>
-           <Text style = {styles.text}>
-              Button
-           </Text>
+          <Text style = {styles.text}>
+             Button
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
-    )
-  }
+  )
 }
-
 
 
 const styles = StyleSheet.create ({
@@ -40,7 +39,8 @@ const styles = StyleSheet.create ({
       backgroundColor: 'red'
    },
    fixToText: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+
   },
 })
+
+export default App;
