@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, ImageBackground } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Lab2 from './screens/lab2.js'
@@ -20,7 +20,10 @@ const App = () => {
 function HomeScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Welcome to the club buddy!</Text>
+      <ImageBackground source={{uri:'https://previews.123rf.com/images/franzidraws/franzidraws1511/franzidraws151100007/48042630-seamless-pattern-of-the-great-wave-off-kanagawa.jpg'}} 
+                                style={{width: '100%', height: '100%'}}>
+        <Text>Welcome to the club buddy!</Text>
+      </ImageBackground>
     </View>
   );
 }
