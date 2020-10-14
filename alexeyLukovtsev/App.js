@@ -10,26 +10,25 @@ const App: () => React$Node = () => {
   const [backgroundColor, setBackgroundColor] = useState('cyan')
   let s = 0;
   return (
-	<View style={[styles.main, { backgroundColor }]}>
-		  <Text style={styles.text}>Ассаламалейкумм</Text>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() =>{
-              s = Math.floor(Math.random() * 4);
-              if(s == 3){
-                setBackgroundColor('yellow')
-              }
-              if(s == 2){
-                setBackgroundColor('green')
-              }
-              if(s == 1){
-                setBackgroundColor('blue')
-              }
-              }}
-            >
-              <Text style={styles.square}></Text>
-          </TouchableOpacity>
-	</View>
+    <View style={[styles.main, { backgroundColor }]}>
+      <Text style={styles.text}>Ассаламалейкумм</Text>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          s = Math.floor(Math.random() * 4);
+          if (s == 3) {
+            setBackgroundColor('yellow')
+          } else if (s == 2) {
+            setBackgroundColor('green')
+          } else if (s == 1) {
+            setBackgroundColor('blue')
+            return null
+          }
+        }}
+      >
+        <Text style={styles.square}></Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
@@ -44,12 +43,12 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   text: {
-  	textAlign: 'center',
-  	fontSize: 40,
-  	alignItems: 'center',
-  	justifyContent: 'center',
-  	fontFamily: 'times new roman',
-  	fontStyle: 'italic',
+    textAlign: 'center',
+    fontSize: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontFamily: 'times new roman',
+    fontStyle: 'italic',
   },
   square: {
     width: 200,
