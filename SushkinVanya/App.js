@@ -19,49 +19,40 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 
-
-
-
 const App: () => React$Node = () => {
-  //let numbers = [1,2,3];
-  const [buttonColor, setButtonColor] = useState('rgb(255, 0, 255)');
-  const [colorIndex, setColorIndex] = useState(0);
-  
-  
-  
-  return (
-    <View>
-      <Text>yare yare daze</Text>
-      
-      <Button title="нажми меня чтоб поменять цвет"
-      color={buttonColor}
-      onPress={() => setButtonColor("#F0000F")}/>
-      <Button title="нажми меня чтоб поменять цвет"
-      color={buttonColor}
-      onPress={() => setButtonColor("#F0F00F")}/>
-      <Button title="нажми меня чтоб поменять цвет"
-      color={buttonColor}
-      onPress={() => setButtonColor("#0FF000")}/>
-      <Button title="нажми меня чтоб поменять цвет"
-      color={buttonColor}
-      onPress={() => setButtonColor("#00000F")}/>
+
+  const buttonColors = [
+    '#ffffff',
+    '#7fffd4',
+    '#00fa9a',
+    '#ffa07a'
+  ];
+
+  const [currentCol,setCurrentCol] = useState('#000fff')
+
+  const buttonColorReplacement = () => {
+    setCurrentCol(buttonColors[Math.floor(Math.random()*buttonColors.length)]);
+  }
+
+  return(
+    <View style = {styles.container}>
+
+      <Button title="Мобильное приложение"
+      color={currentCol}
+      onPress={() => buttonColorReplacement()}/>
 
     </View>
 
-//color={buttonColor}
-
-    /*<>
-      <button></button>
-      <StatusBar/>
-      <SafeAreaView>
-        <ScrollView>
-          <Text>yare yare daze</Text>
-        </ScrollView>
-      </SafeAreaView>
-    </>*/
- );
+  )
 };
 
-
+const styles = StyleSheet.create({
+  container:{
+    flex: 1,
+    backgroundColor: '#000000',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+})
 
 export default App;
