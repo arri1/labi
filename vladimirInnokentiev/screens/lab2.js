@@ -16,7 +16,7 @@ const SIZE = width * 0.9;
 
 const App: () => React$Node = () => {
 
-  const [color1,setColor1]=useState(Colors.white);
+  const [color1,setColor1]=useState("#f23030");
 
   const randomHex = () => {
     const letters = "0123456789ABCDEF";
