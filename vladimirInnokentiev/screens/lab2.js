@@ -19,8 +19,8 @@ const App: () => React$Node = () => {
 
   const randomHex = () => {
     const letters = "0123456789ABCDEF";
-    const color = "#";
-    for (const i = 0; i < 6; i++) 
+    let color = "#";
+    for (let i = 0; i < 6; i++) 
     {
         color += letters[Math.floor(Math.random() * 16)];
     }
