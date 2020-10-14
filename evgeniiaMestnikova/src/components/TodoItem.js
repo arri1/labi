@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styles from '../styles/styles'
 import { Card, Checkbox } from 'react-native-paper'
 
-const TodoItem = (props) =>{
+const TodoItem = (props) => {
     const [checked, setChecked] = useState(false)
 
     useEffect(() => {
@@ -12,8 +12,7 @@ const TodoItem = (props) =>{
     }, [])
 
     return (
-        <Card
-            style={styles.item}>
+        <Card style={styles.item}>
             <Card.Title
                 title={props.item.title}
                 titleNumberOfLines={2}
@@ -29,10 +28,9 @@ const TodoItem = (props) =>{
                         }}
                         color="green"
                     />
-                )
-            }
-        />
-    </Card>
+                )}
+            />
+        </Card>
     )
 }
 
