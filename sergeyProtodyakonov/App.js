@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
-  ScrollView,
   View,
   Text,
   TouchableOpacity
@@ -28,11 +26,13 @@ const App: () => React$Node = () => {
   return (
 
     <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}>
+      style={
+        {
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+        }
+      }>
 
       <View
         style={styles.blockRow}>
@@ -43,11 +43,13 @@ const App: () => React$Node = () => {
           }}>
 
           <View
-            style={{
-              backgroundColor: color1,
-              width: 120,
-              height: 120
-            }}>
+            style={
+              {
+                backgroundColor: color1,
+                width: 120,
+                height: 120
+              }
+            }>
           </View>
 
         </TouchableOpacity>
@@ -58,11 +60,13 @@ const App: () => React$Node = () => {
           }}>
 
           <View
-            style={{
-              backgroundColor: color2,
-              width: 120,
-              height: 120
-            }}>
+            style={
+              {
+                backgroundColor: color2,
+                width: 120,
+                height: 120
+              }
+            }>
           </View>
 
         </TouchableOpacity>
@@ -78,11 +82,13 @@ const App: () => React$Node = () => {
           }}>
 
           <View
-            style={{
-              backgroundColor: color3,
-              width: 120,
-              height: 120
-            }}>
+            style={
+              {
+                backgroundColor: color3,
+                width: 120,
+                height: 120
+              }
+            }>
           </View>
 
         </TouchableOpacity>
@@ -93,11 +99,13 @@ const App: () => React$Node = () => {
           }}>
 
           <View
-            style={{
-              backgroundColor: color4,
-              width: 120,
-              height: 120
-            }}>
+            style={
+              {
+                backgroundColor: color4,
+                width: 120,
+                height: 120
+              }
+            }>
           </View>
 
         </TouchableOpacity>
@@ -116,6 +124,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
 
+  
 });
 
 export default App;
