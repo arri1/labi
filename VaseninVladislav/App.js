@@ -22,7 +22,6 @@ import {
 
 
 const styles = StyleSheet.create({
-
   scrollView: {
     backgroundColor: Colors.lighter,
   },
@@ -30,11 +29,9 @@ const styles = StyleSheet.create({
   body: {
     backgroundColor: Colors.white,
   },
-
 });
 
 const App = () => {
-
   const [color, setColor] = useState('green');
   const [count, setCount] = useState(0);
 
@@ -57,13 +54,11 @@ const App = () => {
       case 3:
         setColor('blue')
         break;
-
       default:
     }
   };
 
   return (
-
     <View
       style={{
         flex: 1,
@@ -84,16 +79,11 @@ const App = () => {
             height: 300
           }}>
           <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text style={{ fontSize: 50 }}>{count}</Text>
+            <Text style={{ fontSize: 50 }}>{count}</Text>
           </View>
         </View>
-
       </TouchableOpacity>
-
-
     </View>
-
-
   );
 };
 
