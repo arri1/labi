@@ -18,7 +18,6 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-
 const App: () => React$Node = () => {
 
   const buttonColors = [
@@ -28,7 +27,7 @@ const App: () => React$Node = () => {
     '#ffa07a'
   ];
 
-  const [currentCol,setCurrentCol] = useState('#000fff')
+  let [currentCol,setCurrentCol] = useState('#000fff')
 
   const buttonColorReplacement = () => {
     setCurrentCol(buttonColors[Math.floor(Math.random()*buttonColors.length)]);
@@ -36,13 +35,10 @@ const App: () => React$Node = () => {
 
   return(
     <View style = {styles.container}>
-
       <Button title="Мобильное приложение"
       color={currentCol}
       onPress={() => buttonColorReplacement()}/>
-
     </View>
-
   )
 };
 
