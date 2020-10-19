@@ -1,60 +1,42 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   StyleSheet,
   View,
   Text,
-  TouchableOpacity,
 } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Lab1 from "./screens/lab1"
+import Lab2 from "./screens/lab2"
 
-const App: () => React$Node = () => {
-  const [backgroundColor, setBackgroundColor] = useState('cyan')
-  let s = 0;
+const Tab = createBottomTabNavigator();
+
+const txtq = () => {
+  return(
+  <View style={style.txt}>
+    <Text>Ya zdec'</Text>
+  </View>
+  )
+}
+
+const App = () => {
   return (
-    <View style={[styles.main, { backgroundColor }]}>
-      <Text style={styles.text}>Ассаламалейкумм</Text>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => {
-          s = Math.floor(Math.random() * 4);
-          if (s == 3) {
-            setBackgroundColor('yellow')
-          } else if (s == 2) {
-            setBackgroundColor('green')
-          } else if (s == 1) {
-            setBackgroundColor('blue')
-            return null
-          }
-        }}
-      >
-        <Text style={styles.square}></Text>
-      </TouchableOpacity>
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={txtq} />
+        <Tab.Screen name="lab1" component={Lab1} />
+        <Tab.Screen name="lab2" component={Lab2} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
-};
+}
 
-const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-    justifyContent: 'center',
+const style = StyleSheet.create({
+  txt: {
+    flex: 1, 
+    justifyContent: 'center', 
+    alignItems: 'center' 
   },
-  button: {
-    alignItems: "center",
-    backgroundColor: "red",
-    padding: 10,
-  },
-  text: {
-    textAlign: 'center',
-    fontSize: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontFamily: 'times new roman',
-    fontStyle: 'italic',
-  },
-  square: {
-    width: 200,
-    height: 100,
-    backgroundColor: "red",
-  },
-});
+})
 
 export default App;
