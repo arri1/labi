@@ -1,48 +1,30 @@
-
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native'
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Lab2 from "./screens/lab2"
+import Lab3 from "./screens/lab3"
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const App= () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <ScrollView style={styles.scrollView}>
-
-      </ScrollView>
-      <View>
-
-      </View>
-        <Text>
-          test
-        </Text>
-
-    </>
-  );
-};
+const {width, height} = Dimensions.get('screen')
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-});
+    container: {
+        width,
+        height
+    }
+})
 
+const Tab = createBottomTabNavigator();
+
+const App = () => {
+    return (
+        <NavigationContainer>
+            <Tab.Navigator>
+                <Tab.Screen name="Lab2" component={Lab2}/>
+                <Tab.Screen name="Lab3" component={Lab3}/>
+            </Tab.Navigator>
+        </NavigationContainer>
+
+    )
+}
 export default App;
