@@ -5,9 +5,11 @@ import {
   Text,
   TouchableOpacity
 } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
-const App: () => React$Node = () => {
+function Lab2Screen() {
 
   const [color1, setColor1] = useState('#000000');
   const [color2, setColor2] = useState('#00FF00');
@@ -24,23 +26,23 @@ const App: () => React$Node = () => {
   };
 
   return (
-
-    <View
-      style={
-        {
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-        }
-      }>
+    <View style={
+      { 
+        flex: 1, 
+        justifyContent: 'center', 
+        alignItems: 'center' 
+      }
+    }>
 
       <View
         style={styles.blockRow}>
 
         <TouchableOpacity
-          onPress={() => {
-            setColor1(randomHex());
-          }}>
+          onPress={() => 
+            {
+              setColor1(randomHex());
+            }
+          }>
 
           <View
             style={
@@ -55,9 +57,11 @@ const App: () => React$Node = () => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => {
-            setColor2(randomHex());
-          }}>
+          onPress={() => 
+            {
+              setColor2(randomHex());
+            }
+          }>
 
           <View
             style={
@@ -77,9 +81,11 @@ const App: () => React$Node = () => {
         style={styles.blockRow}>
 
         <TouchableOpacity
-          onPress={() => {
-            setColor3(randomHex());
-          }}>
+          onPress={() => 
+            {
+              setColor3(randomHex());
+            }
+          }>
 
           <View
             style={
@@ -94,9 +100,11 @@ const App: () => React$Node = () => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => {
-            setColor4(randomHex());
-          }}>
+          onPress={() => 
+            {
+              setColor4(randomHex());
+            }
+          }>
 
           <View
             style={
@@ -113,9 +121,38 @@ const App: () => React$Node = () => {
       </View>
 
     </View>
+  );
+}
 
+function Lab3Screen() {
+  return (
+    <View style={
+      { 
+        flex: 1, 
+        justifyContent: 'center', 
+        alignItems: 'center' 
+      }
+    }>
+      <Text>Lab3</Text>
+    </View>
+  );
+}
+
+const Tab = createBottomTabNavigator();
+
+const App: () => React$Node = () => {
+
+  return (
+
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Lab2" component={Lab2Screen} />
+        <Tab.Screen name="Lab3" component={Lab3Screen} />
+      </Tab.Navigator>
+    </NavigationContainer>
 
   );
+  
 };
 
 const styles = StyleSheet.create({
