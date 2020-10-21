@@ -27,10 +27,11 @@ const App: () => React$Node = () => {
     '#ffa07a'
   ];
 
-  let [currentCol,setCurrentCol] = useState('#000fff')
+  const [currentCol,setCurrentCol] = useState('#000fff')
 
   const buttonColorReplacement = () => {
-    setCurrentCol(buttonColors[Math.floor(Math.random()*buttonColors.length)]);
+    const randomIndex = Math.floor(Math.random()*buttonColors.length);
+    setCurrentCol(buttonColors[randomIndex]);
   }
 
   return(
