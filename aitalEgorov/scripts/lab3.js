@@ -11,12 +11,12 @@ import { NavigationContainer } from '@react-navigation/native';
 
 const Drawer = createDrawerNavigator();
 
-const Lab2 = () =>{    
+const Lab3 = () =>{    
   const handle = () => false
   const [backgroundColor, setBackgroundColor] = useState('black')
   return(
     <View style={{ flex: 1,  justifyContent: 'center' }}>
-      <View style={[{ backgroundColor }]}>
+      <View style={[styles.text, { backgroundColor }]}>
         <View>
           <Button 
             onPress={() =>{
@@ -24,13 +24,6 @@ const Lab2 = () =>{
             }}
             title="color"
           />
-        </View>
-        <View style={styles.container}>
-          <TouchableOpacity>
-            <Text style = {styles.text}>
-               Button
-            </Text>
-          </TouchableOpacity>
         </View>
         
       </View>
@@ -44,9 +37,14 @@ const styles = StyleSheet.create ({
   },
   text: {
     borderWidth: 1,
-    padding: 25,
     borderColor: 'black',
-    backgroundColor: 'red'
+    textAlign: 'center',
+    fontSize: 40,
+    padding: 120,
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontFamily: 'times new roman',
+    fontStyle: 'italic',
   },
   nav: {
     
@@ -59,4 +57,4 @@ const styles = StyleSheet.create ({
   },
 })
 
-export default Lab2;
+export default Lab3;

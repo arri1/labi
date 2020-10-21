@@ -9,15 +9,10 @@ import {
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import Lab2 from "./scripts/lab2";
+import Lab3 from "./scripts/lab3"
 
 
-function example({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button onPress={() => navigation.goBack()} title="Go back Lab2" />
-    </View>
-  );
-}
+
 const Drawer = createDrawerNavigator();
 
 const App = () =>{    
@@ -25,7 +20,7 @@ const App = () =>{
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Lab2">
         <Drawer.Screen name="Lab2" component={Lab2} />
-        <Drawer.Screen name="Notifications" component={example} />
+        <Drawer.Screen name="Lab3" component={Lab3} />
       </Drawer.Navigator>
     </NavigationContainer>
   )
