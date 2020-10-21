@@ -18,7 +18,6 @@ export default StyleSheet.create({
         flex: 1,
         padding: 6,
         margin: 6,
-        backgroundColor: 'white',
         borderRadius: 48
     },
     wrappedHeader: {
