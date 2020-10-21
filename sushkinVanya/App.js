@@ -36,7 +36,8 @@ const App: () => React$Node = () => {
 
   return(
     <View style = {styles.container}>
-      <Button title="Мобильное приложение"
+      <Button 
+      title="Мобильное приложение"
       color={currentCol}
       onPress={() => buttonColorReplacement()}/>
     </View>
