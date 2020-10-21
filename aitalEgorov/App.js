@@ -8,43 +8,8 @@ import {
 } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
+import Lab2 from "./scripts/lab2";
 
-function HomeScreen({ navigation }) {
-  const handle = () => false
-  const [backgroundColor, setBackgroundColor] = useState('black')
-  let color = 0;
-  return (
-    <View style={{ flex: 1,  justifyContent: 'center' }}>
-      <View style={[styles.main, { backgroundColor }]}>
-        <View>
-          <Button 
-            onPress={() =>{
-              color = Math.floor(Math.random() * 99999);
-              setBackgroundColor(color)
-            }}
-            title="color"
-          />
-          <Button
-            onPress = {handle}
-            title="звук"
-          />
-        </View>
-        <View style={styles.container}>
-          <TouchableOpacity>
-            <Text style = {styles.text}>
-               Button
-            </Text>
-          </TouchableOpacity>
-        </View>
-        
-      </View>
-      <Button
-        onPress={() => navigation.navigate('Notifications')}
-        title="Go to notifications"
-      />
-    </View>
-  );
-}
 
 function NotificationsScreen({ navigation }) {
   return (
@@ -59,7 +24,7 @@ const App = () =>{
   return(
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Lab2">
-        <Drawer.Screen name="Lab2" component={HomeScreen} />
+        <Drawer.Screen name="Lab2" component={Lab2} />
         <Drawer.Screen name="Notifications" component={NotificationsScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
