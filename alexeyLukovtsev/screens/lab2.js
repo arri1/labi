@@ -8,14 +8,13 @@ import {
 
 const lab2 = () => {
   const [backgroundColor, setBackgroundColor] = useState('cyan')
-  let s = 0;
   return (
     <View style={[styles.main, { backgroundColor }]}>
       <Text style={styles.text}>Ассаламалейкумм</Text>
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          s = Math.floor(Math.random() * 4);
+          let s = Math.floor(Math.random() * 4);
           if (s == 3) {
             setBackgroundColor('yellow')
             return null

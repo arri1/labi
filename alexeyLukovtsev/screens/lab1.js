@@ -7,7 +7,7 @@ import {
 
 const lab1 = () => {
   return (
-    <View style={[styles.main]}>
+    <View style={styles.main}>
       <Text style={styles.text}>Ассаламалейкумм</Text>
     </View>
   );

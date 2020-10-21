@@ -7,7 +7,7 @@ import {
 
 const home = () => {
   return (
-    <View style={[styles.main]}>
+    <View style={styles.main}>
       <Text style={styles.text}>Home sweet home</Text>
     </View>
   );
