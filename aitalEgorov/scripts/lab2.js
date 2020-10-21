@@ -18,7 +18,7 @@ const lab2 = () =>{
   let color = 0;
   return(
     <View style={{ flex: 1,  justifyContent: 'center' }}>
-      <View style={[styles.main, { backgroundColor }]}>
+      <View style={[{ backgroundColor }]}>
         <View>
           <Button 
             onPress={() =>{
@@ -67,9 +67,6 @@ const styles = StyleSheet.create ({
     justifyContent: 'space-between',
     paddingLeft: 10,
     paddingTop: 10,
-  },
-  main:{
-    // margin: 50,
   },
 })
 

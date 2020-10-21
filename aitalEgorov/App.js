@@ -11,7 +11,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Lab2 from "./scripts/lab2";
 
 
-function NotificationsScreen({ navigation }) {
+function example({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Button onPress={() => navigation.goBack()} title="Go back Lab2" />
@@ -25,7 +25,7 @@ const App = () =>{
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Lab2">
         <Drawer.Screen name="Lab2" component={Lab2} />
-        <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+        <Drawer.Screen name="Notifications" component={example} />
       </Drawer.Navigator>
     </NavigationContainer>
   )
@@ -49,9 +49,6 @@ const styles = StyleSheet.create ({
     justifyContent: 'space-between',
     paddingLeft: 10,
     paddingTop: 10,
-  },
-  main:{
-    // margin: 50,
   },
 })
 
