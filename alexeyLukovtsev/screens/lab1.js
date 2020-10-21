@@ -5,7 +5,7 @@ import {
   Text,
 } from 'react-native';
 
-const lab1 = () => {
+const Lab1 = () => {
   return (
     <View style={styles.main}>
       <Text style={styles.text}>Ассаламалейкумм</Text>
@@ -28,4 +28,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default lab1;
+export default Lab1;

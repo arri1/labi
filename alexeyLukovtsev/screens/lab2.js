@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-const lab2 = () => {
+const Lab2 = () => {
   const [backgroundColor, setBackgroundColor] = useState('cyan')
   return (
     <View style={[styles.main, { backgroundColor }]}>
@@ -60,4 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default lab2;
+export default Lab2;
