@@ -14,7 +14,7 @@ const lab2 = () => {
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          let s = Math.floor(Math.random() * 4);
+          const s = Math.floor(Math.random() * 4);
           if (s == 3) {
             setBackgroundColor('yellow')
             return null
