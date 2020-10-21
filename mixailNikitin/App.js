@@ -10,9 +10,9 @@ const App = () => {
 
   const [backgroundColor, setBackgroundColor] = useState('#DCDCDC')
 
-  let randomColorCode=()=>
+  const randomColorCode=()=>
   {
-    var ColorCode = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+    let ColorCode = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
     return ColorCode;
   }
 
