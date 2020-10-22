@@ -5,7 +5,8 @@
 
 ### Установить react native:
 npm install -g react-native-cli
-###Создать проект через react-native init:
+
+### Создать проект через react-native init:
 npx react-native init vuBaSang
 
 ### React navigation
