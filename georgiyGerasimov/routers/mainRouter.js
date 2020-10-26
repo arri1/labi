@@ -28,7 +28,9 @@ const MainRouter = () => {
             <Stack.Screen
                 name={'BottomRouter'}
                 component={BottomRouter}
-                options={{headerShown: false}}
+                options={
+                    {headerShown: false}
+                }
             />
         </Stack.Navigator>
     )

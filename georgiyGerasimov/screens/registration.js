@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
 const Registration = ({navigation}) => {
     const [login, setLogin] = useState('')
     const [group, setGroup] = useState('')
+    const [name, setName] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     return (
@@ -27,6 +28,12 @@ const Registration = ({navigation}) => {
                 value={login}
                 style={styles.input}
                 placeholder={'Логин'}
+            />
+            <TextInput
+                onChangeText={text => setName(text)}
+                value={name}
+                style={styles.input}
+                placeholder={'Имя'}
             />
             <TextInput
                 onChangeText={text => setGroup(text)}
