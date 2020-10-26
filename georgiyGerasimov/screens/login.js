@@ -4,11 +4,12 @@ import {Button, StyleSheet, TextInput, View} from "react-native"
 const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        flex:1
     }
 })
 
-const Login = () => {
+const Login = ({navigation}) => {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
 
@@ -26,7 +27,7 @@ const Login = () => {
             <Button
                 title={'Войти'}
                 onPress={() => {
-
+                    navigation.replace('BottomRouter')
                 }}
             />
         </View>
