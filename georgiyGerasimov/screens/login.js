@@ -26,8 +26,16 @@ const Login = ({navigation}) => {
             />
             <Button
                 title={'Войти'}
+                style={{marginTop: 24}}
                 onPress={() => {
                     navigation.replace('BottomRouter')
+                }}
+            />
+            <Button
+                title={'Регистрация'}
+                style={{paddingTop: 24}}
+                onPress={() => {
+                    navigation.push('Registration')
                 }}
             />
         </View>
