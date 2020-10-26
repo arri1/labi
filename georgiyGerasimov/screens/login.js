@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
         margin: 15
     },
     input: {
-        display: 'flex',
         borderWidth: 0.5,
         borderRadius: 10,
         alignSelf: 'stretch',
@@ -58,9 +57,11 @@ const Login = ({navigation}) => {
                 <Button
                     title={'Регистрация'}
                     style={{paddingTop: 24}}
-                    onPress={() => {
-                        navigation.push('Registration')
-                    }}
+                    onPress={
+                        () => {
+                            navigation.push('Registration')
+                        }
+                    }
                 />
             </View>
         </View>
