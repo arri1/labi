@@ -5,7 +5,13 @@ const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
         alignItems: 'center',
-        flex:1
+        flex: 1,
+        margin: 15
+    },
+    input: {
+        display:'flex',
+        borderWidth: 1,
+        alignSelf: 'stretch',
     }
 })
 
@@ -18,26 +24,44 @@ const Login = ({navigation}) => {
             <TextInput
                 onChangeText={text => setLogin(text)}
                 value={login}
+                style={styles.input}
+                placeholder={'Логин'}
             />
             <TextInput
                 onChangeText={text => setPassword(text)}
                 value={password}
-                style={{marginTop: 24}}
+                style={[styles.input, {marginTop: 24}]}
+                placeholder={'Пароль'}
             />
-            <Button
-                title={'Войти'}
-                style={{marginTop: 24}}
-                onPress={() => {
-                    navigation.replace('BottomRouter')
-                }}
-            />
-            <Button
-                title={'Регистрация'}
-                style={{paddingTop: 24}}
-                onPress={() => {
-                    navigation.push('Registration')
-                }}
-            />
+            <View
+                style={
+                    {marginTop: 24}
+                }
+
+            >
+                <Button
+                    title={'Войти'}
+                    onPress={() => {
+                        navigation.replace('BottomRouter')
+                    }}
+                />
+            </View>
+            <View
+                style={
+                    {
+                        marginTop: 24,
+                    }
+                }
+
+            >
+                <Button
+                    title={'Регистрация'}
+                    style={{paddingTop: 24}}
+                    onPress={() => {
+                        navigation.push('Registration')
+                    }}
+                />
+            </View>
         </View>
     )
 }
