@@ -1,9 +1,17 @@
 import React from 'react'
-import {Text, View} from 'react-native'
+import {StyleSheet, Text, View} from 'react-native'
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1
+    }
+})
 
 const Registration = () => {
     return (
-        <View>
+        <View
+            style={styles.container}
+        >
             <Text>registration</Text>
         </View>
     )

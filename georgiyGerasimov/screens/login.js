@@ -9,8 +9,9 @@ const styles = StyleSheet.create({
         margin: 15
     },
     input: {
-        display:'flex',
-        borderWidth: 1,
+        display: 'flex',
+        borderWidth: 0.5,
+        borderRadius: 10,
         alignSelf: 'stretch',
     }
 })

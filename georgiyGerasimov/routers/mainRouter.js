@@ -11,9 +11,19 @@ const MainRouter = () => {
         <Stack.Navigator>
             <Stack.Screen
                 name={'Login'}
+                options={
+                    {
+                        title: 'Вход'
+                    }
+                }
                 component={Login}/>
             <Stack.Screen
                 name={'Registration'}
+                options={
+                    {
+                        title: 'Регистрация'
+                    }
+                }
                 component={Registration}/>
             <Stack.Screen
                 name={'BottomRouter'}
