@@ -1,30 +1,22 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Lab1 from "./screens/lab1"
+import Lab2 from "./screens/lab2"
+import Home from "./screens/home"
 
-const App: () => React$Node = () => {
+const Tab = createBottomTabNavigator();
+
+const App = () => {
   return (
-	<View>
-		<Text style={styles.text}>Ассаламалейкумм</Text>
-	</View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="lab1" component={Lab1} />
+        <Tab.Screen name="lab2" component={Lab2} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
-};
-
-const styles = StyleSheet.create({
-  text: {
-  	textAlign: 'center',
-  	fontSize: 40,
-  	alignItems: 'center',
-  	justifyContent: 'center',
-  	fontFamily: 'times new roman',
-  	fontStyle: 'italic',
-  },
-});
+}
 
 export default App;
