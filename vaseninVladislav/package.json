@@ -1,5 +1,5 @@
 {
-  "name": "VaseninVladislav",
+  "name": "vaseninVladislav",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -11,11 +11,11 @@
   },
   "dependencies": {
     "react": "16.13.1",
-    "react-native": "0.63.2"
+    "react-native": "0.63.3"
   },
   "devDependencies": {
-    "@babel/core": "7.11.6",
-    "@babel/runtime": "7.11.2",
+    "@babel/core": "7.12.3",
+    "@babel/runtime": "7.12.1",
     "@react-native-community/eslint-config": "1.1.0",
     "babel-jest": "25.5.1",
     "eslint": "6.8.0",

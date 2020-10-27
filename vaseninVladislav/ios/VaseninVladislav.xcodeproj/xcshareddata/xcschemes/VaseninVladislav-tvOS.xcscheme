@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "VaseninVladislav-tvOS.app"
-               BlueprintName = "VaseninVladislav-tvOS"
-               ReferencedContainer = "container:VaseninVladislav.xcodeproj">
+               BuildableName = "vaseninVladislav-tvOS.app"
+               BlueprintName = "vaseninVladislav-tvOS"
+               ReferencedContainer = "container:vaseninVladislav.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "VaseninVladislav-tvOSTests.xctest"
-               BlueprintName = "VaseninVladislav-tvOSTests"
-               ReferencedContainer = "container:VaseninVladislav.xcodeproj">
+               BuildableName = "vaseninVladislav-tvOSTests.xctest"
+               BlueprintName = "vaseninVladislav-tvOSTests"
+               ReferencedContainer = "container:vaseninVladislav.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "VaseninVladislav-tvOS.app"
-            BlueprintName = "VaseninVladislav-tvOS"
-            ReferencedContainer = "container:VaseninVladislav.xcodeproj">
+            BuildableName = "vaseninVladislav-tvOS.app"
+            BlueprintName = "vaseninVladislav-tvOS"
+            ReferencedContainer = "container:vaseninVladislav.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "VaseninVladislav-tvOS.app"
-            BlueprintName = "VaseninVladislav-tvOS"
-            ReferencedContainer = "container:VaseninVladislav.xcodeproj">
+            BuildableName = "vaseninVladislav-tvOS.app"
+            BlueprintName = "vaseninVladislav-tvOS"
+            ReferencedContainer = "container:vaseninVladislav.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

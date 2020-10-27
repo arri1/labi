@@ -1,90 +1,28 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React from 'react';
+import {Dimensions, StyleSheet} from 'react-native'
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Lab2 from "./screens/lab2"
 
-import React, { useState } from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  TouchableOpacity
-} from 'react-native';
-
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
-
+const {width, height} = Dimensions.get('screen')
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
+    container: {
+        width,
+        height
+    }
+})
 
-  body: {
-    backgroundColor: Colors.white,
-  },
-});
+const Tab = createBottomTabNavigator();
 
 const App = () => {
-  const [color, setColor] = useState('green');
-  const [count, setCount] = useState(0);
+    return (
+        <NavigationContainer>
+            <Tab.Navigator>
+                <Tab.Screen name="Lab2" component={Lab2}/>
+            </Tab.Navigator>
+        </NavigationContainer>
 
-  let getRandomInt = (max) => {
-    return Math.floor(Math.random() * Math.floor(max));
-  };
-
-  let randomColor = () => {
-    let x = getRandomInt(4);
-    switch (x) {
-      case 0:
-        setColor('yellow')
-        break;
-      case 1:
-        setColor('green')
-        break;
-      case 2:
-        setColor('red')
-        break;
-      case 3:
-        setColor('blue')
-        break;
-      default:
-    }
-  };
-
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}>
-
-      <TouchableOpacity
-        onPress={() => {
-          randomColor();
-          setCount(count + 1);
-        }}>
-
-        <View
-          style={{
-            backgroundColor: color,
-            width: 300,
-            height: 300
-          }}>
-          <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-            <Text style={{ fontSize: 50 }}>{count}</Text>
-          </View>
-        </View>
-      </TouchableOpacity>
-    </View>
-  );
-};
-
+    )
+}
 export default App;
