@@ -1,8 +1,10 @@
 import React, {useState} from 'react'
 import {AsyncStorage, Button, StyleSheet, Text, TextInput, View} from 'react-native'
-import {useApolloClient, useQuery} from "@apollo/react-hooks"
+import {useApolloClient, useMutation, useQuery} from "@apollo/react-hooks"
 import {USER} from "../gqls/user/queries"
 import LoadingBar from "../components/loadingBar"
+import {UPDATE_USER} from "../gqls/user/mutations"
+import {showMessage} from "react-native-flash-message"
 
 const styles = StyleSheet.create({
     title: {
@@ -29,12 +31,29 @@ const Settings = ({navigation}) => {
 
     const apollo = useApolloClient()
 
-    const {loading} = useQuery(USER, {
-        onCompleted: () => {
-
+    const {loading: userLoading} = useQuery(USER, {
+        onCompleted: ({user}) => {
+            setGroup(user.group)
+            setName(user.name)
         },
         onError: () => {
 
+        }
+    })
+
+    const [save, {loading: saveLoading}] = useMutation(UPDATE_USER, {
+        onCompleted: ({user}) => {
+            apollo.writeQuery({query: USER, data: {user}})
+            showMessage({
+                message: 'Сохранено',
+                type: 'info'
+            })
+        },
+        onError: () => {
+            showMessage({
+                message: 'что то пошло не так',
+                type: 'danger'
+            })
         }
     })
 
@@ -44,7 +63,54 @@ const Settings = ({navigation}) => {
         navigation.replace('Login')
     }
 
-    if (loading)
+    const validate = () => {
+        if (group === '') {
+            showMessage({
+                message: 'Введите группу',
+                type: 'danger'
+            })
+            return false
+        }
+        if (name === '') {
+            showMessage({
+                message: 'Введите имя',
+                type: 'danger'
+            })
+            return false
+        }
+        if (password === '') {
+            showMessage({
+                message: 'Введите пароль',
+                type: 'danger'
+            })
+            return false
+        }
+        if (password !== confirmPassword) {
+            showMessage({
+                message: 'Пароли не совпадают',
+                type: 'danger'
+            })
+            return false
+        }
+        return true
+    }
+
+    const onSave = () => {
+        if (!validate()) {
+            return null
+        }
+        save({
+            variables: {
+                data: {
+                    group: {set: group},
+                    name: {set: name},
+                    password: {set: password}
+                }
+            }
+        })
+    }
+
+    if (userLoading || saveLoading)
         return (
             <LoadingBar/>
         )
@@ -69,10 +135,12 @@ const Settings = ({navigation}) => {
                 value={password}
                 placeholder={'Новый пароль'}
                 style={styles.input}
+                secureTextEntry={true}
             />
             <TextInput
                 onChangeText={(text) => setConfirmPassword(text)}
                 value={confirmPassword}
+                secureTextEntry={true}
                 placeholder={'Повтарите пароль'}
                 style={styles.input}
             />
@@ -86,11 +154,7 @@ const Settings = ({navigation}) => {
             >
                 <Button
                     title={'Сохранить'}
-                    onPress={
-                        () => {
-                            navigation.replace('Login')
-                        }
-                    }
+                    onPress={onSave}
                 />
             </View>
             <View
