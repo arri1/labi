@@ -1,7 +1,8 @@
 import React from 'react';
-import {View,Dimensions} from "react-native"
+import {Dimensions, View} from "react-native"
 import {NavigationContainer} from '@react-navigation/native';
 import {ApolloProvider} from '@apollo/react-hooks'
+import FlashMessage from "react-native-flash-message";
 import apollo from './utils/apollo'
 import MainRouter from "./routers/mainRouter"
 
@@ -20,6 +21,7 @@ const App = () => {
                     <MainRouter/>
                 </NavigationContainer>
             </ApolloProvider>
+            <FlashMessage position="top"/>
         </View>
     )
 }
