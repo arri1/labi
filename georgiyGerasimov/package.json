@@ -11,6 +11,7 @@
     "install-apollo-client": "yarn add apollo-cache-inmemory apollo-client apollo-link apollo-link-context apollo-link-error apollo-link-http apollo-link-ws apollo-upload-client graphql graphql-tag react-apollo subscriptions-transport-ws url ws"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/bottom-tabs": "^5.9.1",
     "@react-navigation/native": "^5.7.5",

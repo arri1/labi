@@ -1,7 +1,10 @@
 import React, {useState} from 'react'
-import {Button, StyleSheet, TextInput, View} from 'react-native'
+import {AsyncStorage, Button, ScrollView, StyleSheet, Text, TextInput, View} from 'react-native'
 import {showMessage} from "react-native-flash-message"
-import {useMutation} from ''
+import {useApolloClient, useMutation} from "@apollo/react-hooks"
+import {REG} from "../gqls/user/mutations"
+import {USER} from "../gqls/user/queries"
+import LoadingBar from "../components/loadingBar"
 
 const styles = StyleSheet.create({
     container: {
@@ -17,10 +20,35 @@ const styles = StyleSheet.create({
 
 const Registration = ({navigation}) => {
     const [login, setLogin] = useState('')
-    const [group, setGroup] = useState('')
-    const [name, setName] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+
+    const apollo = useApolloClient()
+
+    const [reg, {loading}] = useMutation(REG, {
+        onCompleted: async ({registerUser}) => {
+            await AsyncStorage.setItem('token', registerUser.token)
+            showMessage({
+                message: 'Регистрация прошла успешно',
+                type: 'info'
+            })
+            apollo.writeQuery({query: USER, data: {user: registerUser.user}})
+            navigation.replace('BottomRouter')
+        },
+        onError: ({message}) => {
+            if (message === 'GraphQL error: Unique constraint failed on the fields: (`login`)') {
+                showMessage({
+                    message: 'Такой логин уже существует',
+                    type: 'danger'
+                })
+                return null
+            }
+            showMessage({
+                message: 'Что то пошло не так',
+                type: 'danger'
+            })
+        }
+    })
 
     const validate = () => {
         if (login === '') {
@@ -37,7 +65,7 @@ const Registration = ({navigation}) => {
             })
             return false
         }
-        if (password === confirmPassword) {
+        if (password !== confirmPassword) {
             showMessage({
                 message: "Пароли не совпадают",
                 type: "danger",
@@ -50,41 +78,45 @@ const Registration = ({navigation}) => {
     const createUser = () => {
         if (!validate())
             return null
-
+        reg({
+            variables: {
+                data: {
+                    password,
+                    login
+                }
+            }
+        })
     }
 
+    if (loading)
+        return (
+            <LoadingBar/>
+        )
+
     return (
-        <View
+        <ScrollView
             style={styles.container}
         >
+            <Text>Логин</Text>
             <TextInput
                 onChangeText={text => setLogin(text)}
                 value={login}
-                style={styles.input}
-                placeholder={'Логин'}
+                style={[styles.input,{marginTop: 8}]}
+                placeholder={'Введите логин'}
             />
-            <TextInput
-                onChangeText={text => setName(text)}
-                value={name}
-                style={[styles.input, {marginTop: 24}]}
-                placeholder={'Имя'}
-            />
-            <TextInput
-                onChangeText={text => setGroup(text)}
-                value={group}
-                style={[styles.input, {marginTop: 24}]}
-                placeholder={'Группа'}
-            />
+            <Text style={{marginTop: 24}}>Пароль</Text>
             <TextInput
                 onChangeText={text => setPassword(text)}
                 value={password}
-                style={[styles.input, {marginTop: 24}]}
-                placeholder={'Пароль'}
+                secureTextEntry={true}
+                style={[styles.input, {marginTop: 8}]}
+                placeholder={'Введите пароль'}
             />
             <TextInput
                 onChangeText={text => setConfirmPassword(text)}
                 value={confirmPassword}
-                style={[styles.input, {marginTop: 24}]}
+                secureTextEntry={true}
+                style={[styles.input, {marginTop: 8}]}
                 placeholder={'Повтарите пароль'}
             />
             <View
@@ -100,7 +132,24 @@ const Registration = ({navigation}) => {
                     onPress={createUser}
                 />
             </View>
-        </View>
+            <View
+                style={
+                    {
+                        marginTop: 24,
+                        alignItems: 'center'
+                    }
+                }
+            >
+                <Button
+                    title={'Назад'}
+                    onPress={
+                        () => {
+                            navigation.goBack()
+                        }
+                    }
+                />
+            </View>
+        </ScrollView>
     )
 }
 export default Registration
