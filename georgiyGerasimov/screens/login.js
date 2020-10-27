@@ -1,5 +1,10 @@
 import React, {useState} from 'react'
-import {Button, StyleSheet, TextInput, View} from "react-native"
+import {AsyncStorage, Button, StyleSheet, TextInput, View} from "react-native"
+import {useApolloClient, useMutation, useQuery} from "@apollo/react-hooks"
+import {showMessage} from "react-native-flash-message"
+import {USER} from "../gqls/user/queries"
+import LoadingBar from "../components/loadingBar"
+import {AUTH} from "../gqls/user/mutations"
 
 const styles = StyleSheet.create({
     container: {
@@ -19,6 +24,66 @@ const Login = ({navigation}) => {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
 
+    const apollo = useApolloClient()
+
+    const {loading: userLoading} = useQuery(USER, {
+        onCompleted: () => {
+            navigation.push('BottomRouter')
+        },
+        onError: () => {
+
+        }
+    })
+
+    const [auth, {loading: authLoading}] = useMutation(AUTH, {
+        onCompleted: async ({authUser}) => {
+            await AsyncStorage.setItem('token', authUser.token)
+            showMessage({
+                message: 'Регистрация прошла успешно',
+                type: 'info'
+            })
+            apollo.writeQuery({query: USER, data: {user: authUser.user}})
+            navigation.replace('BottomRouter')
+        },
+        onError: ({message}) => {
+            console.log(message)
+        }
+    })
+
+    const validate = () => {
+        if (login === '') {
+            showMessage({
+                message: 'Введите логин',
+                type: 'danger'
+            })
+            return false
+        }
+        if (password === '') {
+            showMessage({
+                message: 'Введите пароль',
+                type: 'danger'
+            })
+            return false
+        }
+        return true
+    }
+    const onAuth = () => {
+        if (!validate())
+            return null
+        auth({
+            variables: {
+                data: {
+                    login,
+                    password
+                }
+            }
+        })
+    }
+
+    if (userLoading || authLoading)
+        return (
+            <LoadingBar/>
+        )
     return (
         <View style={styles.container}>
             <TextInput
@@ -41,9 +106,7 @@ const Login = ({navigation}) => {
             >
                 <Button
                     title={'Войти'}
-                    onPress={() => {
-                        navigation.replace('BottomRouter')
-                    }}
+                    onPress={onAuth}
                 />
             </View>
             <View
