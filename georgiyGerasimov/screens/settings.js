@@ -1,5 +1,8 @@
 import React, {useState} from 'react'
-import {Button, StyleSheet, Text, TextInput, View} from 'react-native'
+import {AsyncStorage, Button, StyleSheet, Text, TextInput, View} from 'react-native'
+import {useApolloClient, useQuery} from "@apollo/react-hooks"
+import {USER} from "../gqls/user/queries"
+import LoadingBar from "../components/loadingBar"
 
 const styles = StyleSheet.create({
     title: {
@@ -23,6 +26,29 @@ const Settings = ({navigation}) => {
     const [confirmPassword, setConfirmPassword] = useState('')
     const [group, setGroup] = useState('')
     const [name, setName] = useState('')
+
+    const apollo = useApolloClient()
+
+    const {loading} = useQuery(USER, {
+        onCompleted: () => {
+
+        },
+        onError: () => {
+
+        }
+    })
+
+    const logOut = async () => {
+        apollo.writeQuery({query: USER, data: {user: null}})
+        await AsyncStorage.setItem('token', '')
+        navigation.replace('Login')
+    }
+
+    if (loading)
+        return (
+            <LoadingBar/>
+        )
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Настройки</Text>
@@ -77,11 +103,7 @@ const Settings = ({navigation}) => {
             >
                 <Button
                     title={'Выйти'}
-                    onPress={
-                        () => {
-                            navigation.replace('Login')
-                        }
-                    }
+                    onPress={logOut}
                 />
             </View>
         </View>

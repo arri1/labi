@@ -33,7 +33,7 @@ const Registration = ({navigation}) => {
                 type: 'info'
             })
             apollo.writeQuery({query: USER, data: {user: registerUser.user}})
-            navigation.replace('BottomRouter')
+            navigation.goBack()
         },
         onError: ({message}) => {
             if (message === 'GraphQL error: Unique constraint failed on the fields: (`login`)') {

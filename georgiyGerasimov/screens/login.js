@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {AsyncStorage, Button, StyleSheet, TextInput, View} from "react-native"
+import {AsyncStorage, Button, StyleSheet, Text, TextInput, View} from "react-native"
 import {useApolloClient, useMutation, useQuery} from "@apollo/react-hooks"
 import {showMessage} from "react-native-flash-message"
 import {USER} from "../gqls/user/queries"
@@ -8,7 +8,6 @@ import {AUTH} from "../gqls/user/mutations"
 
 const styles = StyleSheet.create({
     container: {
-        justifyContent: 'center',
         alignItems: 'center',
         flex: 1,
         margin: 15
@@ -27,8 +26,9 @@ const Login = ({navigation}) => {
     const apollo = useApolloClient()
 
     const {loading: userLoading} = useQuery(USER, {
-        onCompleted: () => {
-            navigation.push('BottomRouter')
+        onCompleted: ({user}) => {
+            if (user)
+                navigation.push('BottomRouter')
         },
         onError: () => {
 
@@ -47,6 +47,17 @@ const Login = ({navigation}) => {
         },
         onError: ({message}) => {
             console.log(message)
+            if (message==='GraphQL error: Incorrect password'){
+                showMessage({
+                    message: 'Неверен пароль',
+                    type: 'danger'
+                })
+                return  null
+            }
+            showMessage({
+                message: 'Что то пошло не так',
+                type: 'danger'
+            })
         }
     })
 
@@ -86,17 +97,20 @@ const Login = ({navigation}) => {
         )
     return (
         <View style={styles.container}>
+            <Text>Логин</Text>
             <TextInput
                 onChangeText={text => setLogin(text)}
                 value={login}
-                style={styles.input}
-                placeholder={'Логин'}
+                style={[styles.input, {marginTop: 8}]}
+                placeholder={'Введите логин'}
             />
+            <Text style={{marginTop: 24}}>Пароль</Text>
             <TextInput
                 onChangeText={text => setPassword(text)}
                 value={password}
-                style={[styles.input, {marginTop: 24}]}
-                placeholder={'Пароль'}
+                style={[styles.input, {marginTop: 8}]}
+                placeholder={'Введите пароль'}
+                secureTextEntry={true}
             />
             <View
                 style={
