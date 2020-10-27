@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
-import { List } from 'react-native-paper'
+import { List, Avatar } from 'react-native-paper'
 // styling
 import styles from '../styles/styles'
+// Custom components
+import ColorItem from '../components/ColorItem'
 
 const Lab2 = () => {
     const [colorState, setColorState] = useState(
@@ -32,52 +34,14 @@ const Lab2 = () => {
                     padding: 10
                 }}
             >
-                <List.Item
-                    style={{
-                        justifyContent: 'center',
-                        height: 80,
-                        width: '100%',
-                        backgroundColor: 'white',
-                        margin: 10,
-                        borderRadius: 15
-                    }}
-                    title="Основной цвет"
-                    left={(props) => (
-                        <List.Icon
-                            {...props}
-                            icon="folder"
-                        />
-                    )}
+                <ColorItem
+                    colorName="primary"
+                    colorText="Основной цвет"
                 />
-                <List.Item />
-                <List.Item
-                    style={{
-                        justifyContent: 'center',
-                        height: 80,
-                        width: '100%',
-                        backgroundColor: 'white',
-                        margin: 10,
-                        borderRadius: 15
-                    }}
-                    title="Второстепенный цвет"
-                    left={(props) => (
-                        <List.Icon
-                            {...props}
-                            icon="folder"
-                        />
-                    )}
+                <ColorItem
+                    colorName="secondary"
+                    colorText="Второстепенный цвет"
                 />
-                {/* <Button
-                    title="Make color red"
-                    color="red"
-                    style={{width: "100%"}}
-                    onPress={onRedButton}
-                />
-                <Button
-                    title="Make color green"
-                    color="green"
-                    onPress={onGreenButton}
-                /> */}
             </View>
         </LinearGradient>
     )

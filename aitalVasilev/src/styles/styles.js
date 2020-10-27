@@ -28,6 +28,14 @@ export default StyleSheet.create({
     scroll: {
         width: '95 %'
     },
+    colorCard: {
+        justifyContent: 'center',
+        padding: 20,
+        width: '100%',
+        backgroundColor: 'white',
+        margin: 10,
+        borderRadius: 15
+    },
     // Texts
     headerText: {
         fontSize: 32
