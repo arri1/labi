@@ -1,13 +1,11 @@
 import { DefaultTheme } from 'react-native-paper'
 
-const theme = {
+export const themePrimary = {
     ...DefaultTheme,
     colors: {
         ...DefaultTheme.colors,
-        primaryGradient1: '#F55C7A',
-        primaryGradient2: '#F6BC66',
-        secondaryGradient1: '#8DBBFF',
-        secondaryGradient2: '#FF75A7',
+        gradient1: '#F55C7A',
+        gradient2: '#F6BC66',
         complete1: '#33E4A5',
         complete2: '#67E7B9',
         grey: '#AEAEAE',
@@ -15,4 +13,17 @@ const theme = {
         light: '#F6F6F6'
     }
 }
-export default theme
+
+export const themeSecondary = {
+    ...DefaultTheme,
+    colors: {
+        ...DefaultTheme.colors,
+        gradient1: '#8DBBFF',
+        gradient2: '#FF75A7',
+        complete1: '#33E4A5',
+        complete2: '#67E7B9',
+        grey: '#AEAEAE',
+        dark: '#2C2C2C',
+        light: '#F6F6F6'
+    }
+}

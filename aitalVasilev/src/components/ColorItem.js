@@ -1,37 +1,51 @@
 import React from 'react'
-import {
-    List,
-    withTheme
-} from 'react-native-paper'
+import { List } from 'react-native-paper'
 // styling
 import styles from '../styles/styles'
+import {
+    themePrimary,
+    themeSecondary
+} from '../styles/theme'
 // Custom components
 import ColorCircle from '../components/ColorCircle'
+import { AppConsumer } from '../styles/DynamicThemeProvider'
 
 const ColorItem = (props) => {
-    const colors =
-        props.colorName == 'primary'
-            ? [
-                  props.theme.colors
-                      .primaryGradient1,
-                  props.theme.colors
-                      .primaryGradient2
-              ]
-            : [
-                  props.theme.colors
-                      .secondaryGradient1,
-                  props.theme.colors
-                      .secondaryGradient2
-              ]
+    let theme
+    switch (props.colorName) {
+        case 'primary':
+            theme = themePrimary
+            break
+        case 'secondary':
+            theme = themeSecondary
+            break
+        default:
+            theme = themePrimary
+    }
+    const colors = [
+        theme.colors.gradient1,
+        theme.colors.gradient2
+    ]
 
     return (
-        <List.Item
-            style={styles.colorCard}
-            title={props.colorText}
-            left={() => (
-                <ColorCircle colors={colors} />
+        <AppConsumer>
+            {(appConsumer) => (
+                <List.Item
+                    style={styles.colorCard}
+                    title={props.colorText}
+                    onPress={() => {
+                        appConsumer.updateTheme(
+                            theme
+                        )
+                    }}
+                    left={() => (
+                        <ColorCircle
+                            colors={colors}
+                        />
+                    )}
+                />
             )}
-        />
+        </AppConsumer>
     )
 }
-export default withTheme(ColorItem)
+export default ColorItem

@@ -1,16 +1,22 @@
-import React, { useState } from 'react'
+import React, {
+    useState,
+    useContext
+} from 'react'
 import { View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
-import { List, Avatar } from 'react-native-paper'
+import { withTheme } from 'react-native-paper'
 // styling
 import styles from '../styles/styles'
 // Custom components
 import ColorItem from '../components/ColorItem'
+import { AppContext } from '../styles/DynamicThemeProvider'
 
 const Lab2 = () => {
     const [colorState, setColorState] = useState(
         'white'
     )
+
+    const context = useContext(AppContext)
 
     onGreenButton = () => {
         setColorState('green')
@@ -23,7 +29,10 @@ const Lab2 = () => {
         <LinearGradient
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
-            colors={['#8DBBFF', '#FF75A7']}
+            colors={[
+                context.theme.colors.gradient1,
+                context.theme.colors.gradient2
+            ]}
             style={{ flex: 1 }}
         >
             <View
@@ -47,4 +56,4 @@ const Lab2 = () => {
     )
 }
 
-export default Lab2
+export default withTheme(Lab2)

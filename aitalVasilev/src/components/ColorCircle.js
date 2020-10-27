@@ -2,14 +2,13 @@ import React from 'react'
 import { View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import MaskedView from '@react-native-community/masked-view'
+// styling
+import styles from '../styles/styles'
 
 const ColorCircle = (props) => {
     return (
         <MaskedView
-            style={{
-                width: 44,
-                height: 44
-            }}
+            style={styles.colorCircleMask}
             maskElement={
                 <View
                     style={{
@@ -18,13 +17,7 @@ const ColorCircle = (props) => {
                     }}
                 >
                     <View
-                        style={{
-                            width: 44,
-                            height: 44,
-                            borderRadius: 50,
-                            backgroundColor:
-                                'black'
-                        }}
+                        style={styles.colorCircle}
                     />
                 </View>
             }

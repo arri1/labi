@@ -14,6 +14,16 @@ export default StyleSheet.create({
         height: '100%'
     },
     // Components
+    colorCircleMask: {
+        height: 44,
+        width: 44
+    },
+    colorCircle: {
+        width: 44,
+        height: 44,
+        borderRadius: 50,
+        backgroundColor: 'black'
+    },
     item: {
         flex: 1,
         padding: 6,
