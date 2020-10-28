@@ -40,7 +40,7 @@ const Lab2 = () => {
   };
 
   const randomColor = () => {
-    let x = getRandomInt(4);
+    const x = getRandomInt(4);
     switch (x) {
       case 0:
         setColor('yellow')
