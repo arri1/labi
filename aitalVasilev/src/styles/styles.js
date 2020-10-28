@@ -13,6 +13,12 @@ export default StyleSheet.create({
         width: '100%',
         height: '100%'
     },
+    colorItemsContainer: {
+        flex: 1,
+        width: '100%',
+        alignItems: 'center',
+        padding: 10
+    },
     // Components
     colorCircleMask: {
         height: 44,

@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 // React navigation
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createStackNavigator } from '@react-navigation/stack'
-// Icons
-import Icon from 'react-native-vector-icons/MaterialIcons'
 // Custom components
+import GradientIcon from '../components/GradientIcon'
 import Lab2 from '../screens/Lab2'
 import Lab3 from '../screens/Lab3'
+import { AppContext } from '../styles/DynamicThemeProvider'
 
 const Lab2Stack = createStackNavigator()
 const Lab2StackScreen = () => {
@@ -44,12 +44,13 @@ const Lab3StackScreen = () => {
 const Tab = createBottomTabNavigator()
 
 const MainNavigation = () => {
+    const context = useContext(AppContext)
+
     return (
         <NavigationContainer>
             <Tab.Navigator
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({
-                        focused,
                         color,
                         size
                     }) => {
@@ -69,31 +70,44 @@ const MainNavigation = () => {
                         }
 
                         return (
-                            <Icon
-                                name={iconName}
-                                size={size}
+                            <GradientIcon
+                                iconName={
+                                    iconName
+                                }
+                                size={32}
                                 color={color}
                             />
                         )
                     }
                 })}
                 tabBarOptions={{
-                    activeTintColor: 'green',
-                    inactiveTintColor: 'grey'
+                    activeTintColor:
+                        context.theme.colors
+                            .solidLeft,
+                    inactiveTintColor: 'grey',
+                    style: {
+                        height: 70
+                    },
+                    labelStyle: {
+                        fontSize: 13,
+                        textAlignVertical: 'top',
+                        lineHeight: 24
+                    }
                 }}
             >
                 <Tab.Screen
                     name="Lab2"
                     component={Lab2StackScreen}
                     options={{
-                        tabBarLabel: 'Lab 2'
+                        tabBarLabel:
+                            'Цвет приложения'
                     }}
                 />
                 <Tab.Screen
                     name="Lab3"
                     component={Lab3StackScreen}
                     options={{
-                        tabBarLabel: 'Lab 3'
+                        tabBarLabel: 'Список дел'
                     }}
                 />
             </Tab.Navigator>
