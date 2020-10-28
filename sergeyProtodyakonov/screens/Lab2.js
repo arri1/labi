@@ -35,75 +35,69 @@ const Lab2 = () => {
     
             <View style={styles.blockRow}>
     
-            <TouchableOpacity
-                onPress={() => 
-                {
-                    setColor1(randomHex());
-                }
-                }>
-    
-                <View style={
+                <TouchableOpacity
+                    onPress={() => 
                     {
-                        ...styles.box,
-                        backgroundColor: color1
+                        setColor1(randomHex());
                     }
-                }/>
-    
-            </TouchableOpacity>
-    
-            <TouchableOpacity
-                onPress={() => 
-                {
-                    setColor2(randomHex());
-                }
-                }>
-    
-                <View style={
+                    }>
+        
+                    <View style={
+                        {
+                            ...styles.box,
+                            backgroundColor: color1
+                        }
+                    }/>
+                </TouchableOpacity>
+        
+                <TouchableOpacity
+                    onPress={() => 
                     {
-                        ...styles.box,
-                        backgroundColor: color2
+                        setColor2(randomHex());
                     }
-                }/>
-    
-            </TouchableOpacity>
-    
+                    }>
+        
+                    <View style={
+                        {
+                            ...styles.box,
+                            backgroundColor: color2
+                        }
+                    }/>
+                </TouchableOpacity>
+        
             </View>
-    
-            <View
-            style={styles.blockRow}>
-    
-            <TouchableOpacity
-                onPress={() => 
-                {
-                    setColor3(randomHex());
-                }
-                }>
-    
-                <View style={
+        
+            <View style={styles.blockRow}>
+        
+                <TouchableOpacity
+                    onPress={() => 
                     {
-                        ...styles.box,
-                        backgroundColor: color3
+                        setColor3(randomHex());
                     }
-                }/>
-    
-            </TouchableOpacity>
-    
-            <TouchableOpacity
-                onPress={() => 
-                {
-                    setColor4(randomHex());
-                }
-                }>
-    
-                <View style={
+                    }>
+        
+                    <View style={
+                        {
+                            ...styles.box,
+                            backgroundColor: color3
+                        }
+                    }/>
+                </TouchableOpacity>
+        
+                <TouchableOpacity
+                    onPress={() => 
                     {
-                        ...styles.box,
-                        backgroundColor: color4
+                        setColor4(randomHex());
                     }
-                }/>
-                
-    
-            </TouchableOpacity>
+                    }>
+        
+                    <View style={
+                        {
+                            ...styles.box,
+                            backgroundColor: color4
+                        }
+                    }/>
+                </TouchableOpacity>
     
             </View>
     
