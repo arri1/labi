@@ -35,11 +35,11 @@ const Lab2 = () => {
   const [color, setColor] = useState('green');
   const [count, setCount] = useState(0);
 
-  let getRandomInt = (max) => {
+  const getRandomInt = (max) => {
     return Math.floor(Math.random() * Math.floor(max));
   };
 
-  let randomColor = () => {
+  const randomColor = () => {
     let x = getRandomInt(4);
     switch (x) {
       case 0:
@@ -78,8 +78,18 @@ const Lab2 = () => {
             width: 300,
             height: 300
           }}>
-          <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-            <Text style={{ fontSize: 50 }}>{count}</Text>
+          <View 
+            style={{ 
+              flex: 1, 
+              justifyContent: "center", 
+              alignItems: "center" 
+            }}>
+            <Text 
+              style={{ 
+                fontSize: 50 
+              }}>
+              {count}
+            </Text>
           </View>
         </View>
       </TouchableOpacity>
