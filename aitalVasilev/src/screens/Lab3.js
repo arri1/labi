@@ -1,17 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, {
+    useEffect,
+    useState,
+    useContext
+} from 'react'
 import {
     View,
     ScrollView,
     Text,
     ActivityIndicator
 } from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
 import axios from 'react-native-axios'
 //styling
 import styles from '../styles/styles'
 // Custom components
 import TodoItem from '../components/TodoItem'
+import { AppContext } from '../styles/DynamicThemeProvider'
 
 const Lab3 = () => {
+    const context = useContext(AppContext)
+
     const [data, setData] = useState(null)
     useEffect(() => {
         axios
@@ -32,15 +40,6 @@ const Lab3 = () => {
     const todos = () => {
         return (
             <ScrollView style={styles.scroll}>
-                <View
-                    style={styles.wrappedHeader}
-                >
-                    <Text
-                        style={styles.headerText}
-                    >
-                        To Do list
-                    </Text>
-                </View>
                 {data.map((item, index) => {
                     return (
                         <TodoItem
@@ -54,16 +53,26 @@ const Lab3 = () => {
     }
 
     return (
-        <View style={styles.container}>
-            {data ? (
-                todos()
-            ) : (
-                <ActivityIndicator
-                    size={64}
-                    color={'grey'}
-                />
-            )}
-        </View>
+        <LinearGradient
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            colors={[
+                context.theme.colors.gradient1,
+                context.theme.colors.gradient2
+            ]}
+            style={{ flex: 1 }}
+        >
+            <View style={styles.container}>
+                {data ? (
+                    todos()
+                ) : (
+                    <ActivityIndicator
+                        size={64}
+                        color={'grey'}
+                    />
+                )}
+            </View>
+        </LinearGradient>
     )
 }
 

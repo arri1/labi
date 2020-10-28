@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createStackNavigator } from '@react-navigation/stack'
 // Icons
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 // Custom components
 import Lab2 from '../screens/Lab2'
 import Lab3 from '../screens/Lab3'
@@ -18,7 +18,7 @@ const Lab2StackScreen = () => {
                 component={Lab2}
                 options={{
                     headerTitleAlign: 'center',
-                    title: 'Lab 2 (useState hook)'
+                    title: 'Цвет приложения'
                 }}
             />
         </Lab2Stack.Navigator>
@@ -34,8 +34,7 @@ const Lab3StackScreen = () => {
                 component={Lab3}
                 options={{
                     headerTitleAlign: 'center',
-                    title:
-                        'Lab 3 (useEffect, navigation, axios)'
+                    title: 'Список дел'
                 }}
             />
         </Lab3Stack.Navigator>
@@ -59,16 +58,14 @@ const MainNavigation = () => {
                         if (
                             route.name === 'Lab2'
                         ) {
-                            iconName = focused
-                                ? 'numeric-2-circle'
-                                : 'numeric-2-circle-outline'
+                            iconName =
+                                'color-lens'
                         }
                         if (
                             route.name === 'Lab3'
                         ) {
-                            iconName = focused
-                                ? 'numeric-3-circle'
-                                : 'numeric-3-circle-outline'
+                            iconName =
+                                'assignment'
                         }
 
                         return (
