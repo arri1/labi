@@ -1,57 +1,58 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React, { useState } from 'react';
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+} from 'react-native'
 
-import React, {useState, useReducer, useEffect} from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import TodoList from './TodoList'
-import {Context} from './context'
-import reducer from './reducer'
+const styles = StyleSheet.create({
+  changeToRandomColor:{
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    maxWidth: 150,
+    maxHeight: 150,
+    backgroundColor: "red",
+    borderRadius: 25,
+    marginTop: 10,
+  },
+  centrify:{
+    flex:1,
+    alignItems: "center",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  txtContainer:{
+    flex:1,
+    justifyContent: "center",
+    maxHeight: 100,
+    maxWidth: 100,
+  },
+  containers:{
+    flexDirection: "row",
+  },
+})
 
-const App = () => {
-  const [state, dispatch] = useReducer(reducer, JSON.parse(localStorage.getItem('todos')))
-  const [todoTitle, setTodoTitle] = useState('')
+const lab2 = () => {
+  const [Color, setBackroundColor] = useState('#000000')
 
-  useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(state))
-  }, [state])
+  //16777215 equals #FFFFF
+  const colorId = () => setBackroundColor('#'+Math.floor(Math.random()*16777215).toString(16));
 
-  const addTodo = event => {
-    if (event.key === 'Enter') {
-      dispatch({
-        type: 'add',
-        payload: todoTitle
-      })
-      setTodoTitle('')
-    }
-  }
+  return(
+    <>
+        <View style={styles.centrify}>
+          <View style={styles.txtContainer}>
+          </View>
+          <View style={styles.containers}>
+            <TouchableOpacity onPress={colorId} style={styles.changeToRandomColor, {backgroundColor: Color}}>
+              <Text>Change Color</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+    </>
+  )
+}
 
-  return (
-    <Context.Provider value={{
-      dispatch
-    }}>
-      <div className="container">
-        <h1>Todo app</h1>
-
-          <div className="input-field">
-            <input 
-              type="text" 
-              value={todoTitle}
-              onChange={event => setTodoTitle(event.target.value)}
-              onKeyPress={addTodo}
-            />
-            <label>Todo name</label>
-          </div>
-
-          <TodoList todos={state} />
-      </div>
-    </Context.Provider>
-  );
-  
-};
-
-export default App;
+export default lab2;
