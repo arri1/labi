@@ -4,20 +4,15 @@ import LinearGradient from 'react-native-linear-gradient'
 import MaskedView from '@react-native-community/masked-view'
 // Icons
 import Icon from 'react-native-vector-icons/MaterialIcons'
+// styling
+import styles from '../styles/styles'
 // Custom components
 import { AppContext } from '../styles/DynamicThemeProvider'
 
 const GradientIcon = (props) => {
     const context = useContext(AppContext)
     return (
-        <View
-            style={{
-                flex: 1,
-                width: '100%',
-                alignItems: 'center',
-                justifyContent: 'center'
-            }}
-        >
+        <View style={styles.container}>
             <MaskedView
                 style={{
                     width: props.size,
@@ -25,13 +20,9 @@ const GradientIcon = (props) => {
                 }}
                 maskElement={
                     <View
-                        style={{
-                            backgroundColor:
-                                'transparent',
-                            alignItems: 'center',
-                            justifyContent:
-                                'center'
-                        }}
+                        style={
+                            styles.maskContainer
+                        }
                     >
                         <Icon
                             name={props.iconName}

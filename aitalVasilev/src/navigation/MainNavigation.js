@@ -4,6 +4,8 @@ import { Text } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createStackNavigator } from '@react-navigation/stack'
+// styling
+import styles from '../styles/styles'
 // Custom components
 import GradientIcon from '../components/GradientIcon'
 import Lab2 from '../screens/Lab2'
@@ -21,25 +23,22 @@ const Lab2StackScreen = () => {
                 options={{
                     headerTitleAlign: 'center',
                     headerStyle: {
+                        ...styles.navHearder,
                         backgroundColor:
                             context.theme.colors
-                                .barColor,
-                        height: 78,
-                        elevation: 0
+                                .barColor
                     },
                     headerTitle: (
                         <Text
                             style={{
-                                fontFamily:
-                                    'Lora',
-                                fontSize: 28,
+                                ...styles.navHeaderTitle,
                                 color:
                                     context.theme
                                         .colors
                                         .textColor
                             }}
                         >
-                            Цвет приложения
+                            Тема приложения
                         </Text>
                     )
                 }}
@@ -59,18 +58,15 @@ const Lab3StackScreen = () => {
                 options={{
                     headerTitleAlign: 'center',
                     headerStyle: {
+                        ...styles.navHearder,
                         backgroundColor:
                             context.theme.colors
-                                .barColor,
-                        height: 78,
-                        elevation: 0
+                                .barColor
                     },
                     headerTitle: (
                         <Text
                             style={{
-                                fontFamily:
-                                    'Lora',
-                                fontSize: 28,
+                                ...styles.navHeaderTitle,
                                 color:
                                     context.theme
                                         .colors
@@ -127,19 +123,17 @@ const MainNavigation = () => {
                         context.theme.colors
                             .textColor,
                     inactiveTintColor: 'grey',
-                    style: {
-                        height: 70,
-                        borderTopWidth: 0
-                    },
+                    style: styles.navTabBar,
                     tabStyle: {
                         backgroundColor:
                             context.theme.colors
                                 .barColor
                     },
                     labelStyle: {
-                        fontSize: 13,
-                        textAlignVertical: 'top',
-                        lineHeight: 24
+                        ...styles.navTabLabel,
+                        color:
+                            context.theme.colors
+                                .textColor
                     }
                 }}
             >

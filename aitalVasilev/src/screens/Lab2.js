@@ -11,10 +11,7 @@ const Lab2 = () => {
         <View style={{ flex: 1 }}>
             <ChangingBackground />
             <View
-                style={{
-                    ...styles.colorItemsContainer,
-                    backgroundColor: 'transparent'
-                }}
+                style={styles.colorItemsContainer}
             >
                 <ColorItem
                     colorName="primary"

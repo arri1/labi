@@ -8,7 +8,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    testView: {
+    backgroundContainer: {
         position: 'absolute',
         width: '100%',
         height: '100%'
@@ -18,6 +18,11 @@ export default StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         padding: 10
+    },
+    maskContainer: {
+        backgroundColor: 'transparent',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     // Components
     colorCircleMask: {
@@ -30,11 +35,12 @@ export default StyleSheet.create({
         borderRadius: 50,
         backgroundColor: 'black'
     },
-    item: {
+    todoItem: {
         flex: 1,
         padding: 4,
         margin: 6,
-        borderRadius: 20
+        borderRadius: 20,
+        elevation: 0
     },
     wrappedHeader: {
         flex: 1,
@@ -52,11 +58,31 @@ export default StyleSheet.create({
         margin: 10,
         borderRadius: 15
     },
-    // Texts
-    headerText: {
-        fontSize: 32
+    // Navigation
+    navHearder: {
+        height: 78,
+        elevation: 0
     },
-    regularText: {
-        fontSize: 18
+    navTabBar: {
+        height: 70,
+        borderTopWidth: 0
+    },
+    // Texts
+    navHeaderTitle: {
+        fontFamily: 'Lora-Regular',
+        fontWeight: '400',
+        fontSize: 28
+    },
+    navTabLabel: {
+        fontFamily: 'Lora-Regular',
+        fontWeight: '400',
+        fontSize: 13,
+        textAlignVertical: 'top',
+        lineHeight: 24
+    },
+    todoItemText: {
+        fontFamily: 'Lora-Regular',
+        fontSize: 18,
+        fontWeight: '400'
     }
 })

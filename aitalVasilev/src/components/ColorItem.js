@@ -38,7 +38,12 @@ const ColorItem = (props) => {
                     }}
                     titleStyle={{
                         color:
-                            theme.colors.textColor
+                            theme.colors
+                                .textColor,
+                        fontFamily:
+                            'Lora-Regular',
+                        fontSize: 18,
+                        fontWeight: '400'
                     }}
                     title={props.colorText}
                     onPress={() => {

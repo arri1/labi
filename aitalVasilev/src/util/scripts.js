@@ -13,4 +13,12 @@ const randomString = (length) => {
     return result
 }
 
-export { randomString }
+const randomImage = (length) => {
+    return (
+        'https://picsum.photos/seed/' +
+        randomString(length) +
+        '/360/740?grayscale'
+    )
+}
+
+export { randomImage }

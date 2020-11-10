@@ -27,18 +27,17 @@ const TodoItem = (props) => {
         <View>
             <Card
                 style={{
-                    ...styles.item,
+                    ...styles.todoItem,
                     backgroundColor:
                         context.theme.colors
-                            .cardColor,
-                    elevation: 0
+                            .cardColor
                 }}
             >
                 <Card.Title
                     title={props.item.title}
                     titleNumberOfLines={2}
                     titleStyle={{
-                        ...styles.regularText,
+                        ...styles.todoItemText,
                         color:
                             context.theme.colors
                                 .textColor
