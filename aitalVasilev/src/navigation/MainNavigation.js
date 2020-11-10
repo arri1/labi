@@ -1,5 +1,7 @@
 import React, { useContext } from 'react'
 import { Text } from 'react-native'
+// Icons
+import Icon from 'react-native-vector-icons/MaterialIcons'
 // React navigation
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -91,7 +93,10 @@ const MainNavigation = () => {
         <NavigationContainer>
             <Tab.Navigator
                 screenOptions={({ route }) => ({
-                    tabBarIcon: ({ color }) => {
+                    tabBarIcon: ({
+                        color,
+                        focused
+                    }) => {
                         let iconName
 
                         if (
@@ -107,13 +112,19 @@ const MainNavigation = () => {
                                 'assignment'
                         }
 
-                        return (
+                        return focused ? (
                             <GradientIcon
                                 iconName={
                                     iconName
                                 }
                                 size={32}
                                 color={color}
+                            />
+                        ) : (
+                            <Icon
+                                name={iconName}
+                                size={32}
+                                color="grey"
                             />
                         )
                     }
