@@ -23,8 +23,9 @@ const Lab2StackScreen = () => {
                     headerStyle: {
                         backgroundColor:
                             context.theme.colors
-                                .cardColor,
-                        height: 78
+                                .barColor,
+                        height: 78,
+                        elevation: 0
                     },
                     headerTitle: (
                         <Text
@@ -60,8 +61,9 @@ const Lab3StackScreen = () => {
                     headerStyle: {
                         backgroundColor:
                             context.theme.colors
-                                .cardColor,
-                        height: 78
+                                .barColor,
+                        height: 78,
+                        elevation: 0
                     },
                     headerTitle: (
                         <Text
@@ -126,12 +128,13 @@ const MainNavigation = () => {
                             .textColor,
                     inactiveTintColor: 'grey',
                     style: {
-                        height: 70
+                        height: 70,
+                        borderTopWidth: 0
                     },
                     tabStyle: {
                         backgroundColor:
                             context.theme.colors
-                                .cardColor
+                                .barColor
                     },
                     labelStyle: {
                         fontSize: 13,

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Image } from 'react-native'
+import { Image, View } from 'react-native'
 import { useFocusEffect } from '@react-navigation/native'
+import { BlurView } from '@react-native-community/blur'
 // other
 import { randomString } from '../util/scripts'
 
@@ -23,16 +24,32 @@ const ChangeBackground = () => {
     )
 
     return (
-        <Image
+        <View
             style={{
                 position: 'absolute',
                 width: '100%',
                 height: '100%'
             }}
-            source={{
-                uri: imgUri
-            }}
-        />
+        >
+            <Image
+                style={{
+                    flex: 1
+                }}
+                source={{
+                    uri: imgUri
+                }}
+            />
+            <BlurView
+                style={{
+                    position: 'absolute',
+                    width: '100%',
+                    height: '100%'
+                }}
+                blurAmount={5}
+                blurType="light"
+                reducedTransparencyFallbackColor="transparent"
+            />
+        </View>
     )
 }
 

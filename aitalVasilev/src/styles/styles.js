@@ -32,9 +32,9 @@ export default StyleSheet.create({
     },
     item: {
         flex: 1,
-        padding: 6,
+        padding: 4,
         margin: 6,
-        borderRadius: 48
+        borderRadius: 20
     },
     wrappedHeader: {
         flex: 1,
@@ -42,7 +42,7 @@ export default StyleSheet.create({
         margin: 16
     },
     scroll: {
-        width: '95 %'
+        width: '100%'
     },
     colorCard: {
         justifyContent: 'center',

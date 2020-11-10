@@ -1,4 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, {
+    useContext,
+    useState,
+    useEffect
+} from 'react'
+import { View } from 'react-native'
 // React paper
 import {
     Card,
@@ -6,9 +11,11 @@ import {
 } from 'react-native-paper'
 // styling
 import styles from '../styles/styles'
+import { AppContext } from '../styles/DynamicThemeProvider'
 
 const TodoItem = (props) => {
     const [checked, setChecked] = useState(false)
+    const context = useContext(AppContext)
 
     useEffect(() => {
         props.item.completed
@@ -17,26 +24,47 @@ const TodoItem = (props) => {
     }, [])
 
     return (
-        <Card style={styles.item}>
-            <Card.Title
-                title={props.item.title}
-                titleNumberOfLines={2}
-                titleStyle={styles.regularText}
-                right={() => (
-                    <Checkbox
-                        status={
-                            checked
-                                ? 'checked'
-                                : 'unchecked'
-                        }
-                        onPress={() => {
-                            setChecked(!checked)
-                        }}
-                        color="green"
-                    />
-                )}
-            />
-        </Card>
+        <View>
+            <Card
+                style={{
+                    ...styles.item,
+                    backgroundColor:
+                        context.theme.colors
+                            .cardColor,
+                    elevation: 0
+                }}
+            >
+                <Card.Title
+                    title={props.item.title}
+                    titleNumberOfLines={2}
+                    titleStyle={{
+                        ...styles.regularText,
+                        color:
+                            context.theme.colors
+                                .textColor
+                    }}
+                    right={() => (
+                        <Checkbox
+                            status={
+                                checked
+                                    ? 'checked'
+                                    : 'unchecked'
+                            }
+                            onPress={() => {
+                                setChecked(
+                                    !checked
+                                )
+                            }}
+                            color={
+                                context.theme
+                                    .colors
+                                    .gradient1
+                            }
+                        />
+                    )}
+                />
+            </Card>
+        </View>
     )
 }
 
