@@ -6,19 +6,24 @@ import {
     View,
     TouchableOpacity
 } from 'react-native'
+// Icons
+import Icon from 'react-native-vector-icons/MaterialIcons'
+// styling
+import styles from '../styles/styles'
+// Custom components
 import LinearGradient from 'react-native-linear-gradient'
 import { AppContext } from '../styles/DynamicThemeProvider'
 
 const CheckedBox = () => {
     const context = useContext(AppContext)
     return (
-        <View
-            style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: 10
-            }}
-        >
+        <View style={styles.checkboxContainer}>
+            <Icon
+                style={styles.checkmark}
+                size={31}
+                color="white"
+                name="check"
+            />
             <LinearGradient
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
@@ -27,21 +32,7 @@ const CheckedBox = () => {
                         .gradient1,
                     context.theme.colors.gradient2
                 ]}
-                style={{
-                    height: 31,
-                    width: 31,
-                    borderRadius: 50,
-                    backgroundColor: 'red',
-                    shadowColor: '#000',
-                    shadowOffset: {
-                        width: 0,
-                        height: 2
-                    },
-                    shadowOpacity: 0.25,
-                    shadowRadius: 3.84,
-
-                    elevation: 5
-                }}
+                style={styles.checkbox}
             />
         </View>
     )
@@ -49,30 +40,8 @@ const CheckedBox = () => {
 
 const UncheckedBox = () => {
     return (
-        <View
-            style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: 10
-            }}
-        >
-            <View
-                style={{
-                    height: 31,
-                    width: 31,
-                    borderRadius: 50,
-                    backgroundColor: 'white',
-                    shadowColor: '#000',
-                    shadowOffset: {
-                        width: 0,
-                        height: 2
-                    },
-                    shadowOpacity: 0.25,
-                    shadowRadius: 3.84,
-
-                    elevation: 5
-                }}
-            />
+        <View style={styles.checkboxContainer}>
+            <View style={styles.checkbox} />
         </View>
     )
 }
