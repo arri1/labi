@@ -1,71 +1,95 @@
 import React, { useState } from 'react'
 import {
+  ImageBackground,
   ScrollView,
-  View,
   Text,
   TouchableOpacity,
-  StyleSheet,
+  View,
 } from 'react-native'
+import styles from '../styles/styles'
+import colors from '../styles/colors'
+import LinearGradient from 'react-native-linear-gradient';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: '100%',
-    height: 600
-  },
-  item: {
-    flex: 1,
-    minHeight: 200,
-    borderRadius: 20,
-    margin: 24,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-});
+const backgroundImage = { uri: "https://picsum.photos/id/430/5302/3534" };
 
 const Lab2 = (props) => {
   const [backgroundColor, setBackgroungColor] = useState('yellow')
   return (
-    <View style={styles.container}>
-      <ScrollView>
-        {
-          data.map((item, index) => {
-            return (
-              <TouchableOpacity
-                key={index}
-                style={[styles.item, { backgroundColor }]}
-                onPress={() => {
-                  setBackgroungColor(item.backgroundColor)
-                }}
-              >
-                <Text
-                  style={{ color: item.backgroundColor }}>
-                  {item.backgroundColor}
-                </Text>
-              </TouchableOpacity>
-            )
-          })
-        }
-      </ScrollView>
-    </View>
+    <LinearGradient
+      start={{ x: 0, y: 0 }}
+      end={{ x: 0, y: 1 }}
+      colors={[
+        colors.gradient1,
+        colors.gradient2
+      ]}
+      style={{ flex: 1 }}
+    >
+      <View style={styles.containerLab2}>
+        <ScrollView>
+          {
+            data.map((item, index) => {
+              return (
+                <TouchableOpacity
+                  key={index}
+                  style={[styles.itemLab2, { backgroundColor }]}
+                  onPress={() => {
+                    setBackgroungColor(item.backgroundColor)
+                  }}
+                >
+                  <ImageBackground
+                    style={styles.backgroundImage}
+                    imageStyle={{
+                      borderRadius: 20,
+                      backgroundColor: 'rgba(255,0,0,.6)'
+                    }}
+                    source={backgroundImage}
+                  >
+                    <View
+                      style={{
+                        flex: 1,
+                        alignItems: "center",
+                        justifyContent: "center",
+                        backgroundColor: backgroundColor,
+                        borderRadius: 20,
+                        opacity: 0.5
+                      }}
+                    >
+                      <Text
+                        style={{ color: item.backgroundColor, fontSize: 18 }}>
+                        {item.backgroundText}
+                      </Text>
+                    </View>
+                  </ImageBackground>
+                </TouchableOpacity>
+              )
+            })
+          }
+        </ScrollView>
+      </View>
+    </LinearGradient>
   )
 }
 
 const data = [
   {
-    backgroundColor: 'red'
+    backgroundText: 'Red',
+    backgroundColor: colors.red
   },
   {
-    backgroundColor: 'green'
+    backgroundText: 'Green',
+    backgroundColor: colors.green
   },
   {
-    backgroundColor: 'blue'
+    backgroundText: 'Blue',
+    backgroundColor: colors.blue
   },
   {
-    backgroundColor: 'pink'
+    backgroundText: 'Pink',
+    backgroundColor: colors.pink
   },
   {
-    backgroundColor: 'black'
+    backgroundText: 'Black',
+    backgroundColor: colors.black
   }
 ]
 export default Lab2
