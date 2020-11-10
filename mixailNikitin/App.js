@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import HomeScreen from './screens/HomeScreen';
 import Lab2 from './screens/Lab2';
+import Lab3 from './screens/Lab3';
 
 const Tab = createBottomTabNavigator();
 
@@ -36,6 +37,7 @@ const App = () => {
       >
         <Tab.Screen name='HomeScreen' component={HomeScreen} />
         <Tab.Screen name='Lab2' component={Lab2} />
+        <Tab.Screen name='Lab3' component={Lab3} />
       </Tab.Navigator>
     </NavigationContainer>
   );
