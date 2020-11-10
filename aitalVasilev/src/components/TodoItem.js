@@ -5,13 +5,12 @@ import React, {
 } from 'react'
 import { View } from 'react-native'
 // React paper
-import {
-    Card,
-    Checkbox
-} from 'react-native-paper'
+import { Card } from 'react-native-paper'
 // styling
 import styles from '../styles/styles'
 import { AppContext } from '../styles/DynamicThemeProvider'
+// Custom components
+import CustomCheckbox from '../components/CustomCheckbox'
 
 const TodoItem = (props) => {
     const [checked, setChecked] = useState(false)
@@ -43,7 +42,7 @@ const TodoItem = (props) => {
                                 .textColor
                     }}
                     right={() => (
-                        <Checkbox
+                        <CustomCheckbox
                             status={
                                 checked
                                     ? 'checked'
