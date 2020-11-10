@@ -31,7 +31,15 @@ const ColorItem = (props) => {
         <AppConsumer>
             {(appConsumer) => (
                 <List.Item
-                    style={styles.colorCard}
+                    style={{
+                        ...styles.colorCard,
+                        backgroundColor:
+                            theme.colors.cardColor
+                    }}
+                    titleStyle={{
+                        color:
+                            theme.colors.textColor
+                    }}
                     title={props.colorText}
                     onPress={() => {
                         appConsumer.updateTheme(

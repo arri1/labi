@@ -4,24 +4,28 @@ import { View } from 'react-native'
 import styles from '../styles/styles'
 // Custom components
 import ColorItem from '../components/ColorItem'
-import GradientBackground from '../components/GradientBackground'
+import ChangingBackground from '../components/ChangingBackground'
 
 const Lab2 = () => {
     return (
-        <GradientBackground>
+        <View style={{ flex: 1 }}>
+            <ChangingBackground />
             <View
-                style={styles.colorItemsContainer}
+                style={{
+                    ...styles.colorItemsContainer,
+                    backgroundColor: 'transparent'
+                }}
             >
                 <ColorItem
                     colorName="primary"
-                    colorText="Основной цвет"
+                    colorText="Тёмная тема"
                 />
                 <ColorItem
                     colorName="secondary"
-                    colorText="Второстепенный цвет"
+                    colorText="Светлая тема"
                 />
             </View>
-        </GradientBackground>
+        </View>
     )
 }
 

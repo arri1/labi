@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {
     View,
+    Image,
     ScrollView,
     ActivityIndicator
 } from 'react-native'
@@ -9,7 +10,7 @@ import axios from 'react-native-axios'
 import styles from '../styles/styles'
 // Custom components
 import TodoItem from '../components/TodoItem'
-import GradientBackground from '../components/GradientBackground'
+import ChangeBackground from '../components/ChangingBackground'
 
 const Lab3 = () => {
     const [data, setData] = useState(null)
@@ -45,18 +46,17 @@ const Lab3 = () => {
     }
 
     return (
-        <GradientBackground>
-            <View style={styles.container}>
-                {data ? (
-                    todos()
-                ) : (
-                    <ActivityIndicator
-                        size={64}
-                        color={'grey'}
-                    />
-                )}
-            </View>
-        </GradientBackground>
+        <View style={styles.container}>
+            <ChangeBackground />
+            {data ? (
+                todos()
+            ) : (
+                <ActivityIndicator
+                    size={64}
+                    color={'grey'}
+                />
+            )}
+        </View>
     )
 }
 

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Text } from 'react-native'
 // React navigation
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -11,6 +12,7 @@ import { AppContext } from '../styles/DynamicThemeProvider'
 
 const Lab2Stack = createStackNavigator()
 const Lab2StackScreen = () => {
+    const context = useContext(AppContext)
     return (
         <Lab2Stack.Navigator>
             <Lab2Stack.Screen
@@ -18,7 +20,27 @@ const Lab2StackScreen = () => {
                 component={Lab2}
                 options={{
                     headerTitleAlign: 'center',
-                    title: 'Цвет приложения'
+                    headerStyle: {
+                        backgroundColor:
+                            context.theme.colors
+                                .cardColor,
+                        height: 78
+                    },
+                    headerTitle: (
+                        <Text
+                            style={{
+                                fontFamily:
+                                    'Lora',
+                                fontSize: 28,
+                                color:
+                                    context.theme
+                                        .colors
+                                        .textColor
+                            }}
+                        >
+                            Цвет приложения
+                        </Text>
+                    )
                 }}
             />
         </Lab2Stack.Navigator>
@@ -27,6 +49,7 @@ const Lab2StackScreen = () => {
 
 const Lab3Stack = createStackNavigator()
 const Lab3StackScreen = () => {
+    const context = useContext(AppContext)
     return (
         <Lab3Stack.Navigator>
             <Lab3Stack.Screen
@@ -34,7 +57,27 @@ const Lab3StackScreen = () => {
                 component={Lab3}
                 options={{
                     headerTitleAlign: 'center',
-                    title: 'Список дел'
+                    headerStyle: {
+                        backgroundColor:
+                            context.theme.colors
+                                .cardColor,
+                        height: 78
+                    },
+                    headerTitle: (
+                        <Text
+                            style={{
+                                fontFamily:
+                                    'Lora',
+                                fontSize: 28,
+                                color:
+                                    context.theme
+                                        .colors
+                                        .textColor
+                            }}
+                        >
+                            Список дел
+                        </Text>
+                    )
                 }}
             />
         </Lab3Stack.Navigator>
@@ -50,10 +93,7 @@ const MainNavigation = () => {
         <NavigationContainer>
             <Tab.Navigator
                 screenOptions={({ route }) => ({
-                    tabBarIcon: ({
-                        color,
-                        size
-                    }) => {
+                    tabBarIcon: ({ color }) => {
                         let iconName
 
                         if (
@@ -83,10 +123,15 @@ const MainNavigation = () => {
                 tabBarOptions={{
                     activeTintColor:
                         context.theme.colors
-                            .solidLeft,
+                            .textColor,
                     inactiveTintColor: 'grey',
                     style: {
                         height: 70
+                    },
+                    tabStyle: {
+                        backgroundColor:
+                            context.theme.colors
+                                .cardColor
                     },
                     labelStyle: {
                         fontSize: 13,
