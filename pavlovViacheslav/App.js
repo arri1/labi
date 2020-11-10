@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const lab2 = () => {
+const Lab2 = () => {
   const [Color, setBackroundColor] = useState('#000000')
 
   //16777215 equals #FFFFF
@@ -43,8 +43,7 @@ const lab2 = () => {
   return(
     <>
         <View style={styles.centrify}>
-          <View style={styles.txtContainer}>
-          </View>
+          <View style={styles.txtContainer}></View>
           <View style={styles.containers}>
             <TouchableOpacity onPress={colorId} style={styles.changeToRandomColor, {backgroundColor: Color}}>
               <Text>Change Color</Text>
