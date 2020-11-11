@@ -1,20 +1,49 @@
 import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
-     // Containers
-     container: {
+    containerLab2: {
+        flex: 1,
+        width: '100%',
+        height: 600
+    },
+    itemLab2: {
+        flex: 1,
+        minHeight: 210,
+        borderRadius: 20,
+        margin: 30,
+        marginTop: 20,
+        marginBottom: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    // Containers
+    containerLab3: {
         flex: 1,
         width: '100%',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     // Components
-    item: {
+    cardStyle: {
         flex: 1,
-        margin: 5,
-        padding: 8,
-        borderRadius: 48
+        margin: 23,
+        marginTop: 20,
+        marginBottom: 5,
+        borderRadius: 20,
+        backgroundColor: 'transparent',
+        elevation: 0
+    },
+    cardContent: {
+        flex: 1,
+        borderRadius: 20,
+        backgroundColor: '#FFFFFF70'
     },
     scrollview: {
-        width: '100 %'
+        width: '100%'
+    },
+    backgroundImage: {
+        flex: 1,
+        resizeMode: "cover",
+        justifyContent: "center",
+        width: '100%'
     }
 });
