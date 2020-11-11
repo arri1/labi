@@ -3,7 +3,7 @@ import {
     StyleSheet,
     View,
 } from 'react-native';
-import Task from "../components/task";
+import Task from "../components/lab4task";
 
 const Lab4 = () => {
     return (
@@ -16,14 +16,6 @@ const Lab4 = () => {
 const styles = StyleSheet.create({
     body: {
         flex: 1,
-    },
-    text: {
-        color: '#9C846A',
-        fontSize: 20,
-        padding: 10,
-        fontFamily: 'calibri',
-        fontStyle: 'italic',
-        fontWeight: 'bold'
     }
 });
 
