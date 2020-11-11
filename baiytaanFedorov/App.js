@@ -5,6 +5,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Home from "./screens/home";
 import Lab2 from "./screens/Lab2";
 import Lab3 from "./screens/Lab3";
+import Lab4 from "./screens/Lab4";
 
 const Tab = createBottomTabNavigator();
 
@@ -18,7 +19,7 @@ const App = () => {
 
             if (route.name === 'HOME') {
               iconName = 'home-filled';
-            } else if (route.name === 'Lab 2' || route.name === 'Lab 3') {
+            } else if (route.name === 'Lab 2' || route.name === 'Lab 3' || route.name === 'Lab 4') {
               iconName = 'format-list-bulleted';
             }
             color = focused ? '#fff' : '#dcdcdc';
@@ -49,6 +50,7 @@ const App = () => {
         <Tab.Screen name='HOME' component={Home} />
         <Tab.Screen name='Lab 2' component={Lab2} />
         <Tab.Screen name='Lab 3' component={Lab3} />
+        <Tab.Screen name='Lab 4' component={Lab4} />
       </Tab.Navigator>
     </NavigationContainer>
   )
