@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Lab2 from './screens/lab2.js'
+import Lab3 from './screens/lab3.js'
 
 function DetailsScreen() {
   return (
@@ -50,6 +51,14 @@ function SettingsStackScreen() {
   );
 }
 
+function TodoStackScreen() {
+  return (
+    <SettingsStack.Navigator>
+      <SettingsStack.Screen name="Todo" component={Lab3} />
+    </SettingsStack.Navigator>
+  );
+}
+
 const Tab = createBottomTabNavigator();
 
 export default function App() {
@@ -58,6 +67,7 @@ export default function App() {
       <Tab.Navigator>
         <Tab.Screen name="Home" component={HomeStackScreen} />
         <Tab.Screen name="Circle" component={SettingsStackScreen} />
+        <Tab.Screen name="Todo" component={TodoStackScreen}/>
       </Tab.Navigator>
     </NavigationContainer>
   );
