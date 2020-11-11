@@ -1,114 +1,57 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
-  ScrollView,
   View,
   Text,
-  StatusBar,
-} from 'react-native';
-
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+  TouchableOpacity,
+} from 'react-native'
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  changeToRandomColor:{
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    maxWidth: 150,
+    maxHeight: 150,
+    backgroundColor: "red",
+    borderRadius: 25,
+    marginTop: 10,
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  centrify:{
+    flex:1,
+    alignItems: "center",
+    flexDirection: "column",
+    justifyContent: "center",
   },
-  body: {
-    backgroundColor: Colors.white,
+  txtContainer:{
+    flex:1,
+    justifyContent: "center",
+    maxHeight: 100,
+    maxWidth: 100,
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  containers:{
+    flexDirection: "row",
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+})
 
-export default App;
+const Lab2 = () => {
+  const [Color, setBackroundColor] = useState('#000000')
+
+  //16777215 equals #FFFFF
+  const colorId = () => setBackroundColor('#'+Math.floor(Math.random()*16777215).toString(16));
+
+  return(
+    <>
+        <View style={styles.centrify}>
+          <View style={styles.txtContainer}></View>
+          <View style={styles.containers}>
+            <TouchableOpacity onPress={colorId} style={styles.changeToRandomColor, {backgroundColor: Color}}>
+              <Text>Change Color</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+    </>
+  )
+}
+
+export default lab2;
