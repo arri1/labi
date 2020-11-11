@@ -1,14 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, {
+    useContext,
+    useState,
+    useEffect
+} from 'react'
+import { View } from 'react-native'
 // React paper
-import {
-    Card,
-    Checkbox
-} from 'react-native-paper'
+import { Card } from 'react-native-paper'
 // styling
 import styles from '../styles/styles'
+import { AppContext } from '../styles/DynamicThemeProvider'
+// Custom components
+import CustomCheckbox from '../components/CustomCheckbox'
 
 const TodoItem = (props) => {
     const [checked, setChecked] = useState(false)
+    const context = useContext(AppContext)
 
     useEffect(() => {
         props.item.completed
@@ -17,26 +23,46 @@ const TodoItem = (props) => {
     }, [])
 
     return (
-        <Card style={styles.item}>
-            <Card.Title
-                title={props.item.title}
-                titleNumberOfLines={2}
-                titleStyle={styles.regularText}
-                right={() => (
-                    <Checkbox
-                        status={
-                            checked
-                                ? 'checked'
-                                : 'unchecked'
-                        }
-                        onPress={() => {
-                            setChecked(!checked)
-                        }}
-                        color="green"
-                    />
-                )}
-            />
-        </Card>
+        <View>
+            <Card
+                style={{
+                    ...styles.todoItem,
+                    backgroundColor:
+                        context.theme.colors
+                            .cardColor
+                }}
+            >
+                <Card.Title
+                    title={props.item.title}
+                    titleNumberOfLines={2}
+                    titleStyle={{
+                        ...styles.todoItemText,
+                        color:
+                            context.theme.colors
+                                .textColor
+                    }}
+                    right={() => (
+                        <CustomCheckbox
+                            status={
+                                checked
+                                    ? 'checked'
+                                    : 'unchecked'
+                            }
+                            onPress={() => {
+                                setChecked(
+                                    !checked
+                                )
+                            }}
+                            color={
+                                context.theme
+                                    .colors
+                                    .gradient1
+                            }
+                        />
+                    )}
+                />
+            </Card>
+        </View>
     )
 }
 

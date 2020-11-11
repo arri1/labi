@@ -1,25 +1,18 @@
-import React, {
-    useEffect,
-    useState,
-    useContext
-} from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     View,
+    Image,
     ScrollView,
-    Text,
     ActivityIndicator
 } from 'react-native'
-import LinearGradient from 'react-native-linear-gradient'
 import axios from 'react-native-axios'
 //styling
 import styles from '../styles/styles'
 // Custom components
 import TodoItem from '../components/TodoItem'
-import { AppContext } from '../styles/DynamicThemeProvider'
+import ChangeBackground from '../components/ChangingBackground'
 
 const Lab3 = () => {
-    const context = useContext(AppContext)
-
     const [data, setData] = useState(null)
     useEffect(() => {
         axios
@@ -53,26 +46,17 @@ const Lab3 = () => {
     }
 
     return (
-        <LinearGradient
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
-            colors={[
-                context.theme.colors.gradient1,
-                context.theme.colors.gradient2
-            ]}
-            style={{ flex: 1 }}
-        >
-            <View style={styles.container}>
-                {data ? (
-                    todos()
-                ) : (
-                    <ActivityIndicator
-                        size={64}
-                        color={'grey'}
-                    />
-                )}
-            </View>
-        </LinearGradient>
+        <View style={styles.container}>
+            <ChangeBackground />
+            {data ? (
+                todos()
+            ) : (
+                <ActivityIndicator
+                    size={64}
+                    color={'grey'}
+                />
+            )}
+        </View>
     )
 }
 
