@@ -43,7 +43,7 @@ const Profile = () => {
 
     return (
         <View style={{ flex: 1 }}>
-            {/* <ChangingBackground /> */}
+            <ChangingBackground />
             <View
                 style={{
                     ...styles.container,

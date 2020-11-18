@@ -17,7 +17,7 @@ const randomImage = (length) => {
     return (
         'https://picsum.photos/seed/' +
         randomString(length) +
-        '/360/740?grayscale'
+        '/360/740?grayscale&blur=2'
     )
 }
 

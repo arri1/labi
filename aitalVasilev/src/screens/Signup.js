@@ -7,6 +7,7 @@ import { TextInput } from 'react-native-paper'
 // styling
 import styles from '../styles/styles'
 // Custom components
+import ChangingBackground from '../components/ChangingBackground'
 import CustomButtonPrimary from '../components/CustomButtonPrimary'
 import CustomTextButton from '../components/CustomTextButton'
 import { AppContext } from '../styles/DynamicThemeProvider'
@@ -37,13 +38,8 @@ const Signup = ({ navigation }) => {
     }
 
     return (
-        <View
-            style={{
-                flex: 1,
-                backgroundColor:
-                    context.theme.colors.cardColor
-            }}
-        >
+        <View style={{ flex: 1 }}>
+            <ChangingBackground />
             <View
                 style={{
                     ...styles.container,
