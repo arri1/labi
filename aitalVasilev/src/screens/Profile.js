@@ -35,6 +35,11 @@ const Profile = () => {
                 context.theme.colors.textColor
         }
     }
+    const textInputStyle = {
+        width: '100%',
+        backgroundColor: 'transparent',
+        color: context.theme.colors.textColor
+    }
 
     return (
         <View style={{ flex: 1 }}>
@@ -66,20 +71,12 @@ const Profile = () => {
                     <TextInput
                         label="Имя"
                         value={name}
-                        style={{
-                            width: '100%',
-                            backgroundColor:
-                                'transparent',
-                            color:
-                                context.theme
-                                    .colors
-                                    .textColor
-                        }}
                         underlineColor={
                             context.theme.colors
                                 .textColor
                         }
                         theme={textInputTheme}
+                        style={textInputStyle}
                         onChangeText={(name) =>
                             setName(name)
                         }
@@ -87,19 +84,11 @@ const Profile = () => {
                     <TextInput
                         label="Группа"
                         value={group}
-                        style={{
-                            width: '100%',
-                            backgroundColor:
-                                'transparent',
-                            color:
-                                context.theme
-                                    .colors
-                                    .textColor
-                        }}
                         underlineColor={
                             context.theme.colors
                                 .textColor
                         }
+                        style={textInputStyle}
                         theme={textInputTheme}
                         onChangeText={(group) =>
                             setGroup(group)
@@ -108,19 +97,12 @@ const Profile = () => {
                     <TextInput
                         label="Новый пароль"
                         value={newPassword}
-                        style={{
-                            width: '100%',
-                            backgroundColor:
-                                'transparent',
-                            color:
-                                context.theme
-                                    .colors
-                                    .textColor
-                        }}
+                        secureTextEntry={true}
                         underlineColor={
                             context.theme.colors
                                 .textColor
                         }
+                        style={textInputStyle}
                         theme={textInputTheme}
                         onChangeText={(
                             newPassword
@@ -133,19 +115,12 @@ const Profile = () => {
                     <TextInput
                         label="Повторите пароль"
                         value={confirmPassword}
-                        style={{
-                            width: '100%',
-                            backgroundColor:
-                                'transparent',
-                            color:
-                                context.theme
-                                    .colors
-                                    .textColor
-                        }}
+                        secureTextEntry={true}
                         underlineColor={
                             context.theme.colors
                                 .textColor
                         }
+                        style={textInputStyle}
                         theme={textInputTheme}
                         onChangeText={(
                             confirmPassword

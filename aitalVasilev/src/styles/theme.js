@@ -15,7 +15,7 @@ export const themePrimary = {
         gradient1: '#D25AC6',
         gradient2: '#FD9330',
         textColor: '#F6F6F6',
-        cardColor: '#00000088',
+        cardColor: '#000000AA',
         barColor: '#181818'
     }
 }
@@ -28,7 +28,7 @@ export const themeSecondary = {
         gradient1: '#FF4A3F',
         gradient2: '#E99D44',
         textColor: '#2C2C2C',
-        cardColor: '#FFFFFF88',
+        cardColor: '#FFFFFFAA',
         barColor: '#FFFFFF'
     }
 }

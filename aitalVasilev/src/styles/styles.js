@@ -134,5 +134,11 @@ export default StyleSheet.create({
         fontFamily: 'Lora-Regular',
         fontWeight: '400',
         fontSize: 14
+    },
+    smallTextButton: {
+        fontFamily: 'Lora-Regular',
+        fontWeight: '400',
+        fontSize: 12,
+        textDecorationLine: 'underline'
     }
 })
