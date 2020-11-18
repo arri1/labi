@@ -5,7 +5,7 @@ import { View,
 } from 'react-native'
 
 const App = () => {
-    const [backgroundColor, setState] = React.useState('black')
+    const [backgroundColor, setState] = React.useState('red')
     return (
        <View style = {styles.container,{backgroundColor}}>
          <TouchableOpacity
@@ -13,7 +13,9 @@ const App = () => {
          onPress={() => {
            if (backgroundColor == 'black') {
              setState('red')
-            }else setState('black')
+             return null
+            }
+            setState('black')
           }}
          ></TouchableOpacity>
        </View>
