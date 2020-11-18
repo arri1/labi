@@ -12,6 +12,7 @@ import styles from '../styles/styles'
 import GradientIcon from '../components/GradientIcon'
 import Lab2 from '../screens/Lab2'
 import Lab3 from '../screens/Lab3'
+import Profile from '../screens/Profile'
 import { AppContext } from '../styles/DynamicThemeProvider'
 
 const Lab2Stack = createStackNavigator()
@@ -84,6 +85,22 @@ const Lab3StackScreen = () => {
     )
 }
 
+const ProfileStack = createStackNavigator()
+const ProfileStackScreen = () => {
+    const context = useContext(AppContext)
+    return (
+        <ProfileStack.Navigator>
+            <ProfileStack.Screen
+                name="Profile"
+                component={Profile}
+                options={{
+                    headerShown: false
+                }}
+            />
+        </ProfileStack.Navigator>
+    )
+}
+
 const Tab = createBottomTabNavigator()
 
 const MainNavigation = () => {
@@ -111,19 +128,26 @@ const MainNavigation = () => {
                             iconName =
                                 'assignment'
                         }
+                        if (
+                            route.name ===
+                            'Profile'
+                        ) {
+                            iconName =
+                                'account-circle'
+                        }
 
                         return focused ? (
                             <GradientIcon
                                 iconName={
                                     iconName
                                 }
-                                size={32}
+                                size={28}
                                 color={color}
                             />
                         ) : (
                             <Icon
                                 name={iconName}
-                                size={32}
+                                size={28}
                                 color="grey"
                             />
                         )
@@ -161,6 +185,13 @@ const MainNavigation = () => {
                     component={Lab3StackScreen}
                     options={{
                         tabBarLabel: 'Список дел'
+                    }}
+                />
+                <Tab.Screen
+                    name="Profile"
+                    component={ProfileStackScreen}
+                    options={{
+                        tabBarLabel: 'Профиль'
                     }}
                 />
             </Tab.Navigator>

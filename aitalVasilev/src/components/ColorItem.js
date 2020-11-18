@@ -34,7 +34,7 @@ const ColorItem = (props) => {
                     style={{
                         ...styles.colorCard,
                         backgroundColor:
-                            theme.colors.cardColor
+                            theme.colors.barColor
                     }}
                     titleStyle={{
                         color:

@@ -115,5 +115,11 @@ export default StyleSheet.create({
         fontSize: 13,
         textAlignVertical: 'top',
         lineHeight: 24
+    },
+    settingsTitle: {
+        fontFamily: 'Lora-Regular',
+        fontWeight: '400',
+        fontSize: 32,
+        margin: 60
     }
 })

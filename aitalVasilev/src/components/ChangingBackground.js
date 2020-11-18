@@ -31,7 +31,7 @@ const ChangeBackground = () => {
             />
             <BlurView
                 style={styles.backgroundContainer}
-                blurAmount={6}
+                blurAmount={1}
                 blurType="light"
                 reducedTransparencyFallbackColor="transparent"
             />
