@@ -1,13 +1,16 @@
 import 'react-native-gesture-handler'
 import React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
 // Custom
-import MainNavigation from './src/navigation/MainNavigation'
+import LoginNavigation from './src/navigation/LoginNavigation'
 import DynamicThemeProvider from './src/styles/DynamicThemeProvider'
 
 const App = () => {
     return (
         <DynamicThemeProvider>
-            <MainNavigation />
+            <NavigationContainer>
+                <LoginNavigation />
+            </NavigationContainer>
         </DynamicThemeProvider>
     )
 }

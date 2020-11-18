@@ -7,12 +7,11 @@ import { TextInput } from 'react-native-paper'
 // styling
 import styles from '../styles/styles'
 // Custom components
-import ChangingBackground from '../components/ChangingBackground'
 import CustomButtonPrimary from '../components/CustomButtonPrimary'
 import CustomTextButton from '../components/CustomTextButton'
 import { AppContext } from '../styles/DynamicThemeProvider'
 
-const Signup = () => {
+const Signup = ({ navigation }) => {
     const context = useContext(AppContext)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -38,8 +37,13 @@ const Signup = () => {
     }
 
     return (
-        <View style={{ flex: 1 }}>
-            <ChangingBackground />
+        <View
+            style={{
+                flex: 1,
+                backgroundColor:
+                    context.theme.colors.cardColor
+            }}
+        >
             <View
                 style={{
                     ...styles.container,
@@ -114,8 +118,18 @@ const Signup = () => {
                         }
                     />
                 </View>
-                <CustomButtonPrimary text="Создать" />
-                <CustomTextButton text="Уже есть аккаунт" />
+                <CustomButtonPrimary
+                    text="Создать"
+                    onPress={() => {
+                        navigation.goBack()
+                    }}
+                />
+                <CustomTextButton
+                    text="Уже есть аккаунт"
+                    onPress={() => {
+                        navigation.goBack()
+                    }}
+                />
             </View>
         </View>
     )

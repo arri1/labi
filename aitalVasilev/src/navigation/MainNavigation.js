@@ -3,7 +3,6 @@ import { Text } from 'react-native'
 // Icons
 import Icon from 'react-native-vector-icons/MaterialIcons'
 // React navigation
-import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createStackNavigator } from '@react-navigation/stack'
 // styling
@@ -107,95 +106,84 @@ const MainNavigation = () => {
     const context = useContext(AppContext)
 
     return (
-        <NavigationContainer>
-            <Tab.Navigator
-                screenOptions={({ route }) => ({
-                    tabBarIcon: ({
-                        color,
-                        focused
-                    }) => {
-                        let iconName
+        <Tab.Navigator
+            screenOptions={({ route }) => ({
+                tabBarIcon: ({
+                    color,
+                    focused
+                }) => {
+                    let iconName
 
-                        if (
-                            route.name === 'Lab2'
-                        ) {
-                            iconName =
-                                'color-lens'
-                        }
-                        if (
-                            route.name === 'Lab3'
-                        ) {
-                            iconName =
-                                'assignment'
-                        }
-                        if (
-                            route.name ===
-                            'Profile'
-                        ) {
-                            iconName =
-                                'account-circle'
-                        }
-
-                        return focused ? (
-                            <GradientIcon
-                                iconName={
-                                    iconName
-                                }
-                                size={28}
-                                color={color}
-                            />
-                        ) : (
-                            <Icon
-                                name={iconName}
-                                size={28}
-                                color="grey"
-                            />
-                        )
+                    if (route.name === 'Lab2') {
+                        iconName = 'color-lens'
                     }
-                })}
-                tabBarOptions={{
-                    activeTintColor:
+                    if (route.name === 'Lab3') {
+                        iconName = 'assignment'
+                    }
+                    if (
+                        route.name === 'Profile'
+                    ) {
+                        iconName =
+                            'account-circle'
+                    }
+
+                    return focused ? (
+                        <GradientIcon
+                            iconName={iconName}
+                            size={28}
+                            color={color}
+                        />
+                    ) : (
+                        <Icon
+                            name={iconName}
+                            size={28}
+                            color="grey"
+                        />
+                    )
+                }
+            })}
+            tabBarOptions={{
+                activeTintColor:
+                    context.theme.colors
+                        .textColor,
+                inactiveTintColor: 'grey',
+                style: styles.navTabBar,
+                tabStyle: {
+                    backgroundColor:
                         context.theme.colors
-                            .textColor,
-                    inactiveTintColor: 'grey',
-                    style: styles.navTabBar,
-                    tabStyle: {
-                        backgroundColor:
-                            context.theme.colors
-                                .barColor
-                    },
-                    labelStyle: {
-                        ...styles.navTabLabel,
-                        color:
-                            context.theme.colors
-                                .textColor
-                    }
+                            .barColor
+                },
+                labelStyle: {
+                    ...styles.navTabLabel,
+                    color:
+                        context.theme.colors
+                            .textColor
+                }
+            }}
+            initialRouteName="Lab2"
+        >
+            <Tab.Screen
+                name="Lab2"
+                component={Lab2StackScreen}
+                options={{
+                    tabBarLabel: 'Цвет приложения'
                 }}
-            >
-                <Tab.Screen
-                    name="Lab2"
-                    component={Lab2StackScreen}
-                    options={{
-                        tabBarLabel:
-                            'Цвет приложения'
-                    }}
-                />
-                <Tab.Screen
-                    name="Lab3"
-                    component={Lab3StackScreen}
-                    options={{
-                        tabBarLabel: 'Список дел'
-                    }}
-                />
-                <Tab.Screen
-                    name="Profile"
-                    component={ProfileStackScreen}
-                    options={{
-                        tabBarLabel: 'Профиль'
-                    }}
-                />
-            </Tab.Navigator>
-        </NavigationContainer>
+            />
+            <Tab.Screen
+                name="Lab3"
+                component={Lab3StackScreen}
+                options={{
+                    tabBarLabel: 'Список дел'
+                }}
+            />
+            <Tab.Screen
+                name="Profile"
+                component={ProfileStackScreen}
+                options={{
+                    tabBarLabel: 'Профиль'
+                }}
+            />
+        </Tab.Navigator>
     )
 }
 

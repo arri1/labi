@@ -47,7 +47,7 @@ const Lab3 = () => {
 
     return (
         <View style={styles.container}>
-            <ChangeBackground />
+            {/* <ChangeBackground /> */}
             {data ? (
                 todos()
             ) : (
