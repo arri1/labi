@@ -9,6 +9,7 @@ import styles from '../styles/styles'
 // Custom components
 import ChangingBackground from '../components/ChangingBackground'
 import CustomButtonPrimary from '../components/CustomButtonPrimary'
+import CustomButtonSecondary from '../components/CustomButtonSecondary'
 import { AppContext } from '../styles/DynamicThemeProvider'
 
 const Profile = () => {
@@ -56,7 +57,12 @@ const Profile = () => {
                 >
                     Настройки
                 </Text>
-                <View style={{ width: '85%' }}>
+                <View
+                    style={{
+                        width: '85%',
+                        marginBottom: 30
+                    }}
+                >
                     <TextInput
                         label="Имя"
                         value={name}
@@ -150,7 +156,8 @@ const Profile = () => {
                         }
                     />
                 </View>
-                <CustomButtonPrimary />
+                <CustomButtonPrimary text="Сохранить" />
+                <CustomButtonSecondary text="Выйти из аккаунта" />
             </View>
         </View>
     )

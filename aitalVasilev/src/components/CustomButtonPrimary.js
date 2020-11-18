@@ -20,12 +20,7 @@ const CustomButtonPrimary = (props) => {
                 context.theme.colors.gradient2
             ]}
             style={{
-                width: 180,
-                height: 40,
-                alignItems: 'center',
-                justifyContent: 'center',
-                margin: 30,
-                borderRadius: 50,
+                ...styles.button,
                 elevation: 5
             }}
         >
@@ -33,11 +28,7 @@ const CustomButtonPrimary = (props) => {
                 onPress={() => {
                     props.onPress()
                 }}
-                style={{
-                    flex: 1,
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                }}
+                style={styles.container}
             >
                 <Text
                     style={{
@@ -45,7 +36,7 @@ const CustomButtonPrimary = (props) => {
                         color: 'white'
                     }}
                 >
-                    Сохранить
+                    {props.text}
                 </Text>
             </TouchableOpacity>
         </LinearGradient>

@@ -33,6 +33,14 @@ export default StyleSheet.create({
         justifyContent: 'center'
     },
     // Components
+    button: {
+        width: 180,
+        height: 40,
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 20,
+        borderRadius: 50
+    },
     checkbox: {
         position: 'absolute',
         height: '100%',
