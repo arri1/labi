@@ -8,6 +8,7 @@ import { TextInput } from 'react-native-paper'
 import styles from '../styles/styles'
 // Custom components
 import ChangingBackground from '../components/ChangingBackground'
+import CustomButtonPrimary from '../components/CustomButtonPrimary'
 import { AppContext } from '../styles/DynamicThemeProvider'
 
 const Profile = () => {
@@ -149,6 +150,7 @@ const Profile = () => {
                         }
                     />
                 </View>
+                <CustomButtonPrimary />
             </View>
         </View>
     )

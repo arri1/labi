@@ -121,5 +121,10 @@ export default StyleSheet.create({
         fontWeight: '400',
         fontSize: 32,
         margin: 60
+    },
+    buttonText: {
+        fontFamily: 'Lora-Regular',
+        fontWeight: '400',
+        fontSize: 14
     }
 })
