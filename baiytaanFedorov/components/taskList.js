@@ -9,12 +9,12 @@ const TaskList = ({ taskItems, completeTaskItem, removeTaskItem }) => {
             renderItem={({ item }) => (
                 <TaskItem
                     title={item.title}
-                    isComplete={item.isComplete}
+                    completed={item.completed}
                     complete={() => completeTaskItem(item.id)}
                     remove={() => removeTaskItem(item.id)}
                 />
             )}
-            keyExtractor={item => item.id}
+            keyExtractor={item => item.id.toString()}
         />
     )
 }
