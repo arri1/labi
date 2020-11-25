@@ -61,3 +61,6 @@ package-lock.json
 config.js
 .graphqlconfig
 /schema.graphql
+
+# Misc
+.env

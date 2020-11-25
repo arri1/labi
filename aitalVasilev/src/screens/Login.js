@@ -4,6 +4,8 @@ import React, {
 } from 'react'
 import { View, Text } from 'react-native'
 import { TextInput } from 'react-native-paper'
+import { showMessage } from 'react-native-flash-message'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 // styling
 import styles from '../styles/styles'
 // Custom components
@@ -11,11 +13,104 @@ import ChangingBackground from '../components/ChangingBackground'
 import CustomButtonPrimary from '../components/CustomButtonPrimary'
 import CustomTextButton from '../components/CustomTextButton'
 import { AppContext } from '../styles/DynamicThemeProvider'
+import LoadingBar from '../components/LoadingBar'
+// Apollo
+import {
+    useApolloClient,
+    useMutation,
+    useQuery
+} from '@apollo/client'
+import { AUTH } from '../apollo/gql/user/mutations'
+import { USER } from '../apollo/gql/user/queries'
 
 const Login = ({ navigation }) => {
     const context = useContext(AppContext)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+
+    const apollo = useApolloClient()
+
+    const { loading: userLoading } = useQuery(
+        USER,
+        {
+            onCompleted: ({ user }) => {
+                if (user)
+                    navigation.navigate(
+                        'MainNavigation'
+                    )
+            },
+            onError: () => {}
+        }
+    )
+
+    const [
+        auth,
+        { loading: authLoading }
+    ] = useMutation(AUTH, {
+        onCompleted: async ({ authUser }) => {
+            await AsyncStorage.setItem(
+                'token',
+                authUser.token
+            )
+            showMessage({
+                message: 'Вход прошёл успешно',
+                type: 'info'
+            })
+            apollo.writeQuery({
+                query: USER,
+                data: { user: authUser.user }
+            })
+            navigation.replace('MainNavigation')
+        },
+        onError: ({ message }) => {
+            console.log(message)
+            if (
+                message ===
+                'GraphQL error: Incorrect password'
+            ) {
+                showMessage({
+                    message: 'Неверен пароль',
+                    type: 'danger'
+                })
+                return null
+            }
+            showMessage({
+                message: 'Что то пошло не так',
+                type: 'danger'
+            })
+        }
+    })
+
+    const validate = () => {
+        if (username === '') {
+            showMessage({
+                message:
+                    'Введите имя пользователя!',
+                type: 'danger'
+            })
+            return false
+        }
+        if (password === '') {
+            showMessage({
+                message: 'Введите пароль!',
+                type: 'danger'
+            })
+            return false
+        }
+        return true
+    }
+    const authUser = () => {
+        if (!validate()) return null
+        auth({
+            variables: {
+                data: {
+                    username,
+                    password
+                }
+            }
+        })
+    }
+
     const textInputTheme = {
         colors: {
             primary:
@@ -33,6 +128,8 @@ const Login = ({ navigation }) => {
         color: context.theme.colors.textColor
     }
 
+    if (userLoading || authLoading)
+        return <LoadingBar />
     return (
         <View style={{ flex: 1 }}>
             <ChangingBackground />
@@ -94,11 +191,7 @@ const Login = ({ navigation }) => {
                 </View>
                 <CustomButtonPrimary
                     text="Войти"
-                    onPress={() => {
-                        navigation.navigate(
-                            'MainNavigation'
-                        )
-                    }}
+                    onPress={authUser}
                 />
                 <CustomTextButton
                     text="Создать новый аккаунт"
