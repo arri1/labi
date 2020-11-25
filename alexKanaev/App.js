@@ -5,43 +5,47 @@
  * @format
  * @flow strict-local
  */
-import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React from 'react';
+import { Image, ScrollView, Text } from 'react-native';
 
-const App = () => {
-  const [count, setCount] = useState(0);
-  const onPress = () => setCount(prevCount => prevCount + 1);
-
-  return (
-    <View style={styles.container}>
-      <View style={styles.countContainer}>
-        <Text>Count: {count}</Text>
-      </View>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={onPress}
-      >
-        <Text>Press Here</Text>
-      </TouchableOpacity>
-    </View>
-  );
+const logo = {
+  uri: 'https://icons.iconarchive.com/icons/dakirby309/simply-styled/64/YouTube-icon.png',
+  width: 64,
+  height: 64
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    paddingHorizontal: 10
-  },
-  button: {
-    alignItems: "center",
-    backgroundColor: "#DDDDDD",
-    padding: 10
-  },
-  countContainer: {
-    alignItems: "center",
-    padding: 10
-  }
-});
-
-export default App;
+export default App = () => (
+  <ScrollView>
+    <Text style={{ fontSize: 96 }}>Hello world</Text>
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Text style={{ fontSize: 96 }}>Hi youtube</Text>
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Text style={{ fontSize: 96 }}>Scroll me</Text>
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Text style={{ fontSize: 96 }}>Down</Text>
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Text style={{ fontSize: 96 }}>And down</Text>
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Image source={logo} />
+    <Text style={{ fontSize: 80 }}>Finish</Text>
+  </ScrollView>
+);
