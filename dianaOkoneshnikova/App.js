@@ -26,8 +26,9 @@ const App = () => {
 
 const styles = StyleSheet.create({
     button: {
-        alignItems: "center",
-        padding: 330
+        width:"100%",
+        height:"100%",
+        justifyContent: 'center',
     }
 });
 
