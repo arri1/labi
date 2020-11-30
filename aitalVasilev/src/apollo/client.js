@@ -8,6 +8,7 @@ import { setContext } from 'apollo-link-context'
 import { createUploadLink } from 'apollo-upload-client'
 import fetch from 'node-fetch'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import Config from 'react-native-config'
 
 const authLink = setContext(
     async (_, { headers }) => {
@@ -36,14 +37,15 @@ const errorLink = onError(
                     )
             )
         if (networkError)
-            console.log(
-                `[Network error]: ${networkError}`
-            )
+            console.log(`${Config.NEFU_API_LINK}`)
+        console.log(
+            `[Network error]: ${networkError}`
+        )
     }
 )
 
 const uploadLink = createUploadLink({
-    uri: `${process.env.NEFU_API_LINK}`,
+    uri: `${Config.NEFU_API_LINK}`,
     credentials: 'same-origin',
     headers: {
         Accept: 'application/json',

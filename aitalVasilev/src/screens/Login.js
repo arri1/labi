@@ -25,7 +25,7 @@ import { USER } from '../apollo/gql/user/queries'
 
 const Login = ({ navigation }) => {
     const context = useContext(AppContext)
-    const [username, setUsername] = useState('')
+    const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
 
     const apollo = useApolloClient()
@@ -82,7 +82,7 @@ const Login = ({ navigation }) => {
     })
 
     const validate = () => {
-        if (username === '') {
+        if (login === '') {
             showMessage({
                 message:
                     'Введите имя пользователя!',
@@ -104,7 +104,7 @@ const Login = ({ navigation }) => {
         auth({
             variables: {
                 data: {
-                    username,
+                    login,
                     password
                 }
             }
@@ -159,17 +159,15 @@ const Login = ({ navigation }) => {
                 >
                     <TextInput
                         label="Имя пользователя"
-                        value={username}
+                        value={login}
                         underlineColor={
                             context.theme.colors
                                 .textColor
                         }
                         theme={textInputTheme}
                         style={textInputStyle}
-                        onChangeText={(
-                            username
-                        ) =>
-                            setUsername(username)
+                        onChangeText={(login) =>
+                            setLogin(login)
                         }
                     />
                     <TextInput
