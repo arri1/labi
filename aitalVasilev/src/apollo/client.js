@@ -37,10 +37,9 @@ const errorLink = onError(
                     )
             )
         if (networkError)
-            console.log(`${Config.NEFU_API_LINK}`)
-        console.log(
-            `[Network error]: ${networkError}`
-        )
+            console.log(
+                `[Network error]: ${networkError}`
+            )
     }
 )
 
