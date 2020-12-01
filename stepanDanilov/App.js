@@ -32,13 +32,26 @@ const Lab3StackScreen = () =>{
 }
 const App = () => {
     return (
-        <NavigationContainer>
-            <Tab.Navigator>
-                <Tab.Screen name="Lab 2" component={Lab2StackScreen} />
-                <Tab.Screen name="Lab 3" component={Lab3StackScreen} />
-            </Tab.Navigator>
-        </NavigationContainer>
+      <NavigationContainer>
+          <Tab.Navigator tabBarOptions={{
+            labelStyle:{
+              fontSize:30,
+            }
+          }}>
+              <Tab.Screen name="Lab 2" component={Lab2StackScreen} />
+              <Tab.Screen name="Lab 3" component={Lab3StackScreen} />
+          </Tab.Navigator>
+      </NavigationContainer>        
     )
 }
-
+const styles = StyleSheet.create ({
+   
+  container: {
+    flex: 1,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize:24,
+  },
+})
 export default App;
