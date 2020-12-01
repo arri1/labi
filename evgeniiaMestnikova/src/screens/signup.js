@@ -4,14 +4,100 @@ import { TextInput } from 'react-native-paper'
 import styles from '../styles/styles'
 import colors from '../styles/colors'
 import LinearGradient from 'react-native-linear-gradient'
+import { showMessage } from 'react-native-flash-message'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import LoadingBar from '../components/loadingBar'
+import {
+    useApolloClient,
+    useMutation,
+    useQuery
+} from '@apollo/client'
+import { REG } from '../gqls/user/mutations'
+import { USER } from '../gqls/user/queries'
 
 const Signup = ({ navigation }) => {
-    const [username, setUsername] = useState('')
+    const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
     const [
         confirmPassword,
         setConfirmPassword
     ] = useState('')
+    const apollo = useApolloClient()
+
+    const [reg, { loading }] = useMutation(REG, {
+        onCompleted: async ({ registerUser }) => {
+            await AsyncStorage.setItem(
+                'token',
+                registerUser.token
+            )
+            showMessage({
+                message:
+                    'Регистрация прошла успешно',
+                type: 'info'
+            })
+            apollo.writeQuery({
+                query: USER,
+                data: { user: registerUser.user }
+            })
+            navigation.goBack()
+        },
+        onError: ({ message }) => {
+            if (
+                message ===
+                'GraphQL error: Unique constraint failed on the fields: (login)'
+            ) {
+                showMessage({
+                    message:
+                        'Такой логин уже существует',
+                    type: 'danger'
+                })
+                return null
+            }
+            showMessage({
+                message: 'Что-то пошло не так',
+                type: 'danger'
+            })
+        }
+    })
+
+    const validate = () => {
+        if (login === '') {
+            showMessage({
+                message: 'Введите логин',
+                type: 'danger'
+            })
+            return false
+        }
+        if (password === '') {
+            showMessage({
+                message: 'Введите пароль',
+                type: 'danger'
+            })
+            return false
+        }
+        if (password !== confirmPassword) {
+            showMessage({
+                message: 'Пароли не совпадают',
+                type: 'danger'
+            })
+            return false
+        }
+        return true
+    }
+
+    const createUser = () => {
+        if (!validate()) return null
+        reg({
+            variables: {
+                data: {
+                    password,
+                    login
+                }
+            }
+        })
+    }
+
+    if (loading) return <LoadingBar />
 
     return (
         <LinearGradient
@@ -33,12 +119,12 @@ const Signup = ({ navigation }) => {
                 >
                     <TextInput
                         label="Имя пользователя"
-                        value={username}
+                        value={login}
                         style={[styles.textInput, { marginTop: 24 }]}
                         onChangeText={(
-                            username
+                            login
                         ) =>
-                            setUsername(username)
+                            setLogin(login)
                         }
                     />
                     <TextInput
@@ -76,7 +162,7 @@ const Signup = ({ navigation }) => {
                 >
                     <Button
                         title={'Создать'}
-                    //onPress={createUser}
+                        onPress={createUser}
                     />
                 </View>
                 <View
