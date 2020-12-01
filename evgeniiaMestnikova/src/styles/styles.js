@@ -22,6 +22,20 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    containerProfile: {
+        flex: 1,
+        margin: 15
+    },
+    containerLogin: {
+        alignItems: 'center',
+        flex: 1,
+        margin: 15
+    },
+    containerSignup: {
+        alignItems: 'center',
+        flex: 1,
+        margin: 15,
+    },
     // Components
     cardStyle: {
         flex: 1,
@@ -45,5 +59,14 @@ export default StyleSheet.create({
         resizeMode: "cover",
         justifyContent: "center",
         width: '100%'
+    },
+    textInput: {
+        borderWidth: 0.5,
+        borderRadius: 10,
+        alignSelf: 'stretch',
+    },
+    title: {
+        textAlign: 'center',
+        fontSize: 24
     }
 });
