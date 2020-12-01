@@ -1,45 +1,44 @@
-import React, {useState} from 'react';
+import React from 'react'
+import 'react-native-gesture-handler';
 import {View, Text, StyleSheet, Button, Alert} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import Lab2 from './src/screens/lab2'
 
-const Apps = () => {
-  const [colorState, setColorState] = useState('red');
-
-  onGreenButton = () => {
-      setColorState('green')
-  }
-  onRedButton = () => {
-      setColorState('red')
-  }
-  const onBlueButton = () => {
-    setColorState('blue')
-  }
+function HomeScreen() {
   return (
-      <View style={styles.container}>
-      <Text>Test app</Text>
-
-      <View
-        style={{
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          backgroundColor: colorState,
-        }}
-      />
-      <Button title="Red" color="red" onPress={onRedButton} />
-      <Button title="Green" color="green" onPress={onGreenButton} />
-      <Button title="Blue" color="blue" onPress={onBlueButton} />
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
     </View>
   );
-};
+}
+const Tab = createBottomTabNavigator();
+const Lab2Stack = createStackNavigator();
 
-const styles = StyleSheet.create ({
-   
-  container: {
-    flex: 1,
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
+const Lab2StackScreen = () =>{
+  return(
+    <Lab2Stack.Navigator>
+      <Lab2Stack.Screen name="Lab2" component={Lab2}/>
+    </Lab2Stack .Navigator>
+  )
+}
+const Lab3StackScreen = () =>{
+  return(
+    <Lab2Stack.Navigator>
+      <Lab2Stack.Screen name="Lab2" component={HomeScreen}/>
+    </Lab2Stack .Navigator>
+  )
+}
+const App = () => {
+    return (
+        <NavigationContainer>
+            <Tab.Navigator>
+                <Tab.Screen name="Lab 2" component={Lab2StackScreen} />
+                <Tab.Screen name="Lab 3" component={Lab3StackScreen} />
+            </Tab.Navigator>
+        </NavigationContainer>
+    )
+}
 
-export default Apps
+export default App;
