@@ -29,7 +29,7 @@ const TodoItem = (props) => {
                     ...styles.todoItem,
                     backgroundColor:
                         context.theme.colors
-                            .cardColor
+                            .barColor
                 }}
             >
                 <Card.Title

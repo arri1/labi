@@ -33,6 +33,14 @@ export default StyleSheet.create({
         justifyContent: 'center'
     },
     // Components
+    button: {
+        width: 180,
+        height: 40,
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 20,
+        borderRadius: 50
+    },
     checkbox: {
         position: 'absolute',
         height: '100%',
@@ -95,7 +103,7 @@ export default StyleSheet.create({
         elevation: 0
     },
     navTabBar: {
-        height: 70,
+        height: 140,
         borderTopWidth: 0
     },
     // Texts
@@ -115,5 +123,22 @@ export default StyleSheet.create({
         fontSize: 13,
         textAlignVertical: 'top',
         lineHeight: 24
+    },
+    settingsTitle: {
+        fontFamily: 'Lora-Regular',
+        fontWeight: '400',
+        fontSize: 32,
+        margin: 60
+    },
+    buttonText: {
+        fontFamily: 'Lora-Regular',
+        fontWeight: '400',
+        fontSize: 14
+    },
+    smallTextButton: {
+        fontFamily: 'Lora-Regular',
+        fontWeight: '400',
+        fontSize: 12,
+        textDecorationLine: 'underline'
     }
 })

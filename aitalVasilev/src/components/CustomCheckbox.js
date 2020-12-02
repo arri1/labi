@@ -6,12 +6,12 @@ import {
     View,
     TouchableOpacity
 } from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
 // Icons
 import Icon from 'react-native-vector-icons/MaterialIcons'
 // styling
 import styles from '../styles/styles'
 // Custom components
-import LinearGradient from 'react-native-linear-gradient'
 import { AppContext } from '../styles/DynamicThemeProvider'
 
 const CheckedBox = () => {
