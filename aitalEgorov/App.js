@@ -13,6 +13,7 @@ import Lab3 from "./scripts/lab3";
 import Title from "./scripts/title";
 import signUp from "./scripts/figma/signUp";
 import signIn from "./scripts/figma/signIn";
+import cat from "./scripts/cat";
 
 
 
@@ -28,6 +29,7 @@ const App = () =>{
         <Drawer.Screen name="Title" component={Title} />
         <Drawer.Screen name="signUp" component={signUp} />
         <Drawer.Screen name="signIn" component={signIn} />
+        <Drawer.Screen name="cat" component={cat} />
       </Drawer.Navigator>
     </NavigationContainer>
   )
