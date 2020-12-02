@@ -103,7 +103,7 @@ export default StyleSheet.create({
         elevation: 0
     },
     navTabBar: {
-        height: 70,
+        height: 140,
         borderTopWidth: 0
     },
     // Texts
