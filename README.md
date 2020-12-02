@@ -1,4 +1,4 @@
-### git шраргалка
+### git шпаргалка
 ```
 git clone git@github.com:arri1/labi.git
 ```
@@ -22,7 +22,7 @@ git commit -m "comment"
 git push
 ```
 
-##Задания
+###Задания
 - сделать первый pull request с проектом react native
 - использование хуков, useState
 - взять данные из открытого api и отрендерить
