@@ -39,7 +39,7 @@ const Lab3 = (props) => {
                 data.map(
                     (item) => {
                         return (
-                            <View style={styles.item}>
+                            <View key={item.id} style={styles.item}>
                                 <Text>
                                     {item.title}
                                 </Text>

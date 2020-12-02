@@ -76,7 +76,6 @@ const ProfileStackScreen = () => {
         </ProfileStack.Navigator>
     )
 }
-
 const App = () => {
     return (
         <NavigationContainer>

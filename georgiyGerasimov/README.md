@@ -1,13 +1,9 @@
-./android/local.properties
-sdk.dir = ~/Library/Android/sdk
+#Настройки по запуску
+- ./android/local.properties
+- sdk.dir = ~/Library/Android/sdk
+##### для запуска создайте файл config.js с содержимым
+```
+export const API_URL = 'https://nefu-server.herokuapp.com'
+```
 
-facebook
 
-reactdom
-
-metro
-
-useState
-https://youtu.be/O6P86uwfdR0
-
-touchableOpacity

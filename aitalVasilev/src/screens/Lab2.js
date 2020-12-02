@@ -1,38 +1,27 @@
-import React, { useState } from 'react'
-import { View, Button } from 'react-native'
+import React from 'react'
+import { View } from 'react-native'
 // styling
 import styles from '../styles/styles'
+// Custom components
+import ColorItem from '../components/ColorItem'
+import ChangingBackground from '../components/ChangingBackground'
 
 const Lab2 = () => {
-    const [colorState, setColorState] = useState(
-        'white'
-    )
-
-    onGreenButton = () => {
-        setColorState('green')
-    }
-    onRedButton = () => {
-        setColorState('red')
-    }
-
     return (
-        <View style={styles.container}>
+        <View style={{ flex: 1 }}>
+            <ChangingBackground />
             <View
-                style={{
-                    ...styles.testView,
-                    backgroundColor: colorState
-                }}
-            />
-            <Button
-                title="Make color red"
-                color="red"
-                onPress={onRedButton}
-            />
-            <Button
-                title="Make color green"
-                color="green"
-                onPress={onGreenButton}
-            />
+                style={styles.colorItemsContainer}
+            >
+                <ColorItem
+                    colorName="primary"
+                    colorText="Тёмная тема"
+                />
+                <ColorItem
+                    colorName="secondary"
+                    colorText="Светлая тема"
+                />
+            </View>
         </View>
     )
 }

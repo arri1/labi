@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import {
     View,
+    Image,
     ScrollView,
-    Text,
     ActivityIndicator
 } from 'react-native'
 import axios from 'react-native-axios'
@@ -10,6 +10,7 @@ import axios from 'react-native-axios'
 import styles from '../styles/styles'
 // Custom components
 import TodoItem from '../components/TodoItem'
+import ChangeBackground from '../components/ChangingBackground'
 
 const Lab3 = () => {
     const [data, setData] = useState(null)
@@ -32,15 +33,6 @@ const Lab3 = () => {
     const todos = () => {
         return (
             <ScrollView style={styles.scroll}>
-                <View
-                    style={styles.wrappedHeader}
-                >
-                    <Text
-                        style={styles.headerText}
-                    >
-                        To Do list
-                    </Text>
-                </View>
                 {data.map((item, index) => {
                     return (
                         <TodoItem
@@ -55,6 +47,7 @@ const Lab3 = () => {
 
     return (
         <View style={styles.container}>
+            <ChangeBackground />
             {data ? (
                 todos()
             ) : (

@@ -9,7 +9,8 @@ import {
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import Lab2 from "./scripts/lab2";
-import Lab3 from "./scripts/lab3"
+import Lab3 from "./scripts/lab3";
+import Title from "./scripts/title"
 
 
 
@@ -21,6 +22,7 @@ const App = () =>{
       <Drawer.Navigator initialRouteName="Lab2">
         <Drawer.Screen name="Lab2" component={Lab2} />
         <Drawer.Screen name="Lab3" component={Lab3} />
+        <Drawer.Screen name="Title" component={Title} />
       </Drawer.Navigator>
     </NavigationContainer>
   )
