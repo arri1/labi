@@ -68,5 +68,8 @@ export default StyleSheet.create({
     title: {
         textAlign: 'center',
         fontSize: 24
+    },
+    borderStyle: {
+        borderRadius: 10
     }
 });

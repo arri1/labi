@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { View, Text, Button } from 'react-native'
-import { TextInput } from 'react-native-paper'
+import { View, Text } from 'react-native'
+import { TextInput, Button } from 'react-native-paper'
 import styles from '../styles/styles'
 import colors from '../styles/colors'
 import LinearGradient from 'react-native-linear-gradient'
@@ -110,7 +110,12 @@ const Signup = ({ navigation }) => {
             style={{ flex: 1 }}
         >
             <View style={styles.containerSignup}>
-                <Text>Регистрация</Text>
+                <Text style={{
+                    fontSize: 24,
+                    color: colors.black
+                }}>
+                    Регистрация
+                </Text>
                 <View
                     style={{
                         width: '85%',
@@ -161,9 +166,16 @@ const Signup = ({ navigation }) => {
                     }
                 >
                     <Button
-                        title={'Создать'}
+                        color={colors.sweetPink}
+                        mode="contained"
+                        style={styles.borderStyle}
+                        labelStyle={{
+                            color: colors.white
+                        }}
                         onPress={createUser}
-                    />
+                    >
+                        Создать
+                    </Button>
                 </View>
                 <View
                     style={
@@ -174,13 +186,20 @@ const Signup = ({ navigation }) => {
                     }
                 >
                     <Button
-                        title={'Назад'}
+                        color={colors.sweetPink}
+                        mode="contained"
+                        style={styles.borderStyle}
+                        labelStyle={{
+                            color: colors.white
+                        }}
                         onPress={
                             () => {
                                 navigation.goBack()
                             }
                         }
-                    />
+                    >
+                        Назад
+                    </Button>
                 </View>
             </View>
         </LinearGradient>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { View, Text, Button } from 'react-native'
-import { TextInput } from 'react-native-paper'
+import { View } from 'react-native'
+import { TextInput, Button } from 'react-native-paper'
 import styles from '../styles/styles'
 import colors from '../styles/colors'
 import LinearGradient from 'react-native-linear-gradient'
@@ -15,7 +15,7 @@ import {
 import { UPDATE_USER } from '../gqls/user/mutations'
 import { USER } from '../gqls/user/queries'
 
-const Profile = ({navigation}) => {
+const Profile = ({ navigation }) => {
     const [name, setName] = useState('')
     const [group, setGroup] = useState('')
     const [
@@ -182,9 +182,16 @@ const Profile = ({navigation}) => {
                     }
                 >
                     <Button
-                        title={'Сохранить'}
+                        color={colors.sweetPink}
+                        mode="contained"
+                        style={styles.borderStyle}
+                        labelStyle={{
+                            color: colors.white
+                        }}
                         onPress={onSave}
-                    />
+                    >
+                        Сохранить
+                    </Button>
                 </View>
                 <View
                     style={
@@ -195,9 +202,16 @@ const Profile = ({navigation}) => {
                     }
                 >
                     <Button
-                        title={'Выйти из аккаунта'}
+                        color={colors.sweetPink}
+                        mode="contained"
+                        style={styles.borderStyle}
+                        labelStyle={{
+                            color: colors.white
+                        }}
                         onPress={logOut}
-                    />
+                    >
+                        Выйти из аккаунта
+                    </Button>
                 </View>
             </View>
         </LinearGradient>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { View, Text, Button } from 'react-native'
-import { TextInput } from 'react-native-paper'
+import { View, Text } from 'react-native'
+import { TextInput, Button } from 'react-native-paper'
 import { showMessage } from 'react-native-flash-message'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import styles from '../styles/styles'
@@ -115,7 +115,12 @@ const Login = ({ navigation }) => {
             style={{ flex: 1 }}
         >
             <View style={styles.containerLogin}>
-                <Text>Вход</Text>
+                <Text style={{
+                    fontSize: 24,
+                    color: colors.black
+                }} >
+                    Вход
+                </Text>
                 <TextInput
                     label="Имя пользователя"
                     value={login}
@@ -126,7 +131,13 @@ const Login = ({ navigation }) => {
                         setLogin(login)
                     }
                 />
-                <Text style={{ marginTop: 24 }}>Пароль</Text>
+                <Text style={{
+                    marginTop: 24,
+                    fontSize: 24,
+                    color: colors.black
+                }}>
+                    Пароль
+                </Text>
                 <TextInput
                     label="Пароль"
                     value={password}
@@ -145,9 +156,16 @@ const Login = ({ navigation }) => {
 
                 >
                     <Button
-                        title={'Войти'}
+                        color={colors.sweetPink}
+                        mode="contained"
+                        style={styles.borderStyle}
+                        labelStyle={{
+                            color: colors.white
+                        }}
                         onPress={authUser}
-                    />
+                    >
+                        Войти
+                    </Button>
                 </View>
                 <View
                     style={
@@ -158,12 +176,18 @@ const Login = ({ navigation }) => {
 
                 >
                     <Button
-                        title={'Регистрация'}
-                        style={{ paddingTop: 24 }}
+                        color={colors.sweetPink}
+                        mode="contained"
+                        style={styles.borderStyle}
+                        labelStyle={{
+                            color: colors.white
+                        }}
                         onPress={() => {
                             navigation.push('Signup')
                         }}
-                    />
+                    >
+                        Регистрация
+                    </Button>
                 </View>
             </View>
         </LinearGradient>

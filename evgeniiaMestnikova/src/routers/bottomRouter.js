@@ -22,8 +22,8 @@ const Lab2StackScreen = () => {
           title: 'Lab 2',
           headerBackground: () => (
             <LinearGradient
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
+              start={{ x: 0, y: 1 }}
+              end={{ x: 1, y: 0 }}
               colors={[colors.gradientPink1, colors.gradientPink2]}
               style={{ flex: 1 }}
             />
@@ -50,8 +50,8 @@ const Lab3StackScreen = () => {
           title: 'Lab 3',
           headerBackground: () => (
             <LinearGradient
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
+              start={{ x: 0, y: 1 }}
+              end={{ x: 1, y: 0 }}
               colors={[colors.gradientPink1, colors.gradientPink2]}
               style={{ flex: 1 }}
             />
@@ -79,8 +79,8 @@ const ProfileStackScreen = () => {
           title: 'Настройки профиля',
           headerBackground: () => (
             <LinearGradient
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
+              start={{ x: 0, y: 1 }}
+              end={{ x: 1, y: 0 }}
               colors={[colors.gradientPink1, colors.gradientPink2]}
               style={{ flex: 1 }}
             />
@@ -132,7 +132,7 @@ const BottomRouter = () => {
         activeTintColor: colors.sweetPink,
         inactiveTintColor: colors.grey,
         style: {
-          height: 60
+          height: 140,
         },
         tabStyle: {
           backgroundColor: '#8AC1F4B3',
