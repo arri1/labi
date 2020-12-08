@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, Button, Alert} from 'react-native';
+import styles from '../styles/styles'
 
 const Lab2 = () => {
   const [colorState, setColorState] = useState('red');
 
-  onGreenButton = () => {
+  const onGreenButton = () => {
       setColorState('green')
   }
-  onRedButton = () => {
+  const onRedButton = () => {
       setColorState('red')
   }
   const onBlueButton = () => {
@@ -31,15 +32,5 @@ const Lab2 = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create ({
-   
-  container: {
-    flex: 1,
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
 
 export default Lab2

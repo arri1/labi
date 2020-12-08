@@ -5,14 +5,8 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Lab2 from './src/screens/lab2'
+import Lab3 from './src/screens/lab3'
 
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-    </View>
-  );
-}
 const Tab = createBottomTabNavigator();
 const Lab2Stack = createStackNavigator();
 
@@ -26,7 +20,7 @@ const Lab2StackScreen = () =>{
 const Lab3StackScreen = () =>{
   return(
     <Lab2Stack.Navigator>
-      <Lab2Stack.Screen name="Lab2" component={HomeScreen}/>
+      <Lab2Stack.Screen name="Lab3" component={Lab3}/>
     </Lab2Stack .Navigator>
   )
 }
