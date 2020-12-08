@@ -1,7 +1,8 @@
 import React from 'react'
 import { View, 
   TouchableOpacity,
-  StyleSheet
+  StyleSheet,
+  Text
 } from 'react-native'
 
 const App = () => {
@@ -17,15 +18,21 @@ const App = () => {
             }
             setState('black')
           }}
-         ></TouchableOpacity>
+         ><Text style={styles.text}>Нажмите для смены цвета</Text></TouchableOpacity>
        </View>
     )
   }
   
   const styles = StyleSheet.create ({
+    text: {
+      color: "white",
+      textAlign: "center",
+      padding: 100,
+      fontSize: 16
+      },
     container: {
-      height: "100%",
-    },
+      height: "100%"
+    }
   })
 
 export default App
