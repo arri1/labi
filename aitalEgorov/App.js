@@ -9,7 +9,7 @@ import {
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import Lab2 from "./scripts/lab2";
-import Lab3 from "./scripts/lab3";
+import Lab3 from "./scripts/components/lab3";
 import Title from "./scripts/title";
 import signUp from "./scripts/figma/signUp";
 import signIn from "./scripts/figma/signIn";
