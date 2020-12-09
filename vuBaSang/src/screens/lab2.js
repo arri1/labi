@@ -84,7 +84,7 @@ const Lab2 = ()=>{
                                      }}
                                 >
                                     <Text
-                                         style={{ color: item.backgroundColor, fontSize: 25, fontWeight: 'bold' }}>
+                                         style={{ color: item.backgroundColor, fontSize: 25, fontWeight: 'bold'}}>
                                          {item.backgroundText}
                                     </Text>
                                 </View>

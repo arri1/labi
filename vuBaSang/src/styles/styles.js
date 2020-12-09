@@ -12,6 +12,28 @@ export default StyleSheet.create({
         marginBottom: 0,
         marginTop: 25,
     },
+    containerLogin: {
+        alignItems: 'center',
+        flex: 1,
+        margin: 15
+    },
+    containerSignup: {
+        alignItems: 'center',
+        flex: 1,
+        margin: 15,
+    },
+    containerProfile: {
+        flex: 1,
+        margin: 15
+    },
+    textInput: {
+        borderWidth: 0.5,
+        borderRadius: 10,
+        alignSelf: 'stretch',
+    },
+    borderStyle: {
+        borderRadius: 10
+    },
     backgroundImage: {
         flex: 1,
         width: '100%'
