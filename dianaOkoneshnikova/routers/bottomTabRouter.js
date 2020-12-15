@@ -12,4 +12,4 @@ const BottomTabRouter = () => {
     )
 }
 
-export default BottomTabRouter 
+export default BottomTabRouter; 
