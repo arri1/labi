@@ -9,6 +9,7 @@ import {
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import Lab2 from "./scripts/lab2";
+import Lab3_2 from "./scripts/lab3_2";
 import Lab3 from "./scripts/components/lab3";
 import Title from "./scripts/title";
 import signUp from "./scripts/figma/signUp";
@@ -26,6 +27,7 @@ const App = () =>{
       <Drawer.Navigator initialRouteName="Lab2">
         <Drawer.Screen name="Lab2" component={Lab2} />
         <Drawer.Screen name="Lab3" component={Lab3} />
+        <Drawer.Screen name="Lab3_2" component={Lab3_2} />
         <Drawer.Screen name="Title" component={Title} />
         <Drawer.Screen name="signUp" component={signUp} />
         <Drawer.Screen name="signIn" component={signIn} />
