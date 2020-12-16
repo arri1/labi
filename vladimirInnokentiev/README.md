@@ -1,5 +1,5 @@
 ## Иннокентьев Владимир. ФИИТ-17
-[Ссылка на Figma](https://www.figma.com/file/ihFFyp28brRF7V6TvXhWGA/LAB4?node-id=1%3A5)
+Figma в процессе создания
 ___
 ## Задачи
 - [x] **Lab 1** - сделать первый pull request с проектом react native.
