@@ -28,27 +28,6 @@ const Lab3 = () => {
         })
     })
 
-    const todolist = () => {
-        return (
-            <ScrollView>{
-                data.map(
-                    (item) => {
-                        return (
-                            <View key={item.id} style={styles.item}>
-                                <Text style={styles.itemtitle}>
-                                    {item.title}
-                                </Text>
-                                <Text style={styles.itembody}>
-                                    {item.body}
-                                </Text>
-                            </View>
-                        )
-                    }
-                )}
-            </ScrollView>
-        )
-    }
-
     return (
         <View style={styles.container}>    
           <ImageBackground source={{uri:'https://picsum.photos/200/300?grayscale'}}style={{width: '100%',height: '100%'}}>
