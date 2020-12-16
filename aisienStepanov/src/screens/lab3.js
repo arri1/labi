@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, ActivityIndicator, StyleSheet, ScrollView, Alert } from 'react-native';
+import { View, ActivityIndicator, ScrollView } from 'react-native';
 import styles from '../styles/styles'
 import axios from 'axios'
 import ToDoItem from '../../components/ToDoItem'
