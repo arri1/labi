@@ -6,6 +6,7 @@ import {
   Text,
   TouchableOpacity,
   Dimensions,
+  ImageBackground
 } from 'react-native';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
@@ -15,7 +16,7 @@ const SIZE = width * 0.9;
 
 const App: () => React$Node = () => {
 
-  const [color1,setColor1]=useState(Colors.white);
+  const [color1,setColor1]=useState("#f23030");
 
   const randomHex = () => {
     const letters = "0123456789ABCDEF";
@@ -28,14 +29,16 @@ const App: () => React$Node = () => {
   };
 
   return (
-    <View style={styles.Block}>
-      <View style = {styles.blockRow}>
-        <TouchableOpacity onPress={() => { setColor1(randomHex()); }}>
-          <View style = {{...styles.body, backgroundColor: color1}}/>
-        </TouchableOpacity>
+    <ImageBackground source={{uri:'https://previews.123rf.com/images/franzidraws/franzidraws1511/franzidraws151100007/48042630-seamless-pattern-of-the-great-wave-off-kanagawa.jpg'}} 
+                              style={{width: '100%', height: '100%'}}>
+      <View style={styles.Block}>
+        <View style = {styles.blockRow}>
+          <TouchableOpacity onPress={() => { setColor1(randomHex()); }}>
+            <View style = {{...styles.body, backgroundColor: color1}}/>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
-  
+    </ImageBackground>
     
   );
 };
