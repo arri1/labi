@@ -1,38 +1,18 @@
+import 'react-native-gesture-handler';
 import React from 'react'
 import { View, 
   TouchableOpacity,
   StyleSheet,
   Text
 } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import BottomTabRouter from './routers/bottomTabRouter';
 
-const App = () => {
-    const [backgroundColor, setState] = React.useState('red')
+export default function App() {
     return (
-       <View style = {styles.container,{backgroundColor}}>
-         <TouchableOpacity
-         style={styles.container}
-         onPress={() => {
-           if (backgroundColor == 'black') {
-             setState('red')
-             return null
-            }
-            setState('black')
-          }}
-         ><Text style={styles.text}>Нажмите для смены цвета</Text></TouchableOpacity>
-       </View>
-    )
-  }
-  
-  const styles = StyleSheet.create ({
-    text: {
-      color: "white",
-      textAlign: "center",
-      padding: 100,
-      fontSize: 16
-      },
-    container: {
-      height: "100%"
-    }
-  })
-
-export default App
+      <NavigationContainer>
+        <BottomTabRouter/>
+      </NavigationContainer>
+    );
+}
