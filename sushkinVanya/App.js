@@ -1,56 +1,20 @@
-import React, {useState} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  Button,
-  Alert,
-} from 'react-native';
+import React from "react";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import Lab2 from "./components/Lab2";
+import MainPage from "./components/MainPage";
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const RootStack = createStackNavigator(
+  {
+    MainPage: MainPage,
+    Lab2: Lab2,
+  },
+);
 
-const App: () => React$Node = () => {
+const AppContainer = createAppContainer(RootStack);
 
-  const buttonColors = [
-    '#ffffff',
-    '#7fffd4',
-    '#00fa9a',
-    '#ffa07a'
-  ];
-
-  const [currentCol,setCurrentCol] = useState('#000fff')
-
-  const buttonColorReplacement = () => {
-    const randomIndex = Math.floor(Math.random()*buttonColors.length);
-    setCurrentCol(buttonColors[randomIndex]);
+export default class App extends React.Component {
+  render() {
+    return <AppContainer />;
   }
-
-  return(
-    <View style = {styles.container}>
-      <Button 
-      title="Мобильное приложение"
-      color={currentCol}
-      onPress={() => buttonColorReplacement()}/>
-    </View>
-  )
-};
-
-const styles = StyleSheet.create({
-  container:{
-    flex: 1,
-    backgroundColor: '#000000',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
-
-export default App;
+}
