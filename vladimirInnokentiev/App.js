@@ -46,7 +46,7 @@ const SettingsStack = createStackNavigator();
 function SettingsStackScreen() {
   return (
     <SettingsStack.Navigator>
-      <SettingsStack.Screen name="Circle" component={Lab2} />
+      <SettingsStack.Screen name="Lab 2 - Circle" component={Lab2} />
     </SettingsStack.Navigator>
   );
 }
@@ -54,7 +54,7 @@ function SettingsStackScreen() {
 function TodoStackScreen() {
   return (
     <SettingsStack.Navigator>
-      <SettingsStack.Screen name="Todo" component={Lab3} />
+      <SettingsStack.Screen name="Lab 3 - To do List" component={Lab3} />
     </SettingsStack.Navigator>
   );
 }
@@ -67,7 +67,7 @@ export default function App() {
       <Tab.Navigator>
         <Tab.Screen name="Home" component={HomeStackScreen} />
         <Tab.Screen name="Circle" component={SettingsStackScreen} />
-        <Tab.Screen name="Todo" component={TodoStackScreen}/>
+        <Tab.Screen name="To do" component={TodoStackScreen}/>
       </Tab.Navigator>
     </NavigationContainer>
   );
