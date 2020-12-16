@@ -1,35 +1,29 @@
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
+import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native'
-import {Dimensions, StyleSheet} from 'react-native'
-import Lab2 from "./screens/lab2"
-import Lab3 from "./screens/lab3"
+import {Dimensions, View} from 'react-native'
+import { ApolloProvider } from '@apollo/client'
+import FlashMessage from "react-native-flash-message";
+import MainRouter from './src/routers/mainRouter'
+import apollo from './src/utils/apollo'
 
 const {width, height} = Dimensions.get('screen')
 
-const styles = StyleSheet.create({
-    container: {
+const App = () => {
+  return (
+    <View style={
+      {
         width,
         height
-    }
-})
-
-const Tab = createBottomTabNavigator();
-
-const App = () => {
-    return (
+      }
+    }>
+      <ApolloProvider client={apollo}>
         <NavigationContainer>
-            <Tab.Navigator>
-                <Tab.Screen
-                    name="Лаб2"
-                    component={Lab2}
-                />
-                <Tab.Screen
-                    name="Лаб3"
-                    component={Lab3}
-                />
-            </Tab.Navigator>
+          <MainRouter />
         </NavigationContainer>
-    )
+      </ApolloProvider>
+      <FlashMessage position="top" />
+    </View>
+  )
 }
 export default App;

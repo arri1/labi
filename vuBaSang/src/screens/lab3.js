@@ -6,9 +6,11 @@ import {
     StyleSheet,
     ActivityIndicator,
 } from "react-native"
+
+import TodoItem from '../components/TodoItem'
 import axios from 'react-native-axios'
 
-//styling
+
 const styles = StyleSheet.create({
     item: {
         padding: 25,
@@ -20,7 +22,8 @@ const styles = StyleSheet.create({
         borderWidth: StyleSheet.hairlineWidth
     },
     container: {
-        //flex: 2,
+        flex: 1,
+        width: '100%',
         justifyContent: 'center',
         alignItems: 'center'
     }
@@ -35,26 +38,28 @@ const Lab3 = (props) => {
                 'https://jsonplaceholder.typicode.com/posts'
             )
             .then(({data}) => {
-                setData(data)
-                console.log(data)
-
+                const lessData = data.filter(
+                     (item) => item.userId == 2
+                )
+                setData(lessData)
             })
-            .catch((e) => {
-                console.error(e.message)
+            .catch((error) => {
+                console.error(error.message)
             })
     })
     const content = () => {
         return (
             <ScrollView>{
                 data.map(
-                    (item) => {
+                    (item, index) => {
                         return (
                             <View style={styles.item}>
-                                <Text>
-                                    {item.title}
-                                </Text>
+                                <TodoItem
+                                    key={index}
+                                    item={item}
+                                />
                                 <Text style={{marginTop: 25}}>
-                                    {item.body}
+                                     {item.body}
                                 </Text>
                             </View>
                         )
@@ -67,7 +72,8 @@ const Lab3 = (props) => {
         <View style={styles.container}>
             {data ? content() :
                 <ActivityIndicator
-                    color={'red'}
+                    size={50}
+                    color={'grey'}
                 />
             }
         </View>

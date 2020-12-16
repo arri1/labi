@@ -20,7 +20,6 @@ git commit -m "comment"
 ```
 ```
 git push
-```
 
 ###Задания
 - сделать первый pull request с проектом react native
