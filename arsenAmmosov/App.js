@@ -1,39 +1,18 @@
-import React, { useState } from 'react'
-import {StyleSheet, TouchableOpacity, Text, View} from 'react-native'
+import React from 'react'
+import 'react-native-gesture-handler';
+import {View, Text, StyleSheet, Button, Alert} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import Lab2 from './src/lab2'
 
+const Tab = createBottomTabNavigator();
 const App = () => {
-  const [count, setCount] = useState(0);
-  const onPress = () => setCount(prevCount => prevCount + 1);
-
   return (
-    <View style={styles.container}>
-      <View style={styles.countContainer}>
-        <Text>Вы тыкнули {count} раз</Text>
-      </View>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={onPress}
-      >
-        <Text>тык!</Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    paddingHorizontal: 10
-  },
-  button: {
-    alignItems: "center",
-    backgroundColor: "#DDDDDD",
-    padding: 10
-  },
-  countContainer: {
-    alignItems: "center",
-    padding: 10
-  }
-});
+      <NavigationContainer>
+          <Tab.Navigator>
+              <Tab.Screen name="Lab 2" component={Lab2} />
+          </Tab.Navigator>
+      </NavigationContainer>
+  )
+}
 export default App;
