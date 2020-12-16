@@ -1,5 +1,7 @@
 import 'react-native-gesture-handler';
 import React from 'react'
+import { createStackNavigator } from '@react-navigation/stack';
+import { Button, Text, View, ImageBackground, Image, TouchableOpacity} from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Lab2 from '../screens/lab2'
 import Lab3 from '../screens/lab3'
