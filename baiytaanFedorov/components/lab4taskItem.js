@@ -1,41 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     Text,
     StyleSheet,
     View,
     Dimensions,
-    Image,
-    TouchableOpacity
+    Image
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const screenWidth = Dimensions.get('window').width;
-const screenHeight = Dimensions.get('window').height;
 
-const TaskItem = ({ title, isComplete, complete, remove }) => {
+const TaskItem = ({ title, completed }) => {
     return (
         <View style={styles.body}>
             <View style={styles.header}>
                 <View style={styles.checkboxContainer}>
                     <CheckBox
                         disabled={false}
-                        value={isComplete}
-                        onValueChange={complete}
+                        value={completed}
                         tintColors={{ true: '#89BEB3', false: '#B8C1CC' }}
                     />
                 </View>
                 <View style={styles.textContainer}>
-                    <Text style={[styles.text, isComplete && styles.textComplete]}>
+                    <Text style={[styles.text, completed && styles.textComplete]}>
                         {title}
                     </Text>
-                </View>
-                <View style={styles.buttonContainer}>
-                    <TouchableOpacity
-                        onPress={remove}
-                    >
-                        <MaterialIcons name='delete-outline' size={20} color='#dc3545' />
-                    </TouchableOpacity>
                 </View>
             </View>
             <View style={styles.imageContainer}>

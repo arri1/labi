@@ -2,19 +2,17 @@ import React from 'react';
 import { FlatList } from 'react-native';
 import TaskItem from "./lab4taskItem";
 
-const TaskList = ({ taskItems, completeTaskItem, removeTaskItem }) => {
+const TaskList = ({ taskItems }) => {
     return (
         <FlatList
             data={taskItems}
             renderItem={({ item }) => (
                 <TaskItem
                     title={item.title}
-                    isComplete={item.isComplete}
-                    complete={() => completeTaskItem(item.id)}
-                    remove={() => removeTaskItem(item.id)}
+                    completed={item.completed}
                 />
             )}
-            keyExtractor={item => item.id}
+            keyExtractor={item => item.id.toString()}
         />
     )
 }
