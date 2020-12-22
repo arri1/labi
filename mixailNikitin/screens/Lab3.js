@@ -1,159 +1,62 @@
-import React, { Component } from "react";
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  AsyncStorage,
-  Button,
-  TextInput,
-  Keyboard,
-  Platform
-} from "react-native";
+import React, {useEffect, useState} from 'react'
+import {ActivityIndicator, ScrollView, StyleSheet, View,Text} from "react-native"
+import axios from 'axios'
 
-const viewPadding = 10;
+const Lab3 = (props) => {
+  const [data, setData] = useState()
 
-export default class TodoList extends Component {
-  state = {
-    tasks: [],
-    text: ""
-  };
+  useEffect(() => {
+    axios.get('https://jsonplaceholder.typicode.com/posts').then(({data}) => {
+      setData(data)
+      console.log(data)
+    }).catch((e) => {
+      console.error(e.message)
+    })
+  })
 
-  changeTextHandler = text => {
-    this.setState({ text: text });
-  };
-
-  addTask = () => {
-    let notEmpty = this.state.text.trim().length > 0;
-
-    if (notEmpty) {
-      this.setState(
-        prevState => {
-          let { tasks, text } = prevState;
-          return {
-            tasks: tasks.concat({ key: tasks.length, text: text }),
-            text: ""
-          };
-        },
-        () => Tasks.save(this.state.tasks)
-      );
-    }
-  };
-
-  deleteTask = i => {
-    this.setState(
-      prevState => {
-        let tasks = prevState.tasks.slice();
-
-        tasks.splice(i, 1);
-
-        return { tasks: tasks };
-      },
-      () => Tasks.save(this.state.tasks)
-    );
-  };
-
-  componentDidMount() {
-    Keyboard.addListener(
-      "keyboardDidShow",
-      e => this.setState({ viewPadding: e.endCoordinates.height + viewPadding })
-    );
-
-    Keyboard.addListener(
-      "keyboardDidHide",
-      () => this.setState({ viewPadding: viewPadding })
-    );
-
-    Tasks.all(tasks => this.setState({ tasks: tasks || [] }));
-  }
-
-  render() {
+  const content = () => {
     return (
-      <View style={[styles.container, { paddingBottom: this.state.viewPadding }]}>
-        <FlatList
-          style={styles.list}
-          data={this.state.tasks}
-          renderItem={({ item, index }) =>
-            <View>
-              <View style={styles.listItemCont}>
-                <Text style={styles.listItem}>
-                  {item.text}
+      <ScrollView>{
+        data.map(
+          (item) => {
+            return (
+              <View key={item.id} style={styles.item}>
+                <Text>
+                  {item.title}
                 </Text>
-                <Button color="#000000" title="X" onPress={() => this.deleteTask(index)} />
+                <Text style={{marginTop: 24}}>
+                  {item.body}
+                </Text>
               </View>
-              <View style={styles.hr} />
-            </View>}
-        />
-        <TextInput
-          style={styles.textInput}
-          onChangeText={this.changeTextHandler}
-          onSubmitEditing={this.addTask}
-          value={this.state.text}
-          placeholder="Add Tasks"
-          returnKeyType="done"
-          returnKeyLabel="done"
-          backgroundColor="#F8F8FF"
-        />
-      </View>
-    );
+            )
+          }
+        )}
+      </ScrollView>
+    )
   }
+
+  return (
+    <View style={styles.container}>
+      {data ? content() : <ActivityIndicator color={'red'}/>}
+    </View>
+  )
 }
 
-let Tasks = {
-  convertToArrayOfObject(tasks, callback) {
-    return callback(
-      tasks ? tasks.split("||").map((task, i) => ({ key: i, text: task })) : []
-    );
-  },
-  convertToStringWithSeparators(tasks) {
-    return tasks.map(task => task.text).join("||");
-  },
-  all(callback) {
-    return AsyncStorage.getItem("TASKS", (err, tasks) =>
-      this.convertToArrayOfObject(tasks, callback)
-    );
-  },
-  save(tasks) {
-    AsyncStorage.setItem("TASKS", this.convertToStringWithSeparators(tasks));
-  }
-};
-
 const styles = StyleSheet.create({
+  item: {
+    padding: 24,
+    borderRadius: 24,
+    marginBottom: 24,
+    marginLeft: 24,
+    marginRight: 24,
+    borderColor: 'black',
+    borderWidth: StyleSheet.hairlineWidth
+  },
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#000000",
-    padding: viewPadding,
-    paddingTop: 20
-  },
-  list: {
-    width: "100%"
-  },
-  listItem: {
-    paddingTop: 2,
-    paddingBottom: 2,
-    fontSize: 18,
-    color: "#F8F8FF"
-  },
-  hr: {
-    height: 1,
-    backgroundColor: "gray"
-  },
-  listItemCont: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between"
-  },
-  textInput: {
-    height: 40,
-    paddingRight: 10,
-    paddingLeft: 10,
-    borderColor: "gray",
-    borderWidth: 0,
-    width: "100%"
+    justifyContent: 'center',
+    alignItems: 'center'
   }
-});
+})
 
-AppRegistry.registerComponent("TodoList", () => TodoList);
+export default Lab3
