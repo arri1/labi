@@ -1,33 +1,41 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Image, Dimensions } from 'react-native'
+import CheckBox from '@react-native-community/checkbox'
+import AntDesign from 'react-native-vector-icons/AntDesign'
+
+const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 
 const TodoItem = ({title, isComplete, complete, remove}) => {
     return (
-        <View style={styles.container}>
-            <View style={styles.textContainer}>
-                <Text style={isComplete && styles.textComplete}>
-                    {title}
-                </Text>
-            </View>
-
-            <View>
-                <TouchableOpacity
-                    style={[styles.button, styles.buttonSuccess]}
-                    onPress={complete}
-                >
-                    <Text style={styles.buttonText}>
-                        {isComplete ? 'Отменить' : 'Выполнить'}
+        <View style={styles.body}>
+            <View style={styles.header}>
+                <View style={styles.checkboxContainer}>
+                    <CheckBox
+                        disabled={false}
+                        value={isComplete}
+                        onValueChange={complete}
+                        tintColors={{ true: '#FFFFFF', false: '#FFFFFF' }}
+                    />
+                </View>
+                <View style={styles.textContainer}>
+                    <Text style={[styles.text, isComplete && styles.textComplete]}>
+                        {title}
                     </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    style={[styles.button, styles.buttonDanger]}
-                    onPress={remove}
-                >
-                    <Text style={styles.buttonText}>
-                        Удалить
-                </Text>
-                </TouchableOpacity>
+                </View>
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity
+                        onPress={remove}
+                    >
+                        <AntDesign name='delete' size={20} color='#FFFFFF' />
+                    </TouchableOpacity>
+                </View>
+            </View>
+            <View style={styles.imageContainer}>
+                <Image
+                    style={styles.image}
+                    source={require("../resources/todolist.png")}
+                />
             </View>
         </View>
     )
@@ -41,36 +49,61 @@ TodoItem.defaultProps = {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flexDirection: 'row',
+    body: {
+        backgroundColor: "#4CBC57",
         alignItems: 'center',
-        marginHorizontal: 20,
-        paddingVertical: 10,
-        borderBottomWidth: StyleSheet.hairlineWidth
+        marginHorizontal: 10,
+        marginTop: 10,
+        borderRadius: 5,
+        flexDirection: 'column'
+    },
+    header: {
+        flexDirection: 'row',
+        height: 40,
+        width: '100%'
+    },
+    checkboxContainer: {
+        height: '100%',
+        width: 40,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     textContainer: {
-        flex: 1
+        flex: 1,
+        justifyContent: 'center'
+    },
+    text: {
+        fontSize: 14,
+        color: '#39311D',
+        fontFamily: 'roboto'
     },
     textComplete: {
-        textDecorationLine: 'line-through'
+        textDecorationLine: 'line-through',
+        color: '#000000'
+    },
+    buttonContainer: {
+        height: '100%',
+        width: 40,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     button: {
-        minWidth: 100,
-        margin: 3,
-        paddingHorizontal: 12,
-        paddingVertical: 6,
-        borderRadius: 6,
-        backgroundColor: '#007bff'
-    },
-    buttonSuccess: {
-        backgroundColor: '#28a745'
-    },
-    buttonDanger: {
-        backgroundColor: '#dc3545'
     },
     buttonText: {
         color: '#fff',
         textAlign: 'center'
+    },
+    imageContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: screenWidth - 20,
+        height: (screenWidth - 77) * 3 / 4
+    },
+    image: {
+        flex: 1,
+        borderBottomLeftRadius: 5,
+        borderBottomRightRadius: 5,
+        resizeMode: 'contain'
     }
 })
 

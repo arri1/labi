@@ -6,7 +6,6 @@ import {
     StatusBar, 
     KeyboardAvoidingView } from 'react-native'
 import Todo from '../components/Todo'
-//import axios from 'react-native-axios'
 
 
 const Lab3 = () =>  {
