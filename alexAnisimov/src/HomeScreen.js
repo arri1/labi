@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   text: {
     color: 'black',
     textAlign: "center",
-    fontSize: 20,
+    fontSize: 60,
   }
 });
 
