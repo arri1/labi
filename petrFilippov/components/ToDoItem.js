@@ -1,29 +1,13 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
-const ToDoItem = ({ title, isComplete, complete, remove }) => {
+const ToDoItem = ({ title, isComplete }) => {
     return(
     <View style={styles.container}>
         <View style={styles.textContainer}>
             <Text style={isComplete && styles.textComplete}>
                 {title}
             </Text>
-        </View>
-        <View>
-            <TouchableOpacity
-                style={[styles.button, styles.buttonSuccess]}
-                onPress={complete}>
-                    <Text style={styles.buttonText}>
-                            {isComplete ? 'Отменить' : 'Выполнить'}
-                    </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-                style={[styles.button, styles.buttonDanger]}
-                onPress={remove}>
-                    <Text style={styles.buttonText}>
-                        Удалить
-                    </Text>
-            </TouchableOpacity>
         </View>
     </View>
     )
@@ -32,8 +16,6 @@ const ToDoItem = ({ title, isComplete, complete, remove }) => {
 ToDoItem.defaultProps = {
     title: 'Без названия',
     isComplete: false,
-    complete: () => {},
-    remove: () => {}
 }
 
 const styles = StyleSheet.create({
