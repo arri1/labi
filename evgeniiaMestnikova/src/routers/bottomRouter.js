@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import LinearGradient from 'react-native-linear-gradient'
 import Lab2 from '../screens/lab2'
 import Lab3 from '../screens/lab3'
+import PostsRouter from './postsRouter'
 import Profile from '../screens/profile'
 import colors from '../styles/colors'
 
@@ -114,6 +115,11 @@ const BottomRouter = () => {
               'assignment-turned-in',
               size = 30
           }
+          if (route.name === 'Posts') {
+            iconName =
+              'library-books',
+              size = 30
+          }
           if (route.name === 'Profile') {
             iconName =
               'account-box',
@@ -132,7 +138,7 @@ const BottomRouter = () => {
         activeTintColor: colors.sweetPink,
         inactiveTintColor: colors.grey,
         style: {
-          height: 140,
+          height: 130,
         },
         tabStyle: {
           backgroundColor: '#8AC1F4B3',
@@ -155,6 +161,13 @@ const BottomRouter = () => {
         component={Lab3StackScreen}
         options={{
           tabBarLabel: 'Lab 3'
+        }}
+      />
+      <Tab.Screen
+        name="Posts"
+        component={PostsRouter}
+        options={{
+          tabBarLabel: 'Посты'
         }}
       />
       <Tab.Screen
