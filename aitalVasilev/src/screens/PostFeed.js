@@ -1,20 +1,14 @@
 import React from 'react'
-import {
-    Button,
-    ScrollView,
-    StyleSheet,
-    View
-} from 'react-native'
+import { ScrollView, View } from 'react-native'
 import { useQuery } from '@apollo/client'
 import { FIND_MANY_POST } from '../apollo/gql/post/queries'
+import styles from '../styles/styles'
+// Custom components
+import CustomButtonPrimary from '../components/CustomButtonPrimary'
 import LoadingBar from '../components/LoadingBar'
 import PostItem from '../components/PostItem'
+import ChangingBackground from '../components/ChangingBackground'
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    }
-})
 const PostFeed = ({ navigation }) => {
     const { data, loading } = useQuery(
         FIND_MANY_POST
@@ -24,30 +18,41 @@ const PostFeed = ({ navigation }) => {
         data && data.findManyPost
             ? data.findManyPost
             : []
-    console.log('test', [data, normalizeData])
+    console.log('data', [data])
+    console.log('normalizedData', normalizeData)
+    //    console.log('user', [data, normalizeData])
+
     if (loading) return <LoadingBar />
     return (
         <View style={styles.container}>
-            <Button
-                title={'Добавить пост'}
-                onPress={() => {
-                    navigation.push('AddPost')
-                }}
-            />
-            <ScrollView
-                style={{
-                    marginTop: 24
-                }}
-            >
-                {normalizeData.map((item) => {
-                    return (
-                        <PostItem
-                            key={item.id}
-                            title={item.title}
-                        />
-                    )
-                })}
+            <ChangingBackground />
+            <ScrollView style={styles.scroll}>
+                {normalizeData
+                    .slice(0)
+                    .reverse()
+                    .map((item) => {
+                        return (
+                            <PostItem
+                                key={item.id}
+                                title={item.title}
+                                text={item.text}
+                                username={
+                                    item.user.name
+                                }
+                            />
+                        )
+                    })}
             </ScrollView>
+            <View
+                style={styles.bottomButtonWrapper}
+            >
+                <CustomButtonPrimary
+                    text={'Добавить пост'}
+                    onPress={() => {
+                        navigation.push('AddPost')
+                    }}
+                />
+            </View>
         </View>
     )
 }

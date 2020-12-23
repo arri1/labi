@@ -43,7 +43,10 @@ const Lab2StackScreen = () => {
                         >
                             Тема приложения
                         </Text>
-                    )
+                    ),
+                    headerTintColor:
+                        context.theme.colors
+                            .textColor
                 }}
             />
         </Lab2Stack.Navigator>
@@ -78,7 +81,10 @@ const Lab3StackScreen = () => {
                         >
                             Список дел
                         </Text>
-                    )
+                    ),
+                    headerTintColor:
+                        context.theme.colors
+                            .textColor
                 }}
             />
         </Lab3Stack.Navigator>
@@ -126,6 +132,9 @@ const MainNavigation = () => {
                     ) {
                         iconName =
                             'account-circle'
+                    }
+                    if (route.name === 'Lab6') {
+                        iconName = 'library-books'
                     }
 
                     return focused ? (

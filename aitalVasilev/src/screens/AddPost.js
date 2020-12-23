@@ -1,40 +1,47 @@
-import React, { useState } from 'react'
-import {
-    Button,
-    StyleSheet,
-    Text,
-    TextInput,
-    View
-} from 'react-native'
+import React, {
+    useState,
+    useContext
+} from 'react'
+import { View } from 'react-native'
+import { TextInput } from 'react-native-paper'
+import { showMessage } from 'react-native-flash-message'
+// styling
+import styles from '../styles/styles'
+// Custom components
+import LoadingBar from '../components/LoadingBar'
+import { AppContext } from '../styles/DynamicThemeProvider'
+import ChangingBackground from '../components/ChangingBackground'
+import CustomButtonPrimary from '../components/CustomButtonPrimary'
+// Apollo
 import {
     useMutation,
     useQuery
 } from '@apollo/client'
 import { USER } from '../apollo/gql/user/queries'
-import LoadingBar from '../components/LoadingBar'
-import { showMessage } from 'react-native-flash-message'
 import { CREATE_ONE_POST } from '../apollo/gql/post/mutations'
 
-const styles = StyleSheet.create({
-    title: {
-        textAlign: 'center',
-        fontSize: 24
-    },
-    container: {
-        flex: 1,
-        margin: 15
-    },
-    input: {
-        borderWidth: 0.5,
-        borderRadius: 10,
-        alignSelf: 'stretch',
-        marginTop: 24
-    }
-})
-
 const AddPost = ({ navigation }) => {
+    const context = useContext(AppContext)
     const [title, setTitle] = useState('')
+    const [text, setText] = useState('')
     const [userId, setUserId] = useState('')
+
+    const textInputStyle = {
+        width: '100%',
+        backgroundColor: 'transparent',
+        color: context.theme.colors.textColor
+    }
+    const textInputTheme = {
+        colors: {
+            primary:
+                context.theme.colors.textColor,
+            underlineColor:
+                context.theme.colors.textColor,
+            text: context.theme.colors.textColor,
+            placeholder:
+                context.theme.colors.textColor
+        }
+    }
 
     const { loading: userLoading } = useQuery(
         USER,
@@ -70,6 +77,7 @@ const AddPost = ({ navigation }) => {
             variables: {
                 data: {
                     title,
+                    text,
                     user: {
                         connect: { id: userId }
                     }
@@ -82,29 +90,62 @@ const AddPost = ({ navigation }) => {
         return <LoadingBar />
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>
-                Добавить пост
-            </Text>
-            <TextInput
-                onChangeText={(text) =>
-                    setTitle(text)
-                }
-                value={title}
-                placeholder={'Заголовок'}
-                style={styles.input}
-            />
-
+        <View style={{ flex: 1 }}>
+            <ChangingBackground />
             <View
                 style={{
-                    marginTop: 24,
-                    alignItems: 'center'
+                    ...styles.container,
+                    backgroundColor:
+                        context.theme.colors
+                            .cardColor
                 }}
             >
-                <Button
-                    title={'Сохранить'}
-                    onPress={onSave}
-                />
+                <View
+                    style={{
+                        flex: 1,
+                        width: '85%'
+                    }}
+                >
+                    <TextInput
+                        onChangeText={(text) =>
+                            setTitle(text)
+                        }
+                        value={title}
+                        label={'Название поста'}
+                        underlineColor={
+                            context.theme.colors
+                                .textColor
+                        }
+                        style={textInputStyle}
+                        theme={textInputTheme}
+                    />
+                    <TextInput
+                        onChangeText={(text) =>
+                            setText(text)
+                        }
+                        value={text}
+                        label={'Текст'}
+                        underlineColor={
+                            context.theme.colors
+                                .textColor
+                        }
+                        multiline={true}
+                        style={textInputStyle}
+                        theme={textInputTheme}
+                    />
+
+                    <View
+                        style={{
+                            marginTop: 24,
+                            alignItems: 'center'
+                        }}
+                    >
+                        <CustomButtonPrimary
+                            text={'Опубликовать'}
+                            onPress={onSave}
+                        />
+                    </View>
+                </View>
             </View>
         </View>
     )
