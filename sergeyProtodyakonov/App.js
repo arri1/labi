@@ -5,7 +5,7 @@ import MainNavigation from './navigation/MainNav'
 
 const App = () => {
 
-  return <MainNavigation />
+    return <MainNavigation />
   
 };
 

@@ -5,7 +5,7 @@ import {
     ScrollView,
     StyleSheet,
     View,
-    Text,
+    Text
 } from 'react-native';
 import axios from 'react-native-axios'
 
@@ -13,6 +13,8 @@ import axios from 'react-native-axios'
 const Lab3 = () => {
 
     const [data, setData] = useState()
+
+    
 
     useEffect(() => {
         axios.get('https://jsonplaceholder.typicode.com/posts', {
@@ -41,7 +43,7 @@ const Lab3 = () => {
                                     {item.body}
                                 </Text>
                                 <View style={styles.configbox}>
-                                    <Text style={styles.itemdate}>Sample Date</Text>
+                                    <Text style={styles.itemdate}>12/12/2020</Text>
                                 </View>
                             </View>
                         )
@@ -53,47 +55,67 @@ const Lab3 = () => {
 
     return (
         <View style={styles.container}>
-            <View>
-                <Text style={styles.title}>ToDo List</Text>
+            <View style={styles.header}>
+                <Text style={styles.title}>LAB 4</Text>
             </View>
             
-            {data ? todolist() : <ActivityIndicator color={'black'}/>}
+            {data ? todolist() : <ActivityIndicator color={'#ffffff'}/>}
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    item: {
-        borderColor: '#666666',
-        borderWidth: 2,
-        marginBottom: 10,
-        marginLeft: 10,
-        marginRight: 10,
-        marginTop: 10,
-        padding: 10,
-    },
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    configbox: {
-        marginTop: 10
-    },
-    title: {
-        fontSize: 25,
-        padding: 10
-    },
-    itemtitle: {
-        fontSize: 20,
-        marginBottom: 10
-    },
-    itembody: {
-        fontSize: 15
-    },
-    itemdate: {
-        fontSize: 13
-    },
+  item: {
+    borderColor: '#666666',
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: '#454545',
+    marginTop: 3,
+    padding: 10,
+    paddingTop: 5,
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#222222'
+  },
+  header: {
+    width: '100%',
+    height: '8%',
+    backgroundColor: '#323232',
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: '#454545',
+    justifyContent: 'center'
+  },
+  configbox: {
+    marginTop: 8
+  },
+  title: {
+    fontSize: 24,
+    padding: 5,
+    textAlign: 'center',
+    fontWeight: "500",
+    color: "#ffffff"
+  },
+  itemtitle: {
+    fontSize: 18,
+    marginBottom: 4,
+    fontStyle: 'normal',
+    fontWeight: '500',
+    color: "#ffffff"
+  },
+  itembody: {
+    fontSize: 13,
+    fontWeight: '500',
+    color: "#ffffff"
+  },
+  itemdate: {
+    fontSize: 10,
+    fontWeight: '500',
+    color: "#ffffff"
+  },
 })
 
 export default Lab3
