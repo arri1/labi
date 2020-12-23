@@ -1,5 +1,13 @@
-import React from 'react'
-import { ScrollView, View } from 'react-native'
+import React, {
+    useState,
+    useCallback,
+    useEffect
+} from 'react'
+import {
+    ScrollView,
+    View,
+    RefreshControl
+} from 'react-native'
 import { useQuery } from '@apollo/client'
 import { FIND_MANY_POST } from '../apollo/gql/post/queries'
 import styles from '../styles/styles'
@@ -10,23 +18,43 @@ import PostItem from '../components/PostItem'
 import ChangingBackground from '../components/ChangingBackground'
 
 const PostFeed = ({ navigation }) => {
-    const { data, loading } = useQuery(
+    useEffect(() => {
+        console.log('USE EFFECT')
+    }, [])
+
+    const [refreshing, setRefreshing] = useState(
+        false
+    )
+    const { data, loading, refetch } = useQuery(
         FIND_MANY_POST
     )
+    const onRefresh = useCallback(() => {
+        setRefreshing(true)
+        try {
+            console.log('REFETCHING')
+            refetch()
+            setRefreshing(false)
+        } catch (error) {
+            console.error(error)
+        }
+    }, [refreshing])
 
     const normalizeData =
         data && data.findManyPost
             ? data.findManyPost
             : []
-    console.log('data', [data])
-    console.log('normalizedData', normalizeData)
-    //    console.log('user', [data, normalizeData])
 
-    if (loading) return <LoadingBar />
-    return (
-        <View style={styles.container}>
-            <ChangingBackground />
-            <ScrollView style={styles.scroll}>
+    const posts = () => {
+        return !loading ? (
+            <ScrollView
+                style={styles.scroll}
+                refreshControl={
+                    <RefreshControl
+                        refreshing={refreshing}
+                        onRefresh={onRefresh}
+                    />
+                }
+            >
                 {normalizeData
                     .slice(0)
                     .reverse()
@@ -43,6 +71,15 @@ const PostFeed = ({ navigation }) => {
                         )
                     })}
             </ScrollView>
+        ) : (
+            <LoadingBar />
+        )
+    }
+
+    return (
+        <View style={styles.container}>
+            <ChangingBackground />
+            {posts()}
             <View
                 style={styles.bottomButtonWrapper}
             >

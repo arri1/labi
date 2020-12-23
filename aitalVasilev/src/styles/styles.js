@@ -87,6 +87,17 @@ export default StyleSheet.create({
         height: 44,
         width: 44
     },
+    flashMessage: {
+        flex: 1,
+        width: '60%',
+        alignSelf: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+        opacity: 0.8,
+        margin: 20,
+        borderRadius: 100,
+        elevation: 5
+    },
     scroll: {
         padding: 5,
         width: '100%'
@@ -170,6 +181,17 @@ export default StyleSheet.create({
         fontFamily: 'Lora-Regular',
         fontWeight: '400',
         fontSize: 16
+    },
+    loadingText: {
+        padding: 20,
+        fontFamily: 'Lora-Regular',
+        fontWeight: '400',
+        fontSize: 16
+    },
+    flashMessageText: {
+        fontFamily: 'Lora-Regular',
+        fontWeight: '400',
+        fontSize: 15
     },
     // Wrappers
     wrappedHeader: {

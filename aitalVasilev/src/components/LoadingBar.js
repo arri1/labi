@@ -1,19 +1,40 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
     View,
-    ActivityIndicator
+    ActivityIndicator,
+    Text
 } from 'react-native'
+// styling
+import styles from '../styles/styles'
+// Custom components
+import { AppContext } from '../styles/DynamicThemeProvider'
 
 const LoadingBar = () => {
+    const context = useContext(AppContext)
     return (
         <View
             style={{
-                flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center'
+                ...styles.container,
+                backgroundColor:
+                    context.theme.colors.barColor
             }}
         >
-            <ActivityIndicator color={'red'} />
+            <ActivityIndicator
+                size={64}
+                color={
+                    context.theme.colors.textColor
+                }
+            />
+            <Text
+                style={{
+                    ...styles.loadingText,
+                    color:
+                        context.theme.colors
+                            .textColor
+                }}
+            >
+                Загрузка...
+            </Text>
         </View>
     )
 }
