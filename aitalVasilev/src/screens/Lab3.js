@@ -11,6 +11,7 @@ import styles from '../styles/styles'
 // Custom components
 import TodoItem from '../components/TodoItem'
 import ChangeBackground from '../components/ChangingBackground'
+import LoadingBar from '../components/LoadingBar'
 
 const Lab3 = () => {
     const [data, setData] = useState(null)
@@ -48,14 +49,7 @@ const Lab3 = () => {
     return (
         <View style={styles.container}>
             <ChangeBackground />
-            {data ? (
-                todos()
-            ) : (
-                <ActivityIndicator
-                    size={64}
-                    color={'grey'}
-                />
-            )}
+            {data ? todos() : <LoadingBar />}
         </View>
     )
 }

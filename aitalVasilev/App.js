@@ -6,6 +6,8 @@ import { NavigationContainer } from '@react-navigation/native'
 import { ApolloProvider } from '@apollo/client'
 import client from './src/apollo/client'
 import FlashMessage from 'react-native-flash-message'
+// styling
+import styles from './src/styles/styles'
 // Custom
 import LoginNavigation from './src/navigation/LoginNavigation'
 import DynamicThemeProvider from './src/styles/DynamicThemeProvider'
@@ -27,7 +29,13 @@ const App = () => {
                     </NavigationContainer>
                 </ApolloProvider>
             </DynamicThemeProvider>
-            <FlashMessage position="top" />
+            <FlashMessage
+                position="top"
+                style={styles.flashMessage}
+                titleStyle={
+                    styles.flashMessageText
+                }
+            />
         </View>
     )
 }

@@ -3,7 +3,8 @@ import { DefaultTheme } from 'react-native-paper'
 const themeOverall = {
     colors: {
         positive: '#67E7B9',
-        negative: '#D73636'
+        negative: '#D73636',
+        grey: '#898989'
     }
 }
 
@@ -12,8 +13,8 @@ export const themePrimary = {
     colors: {
         ...DefaultTheme.colors,
         ...themeOverall.colors,
-        gradient1: '#D25AC6',
-        gradient2: '#FD9330',
+        gradient1: '#2229CF',
+        gradient2: '#9C3C87',
         textColor: '#F6F6F6',
         cardColor: '#000000AA',
         barColor: '#181818'

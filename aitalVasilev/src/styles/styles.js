@@ -2,6 +2,11 @@ import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
     // Containers
+    rowContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        width: '100%'
+    },
     backgroundContainer: {
         position: 'absolute',
         width: '100%',
@@ -82,7 +87,19 @@ export default StyleSheet.create({
         height: 44,
         width: 44
     },
+    flashMessage: {
+        flex: 1,
+        width: '60%',
+        alignSelf: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+        opacity: 0.8,
+        margin: 20,
+        borderRadius: 100,
+        elevation: 5
+    },
     scroll: {
+        padding: 5,
         width: '100%'
     },
     todoItem: {
@@ -92,10 +109,14 @@ export default StyleSheet.create({
         borderRadius: 20,
         elevation: 0
     },
-    wrappedHeader: {
+    postItem: {
         flex: 1,
+        borderRadius: 4,
+        margin: 4,
+        padding: 10,
+        justifyContent: 'center',
         alignItems: 'center',
-        margin: 16
+        backgroundColor: 'grey'
     },
     // Navigation
     navHearder: {
@@ -140,5 +161,49 @@ export default StyleSheet.create({
         fontWeight: '400',
         fontSize: 12,
         textDecorationLine: 'underline'
+    },
+    avatarText: {
+        fontFamily: 'Lora-Regular',
+        fontWeight: '400',
+        fontSize: 28
+    },
+    postUsernameText: {
+        fontFamily: 'Lora-Bold',
+        fontWeight: '400',
+        fontSize: 14
+    },
+    postTitleText: {
+        fontFamily: 'Lora-Regular',
+        fontWeight: '400',
+        fontSize: 18
+    },
+    postBodyText: {
+        fontFamily: 'Lora-Regular',
+        fontWeight: '400',
+        fontSize: 16
+    },
+    loadingText: {
+        padding: 20,
+        fontFamily: 'Lora-Regular',
+        fontWeight: '400',
+        fontSize: 16
+    },
+    flashMessageText: {
+        fontFamily: 'Lora-Regular',
+        fontWeight: '400',
+        fontSize: 15
+    },
+    // Wrappers
+    wrappedHeader: {
+        flex: 1,
+        alignItems: 'center',
+        margin: 16
+    },
+    bottomButtonWrapper: {
+        position: 'absolute',
+        top: '86%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 })

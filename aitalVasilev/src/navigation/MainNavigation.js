@@ -11,6 +11,7 @@ import styles from '../styles/styles'
 import GradientIcon from '../components/GradientIcon'
 import Lab2 from '../screens/Lab2'
 import Lab3 from '../screens/Lab3'
+import FeedNavigation from '../navigation/FeedNavigation'
 import Profile from '../screens/Profile'
 import { AppContext } from '../styles/DynamicThemeProvider'
 
@@ -42,7 +43,10 @@ const Lab2StackScreen = () => {
                         >
                             Тема приложения
                         </Text>
-                    )
+                    ),
+                    headerTintColor:
+                        context.theme.colors
+                            .textColor
                 }}
             />
         </Lab2Stack.Navigator>
@@ -77,7 +81,10 @@ const Lab3StackScreen = () => {
                         >
                             Список дел
                         </Text>
-                    )
+                    ),
+                    headerTintColor:
+                        context.theme.colors
+                            .textColor
                 }}
             />
         </Lab3Stack.Navigator>
@@ -125,6 +132,9 @@ const MainNavigation = () => {
                     ) {
                         iconName =
                             'account-circle'
+                    }
+                    if (route.name === 'Lab6') {
+                        iconName = 'library-books'
                     }
 
                     return focused ? (
@@ -174,6 +184,13 @@ const MainNavigation = () => {
                 component={Lab3StackScreen}
                 options={{
                     tabBarLabel: 'Список дел'
+                }}
+            />
+            <Tab.Screen
+                name="Lab6"
+                component={FeedNavigation}
+                options={{
+                    tabBarLabel: 'Список постов'
                 }}
             />
             <Tab.Screen
