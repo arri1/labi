@@ -8,15 +8,9 @@ import {
 
 const styles = StyleSheet.create({
     button: {
-<<<<<<< HEAD
-        width: "100%",
-        height: "100%",
-        justifyContent: 'center',
-=======
         justifyContent: 'center',
         width: "100%",
         height: "100%",
->>>>>>> 37baa313212319fa4199cf361d6310b35527bd0d
     }
 })
 
