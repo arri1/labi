@@ -10,9 +10,7 @@ import styles from '../styles/styles'
 import colors from '../styles/colors'
 
 const Posts = ({ navigation }) => {
-    useEffect(() => {
-        console.log('USE EFFECT')
-    }, [])
+    useEffect(() => {}, [])
     const { data, loading, refetch } = useQuery(FIND_MANY_POST)
     const [refreshing, setRefreshing] = useState(
         false
@@ -27,7 +25,7 @@ const Posts = ({ navigation }) => {
         }
     }, [refreshing])
     const normalizeData = data && data.findManyPost ? data.findManyPost : []
-    console.log('test', [data, normalizeData])
+
     if (loading)
         return (
             <LoadingBar />
