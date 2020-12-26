@@ -18,9 +18,7 @@ import PostItem from '../components/PostItem'
 import ChangingBackground from '../components/ChangingBackground'
 
 const PostFeed = ({ navigation }) => {
-    useEffect(() => {
-        console.log('USE EFFECT')
-    }, [])
+    useEffect(() => {}, [])
 
     const [refreshing, setRefreshing] = useState(
         false
@@ -31,12 +29,9 @@ const PostFeed = ({ navigation }) => {
     const onRefresh = useCallback(() => {
         setRefreshing(true)
         try {
-            console.log('REFETCHING')
             refetch()
             setRefreshing(false)
-        } catch (error) {
-            console.error(error)
-        }
+        } catch (error) {}
     }, [refreshing])
 
     const normalizeData =
