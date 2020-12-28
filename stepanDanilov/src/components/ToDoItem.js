@@ -1,5 +1,5 @@
 import React ,{useState , useEffect } from 'react';
-import styles from '../src/styles/styles'
+import styles from '../styles/styles'
 import {Card} from 'react-native-paper'
 import Checkbox from 'react-native-paper/src/components/Checkbox/Checkbox'
 
