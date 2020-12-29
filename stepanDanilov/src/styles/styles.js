@@ -22,7 +22,7 @@ export default StyleSheet.create({
     cardContent: {
         flex: 1,
         borderRadius: 20,
-        backgroundColor: '#C0C0C0'
+        backgroundColor: 'transparent'
     },
     scrollview: {
         width: '100%'
