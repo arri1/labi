@@ -35,11 +35,12 @@ const App = () => {
           if (route.name === 'Home') {
             iconName = 'home';
             return <IconEntypo name={iconName} size={size} color={color} />;
-          } else if (route.name === 'First lab' || route.name === 'Second lab') {
+          } 
+          if (route.name === 'First lab' || route.name === 'Second lab') {
             iconName = 'folder1';
             return <AntDesign name={iconName} size={size} color={color} />;
           }
-          else if (route.name === 'Settings'){
+          if (route.name === 'Settings'){
             iconName = 'settings';
             return <Octicons name={iconName} size={size} color={color} />;
           }
