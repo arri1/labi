@@ -1,28 +1,31 @@
 import React, { useState } from 'react';
-import { View, Button, Text } from 'react-native';
 import styles from '../styles/styles'
+import { ImageBackground, View, Text, StyleSheet, Button, Alert } from 'react-native';
+import BackgroundBox from "../components/backgroundBox";
+
+const image1 = { uri: 'https://background.su/files/contents/85/bg5e7b5975c85f9.jpg' };
+const image2 = { uri: 'https://images.hdqwalls.com/download/walking-towards-sun-4k-5g-360x640.jpg' };
 
 const Lab2 = () => {
-    const [colorState, setColorState] = useState('white');
+    const [image, setImage] = useState(image1)
 
-    const onBlackButton = () => {
-        setColorState('black')
+    const changeBackground1 = () => {
+        setImage(image1)
+        global.foo = image1
     }
-    const onBlueButton = () => {
-        setColorState('blue')
+    const changeBackground2 = () => {
+        setImage(image2)
+        global.foo = image2
     }
     return (
         <View style={styles.container}>
-            <View
-                style={{
-                    position: 'absolute',
-                    width: '100%',
-                    height: '100%',
-                    backgroundColor: colorState,
-                }}
-            />
-            <Button title= "Black" color="black" onPress={onBlackButton} />
-            <Button title = "Blue" color="blue"  onPress={onBlueButton} />
+            <ImageBackground
+                style={styles.backgroundImage}
+                source={image}
+                blurRadius={1}>
+                <BackgroundBox image="1" onPress={changeBackground1} />
+                <BackgroundBox image="2" onPress={changeBackground2} />
+            </ImageBackground>
         </View>
     );
 };

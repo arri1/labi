@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { View, ActivityIndicator, ScrollView } from 'react-native';
+import { Image, View, ActivityIndicator, StyleSheet, ScrollView, Alert, ImageBackground } from 'react-native';
 import styles from '../styles/styles'
 import axios from 'axios'
-import ToDoItem from '../../components/ToDoItem'
+import ToDoItem from '../components/ToDoItem'
+import { useFocusEffect } from '@react-navigation/native'
 
+const image1 = { uri: 'https://background.su/files/contents/85/bg5e7b5975c85f9.jpg' };
+const image2 = { uri: 'https://images.hdqwalls.com/download/walking-towards-sun-4k-5g-360x640.jpg' };
 
 const Lab3 = () => {
     const [data, setData] = useState(null)
-
+    const [image, setImage] = useState(null)
+    useFocusEffect(
+        React.useCallback(() => {
+            setImage(global.foo)
+        }, [])
+    )
     useEffect(() => {
         axios
             .get('http://jsonplaceholder.typicode.com/todos')
@@ -38,14 +46,22 @@ const Lab3 = () => {
         </ScrollView>
     )
     return (
-        <View style={styles.containerLab3}>
+        <View style={styles.container}>
+            <ImageBackground
+                style={{
+                    position: 'absolute',
+                    width: '100%',
+                    height: '100%'
+                }}
+                source={image}
+                blurRadius={1} />
             {
                 data ?
-                    (content()
-                    ) : (
+                    (content()) :
+                    (
                         <ActivityIndicator
                             size={70}
-                            color={'blue'}
+                            color={'grey'}
                         />
                     )
             }
