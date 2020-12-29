@@ -1,6 +1,4 @@
 import React from 'react'
-import Lab2StackScreen from '../stackNavigators/Lab2StackScreen'
-import Lab3StackScreen from '../stackNavigators/Lab3StackScreen'
 import Lab2 from '../screens/lab2'
 import Lab3 from '../screens/lab3'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
