@@ -9,7 +9,7 @@ const Lab2 = () => {
   return (
     <View style={styles.container}>
       <View style={styles.countContainer}>
-        <Text>Вы нажали {count} раз</Text>
+      <Text>Вы нажали {count} раз</Text>
       </View>
       <TouchableOpacity
         style={styles.button}
@@ -35,6 +35,24 @@ const styles = StyleSheet.create({
   countContainer: {
     alignItems: "center",
     padding: 10
+  },
+  /* Задний фон */
+  bgText: {
+    position: "absolute",
+    width: 198,
+    height: 43,
+    left: 23,
+    top: 60,
+    
+    fontFamily: "Lato",
+    fontStyle: "normal",
+    fontWeight: "normal",
+    fontSize: 36,
+    lineHeight: 43,
+    display: "flex",
+    alignItems: "center",
+    
+    color: "#B0B0B0"
   }
 });
 

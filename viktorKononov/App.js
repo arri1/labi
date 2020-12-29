@@ -5,14 +5,19 @@ import { View,
   StyleSheet,
   Text
 } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from "@react-navigation/stack";
 import BottomTabRouter from './routers/bottomTabRouter';
+
+const Stack = createStackNavigator();
 
 export default function App() {
     return (
       <NavigationContainer>
-        <BottomTabRouter/>
+        <Stack.Navigator>
+          <Stack.Screen name = "BottomTabRouter" component = {BottomTabRouter}/>
+        </Stack.Navigator>
       </NavigationContainer>
     );
 } 
