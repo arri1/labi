@@ -5,8 +5,8 @@ import {ApolloLink} from 'apollo-link'
 import {setContext} from 'apollo-link-context'
 import {createUploadLink} from 'apollo-upload-client'
 import fetch from 'node-fetch'
-import {AsyncStorage} from 'react-native'
-import {API_URL} from "../config"
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import Config from 'react-native-config'
 
 const authLink = setContext(async (_, {headers}) => {
     let token
@@ -32,7 +32,7 @@ const errorLink = onError(({graphQLErrors, networkError}) => {
 })
 
 const uploadLink = createUploadLink({
-    uri: `${API_URL}`,
+    uri: `${Config.API_URL}`,
     credentials: 'same-origin',
     headers: {
         'Accept': 'application/json',

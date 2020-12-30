@@ -1,45 +1,80 @@
-import React, {useState} from 'react'
-import {Button, StyleSheet, TextInput, View} from 'react-native'
-import {showMessage} from "react-native-flash-message"
+import React, { useState } from 'react'
+import { View, Text, ActivityIndicator } from 'react-native'
+import { TextInput, Button } from 'react-native-paper'
+import styles from '../styles/styles';
+import { showMessage } from 'react-native-flash-message'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import {
+    useApolloClient,
+    useMutation,
+    useQuery
+} from '@apollo/client'
+import { REG, USER } from '../utils/graphql'
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        margin: 15,
-    },
-    input: {
-        borderWidth: 0.5,
-        borderRadius: 10,
-        alignSelf: 'stretch',
-    }
-})
-
-const Registration = ({navigation}) => {
+const Registration = ({ navigation }) => {
     const [login, setLogin] = useState('')
-    const [group, setGroup] = useState('')
-    const [name, setName] = useState('')
     const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
+    const [
+        confirmPassword,
+        setConfirmPassword
+    ] = useState('')
+    const apollo = useApolloClient()
+
+    const [reg, { loading }] = useMutation(REG, {
+        onCompleted: async ({ registerUser }) => {
+            await AsyncStorage.setItem(
+                'token',
+                registerUser.token
+            )
+            showMessage({
+                message:
+                    'Регистрация прошла успешно',
+                type: 'info'
+            })
+            apollo.writeQuery({
+                query: USER,
+                data: { user: registerUser.user }
+            })
+            navigation.goBack()
+        },
+        onError: ({ message }) => {
+            if (
+                message ===
+                'GraphQL error: Unique constraint failed on the fields: (login)'
+            ) {
+                showMessage({
+                    message:
+                        'Такой логин уже существует',
+                    type: 'danger'
+                })
+                return null
+            }
+            showMessage({
+                message: 'Что-то пошло не так',
+                type: 'danger'
+            })
+        }
+    })
 
     const validate = () => {
         if (login === '') {
             showMessage({
-                message: "Введите логин",
-                type: "danger",
+                message: 'Пожалуйста, введите логин!',
+                type: 'danger'
             })
             return false
         }
         if (password === '') {
             showMessage({
-                message: "Введите пароль",
-                type: "danger",
+                message: 'Пожалуйста, введите пароль!',
+                type: 'danger'
             })
             return false
         }
         if (password !== confirmPassword) {
             showMessage({
-                message: "Пароли не совпадают",
-                type: "danger",
+                message: 'Пароли не совпадают!',
+                type: 'danger'
             })
             return false
         }
@@ -47,59 +82,129 @@ const Registration = ({navigation}) => {
     }
 
     const createUser = () => {
-        if (!validate())
-            return null
-
+        if (!validate()) return null
+        reg({
+            variables: {
+                data: {
+                    password,
+                    login
+                }
+            }
+        })
     }
 
+    if (loading) return <ActivityIndicator color={'red'} />
+
     return (
-        <View
-            style={styles.container}
-        >
-            <TextInput
-                onChangeText={text => setLogin(text)}
-                value={login}
-                style={styles.input}
-                placeholder={'Логин'}
-            />
-            <TextInput
-                onChangeText={text => setName(text)}
-                value={name}
-                style={[styles.input, {marginTop: 24}]}
-                placeholder={'Имя'}
-            />
-            <TextInput
-                onChangeText={text => setGroup(text)}
-                value={group}
-                style={[styles.input, {marginTop: 24}]}
-                placeholder={'Группа'}
-            />
-            <TextInput
-                onChangeText={text => setPassword(text)}
-                value={password}
-                style={[styles.input, {marginTop: 24}]}
-                placeholder={'Пароль'}
-            />
-            <TextInput
-                onChangeText={text => setConfirmPassword(text)}
-                value={confirmPassword}
-                style={[styles.input, {marginTop: 24}]}
-                placeholder={'Повтарите пароль'}
-            />
-            <View
-                style={
-                    {
-                        marginTop: 24,
-                        alignItems: 'center'
+            <View style={styles.containerSignup}>
+                <Text style={{
+                    fontSize: 24,
+                    alignItems: 'center',
+                    color: '#29AB87',
+                    fontWeight: 'bold'
+                }}>
+                    РЕГИСТРАЦИЯ
+                </Text>
+                <View
+                    style={{
+                        width: '100%',
+                        marginBottom: 30
+                    }}
+                >
+                    <Text style={{
+                        marginTop: 50,
+                        fontSize: 20,
+                        color: 'black',
+                        fontWeight: 'bold'
+                    }} >
+                        ЛОГИН
+                    </Text>
+                    <TextInput
+                        label="Введите логин"
+                        value={login}
+                        style={[styles.textInput, { marginTop: 6 }]}
+                        onChangeText={(
+                            login
+                        ) =>
+                            setLogin(login)
+                        }
+                    />
+                    <Text style={{
+                        marginTop: 30,
+                        fontSize: 20,
+                        color: 'black',
+                        fontWeight: 'bold'
+                    }} >
+                        ПАРОЛЬ
+                    </Text>
+                    <TextInput
+                        label="Введите пароль"
+                        value={password}
+                        secureTextEntry={true}
+                        style={[styles.textInput, { marginTop: 6 }]}
+                        onChangeText={(
+                            password
+                        ) =>
+                            setPassword(password)
+                        }
+                    />
+                    <TextInput
+                        label="Повторите пароль"
+                        value={confirmPassword}
+                        secureTextEntry={true}
+                        style={[styles.textInput, { marginTop: 24 }]}
+                        onChangeText={(
+                            confirmPassword
+                        ) =>
+                            setConfirmPassword(
+                                confirmPassword
+                            )
+                        }
+                    />
+                </View>
+                <View
+                    style={
+                        {
+                            marginTop: 18,
+                            alignItems: 'center'
+                        }
                     }
-                }
-            >
-                <Button
-                    title={'Создать'}
-                    onPress={createUser}
-                />
+                >
+                    <Button
+                        color='#12A7E7'
+                        mode="contained"
+                        style={styles.borderStyle}
+                        labelStyle={{
+                            color: 'white'
+                        }}
+                        onPress={createUser}
+                    >
+                        Создать
+                    </Button>
+                </View>
+                <View
+                    style={
+                        {
+                            marginTop: 18,
+                            alignItems: 'center'
+                        }
+                    }
+                >
+                    <Text>
+                        <Text style={{fontSize: 16}}>Уже есть учетная запись?  </Text> 
+                        <Text
+                        style={{fontSize: 20, fontWeight: 'bold', color: '#2675A1'}}
+                        onPress={
+                            () => {
+                                navigation.goBack()
+                            }
+                        }
+                        >
+                            Войдите
+                        </Text>
+                    </Text>
+                </View>
             </View>
-        </View>
     )
 }
-export default Registration
+export default Registration;

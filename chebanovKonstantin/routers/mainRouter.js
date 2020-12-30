@@ -19,6 +19,7 @@ const MainRouter = () => {
                 component={Login}/>
             <Stack.Screen
                 name={'Registration'}
+                component={Registration}
                 options={
                     {
                         title: 'Регистрация'
