@@ -1,34 +1,31 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, Button, Alert} from 'react-native';
+import {ImageBackground, View, Text, StyleSheet, Button, Alert} from 'react-native';
 import styles from '../styles/styles'
+import BackgroundBox from "../components/backgroundBox"
+
+const image1 = { uri : 'https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&cs=tinysrgb&dpr=2&w=500'};
+const image2 = { uri : 'https://miro.medium.com/max/1280/1*b1mRX7FOPZvSdF-Q6ivbiw.png'}
 
 const Lab2 = () => {
-  const [colorState, setColorState] = useState('red');
+  const [image, setImage] = useState(image1)
 
-  const onGreenButton = () => {
-      setColorState('green')
+  const changeBackground1 = ()=>{
+    setImage(image1)
+    global.foo = image1
   }
-  const onRedButton = () => {
-      setColorState('red')
-  }
-  const onBlueButton = () => {
-    setColorState('blue')
+  const changeBackground2 = ()=>{
+    setImage(image2)
+    global.foo = image2
   }
   return (
       <View style={styles.container}>
-      <Text>Lab 2</Text>
-
-      <View
-        style={{
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          backgroundColor: colorState,
-        }}
-      />
-      <Button title="Red" color="red" onPress={onRedButton} />
-      <Button title="Green" color="green" onPress={onGreenButton} />
-      <Button title="Blue" color="blue" onPress={onBlueButton} />
+        <ImageBackground 
+        style = {styles.backgroundImage}
+        source = {image}
+        blurRadius = {1}>
+          <BackgroundBox image="1" onPress={changeBackground1}/>
+          <BackgroundBox image="2" onPress={changeBackground2}/>
+        </ImageBackground>
     </View>
   );
 };
