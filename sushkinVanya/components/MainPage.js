@@ -24,8 +24,12 @@ export default class MainPage extends React.Component {
     daze: false
   };
 
-  Lab1Click = () => {
+  Lab2Click = () => {
     this.props.navigation.navigate('Lab2')
+  }
+
+  Lab3Click = () => {
+    this.props.navigation.navigate('Lab3')
   }
 
   render()
@@ -35,7 +39,11 @@ export default class MainPage extends React.Component {
         <Button 
         title="Lab2"
         color={'#000fff'}
-        onPress={(this.Lab1Click)}/>
+        onPress={(this.Lab2Click)}/>
+        <Button 
+        title="Lab3"
+        color={'#000fff'}
+        onPress={(this.Lab3Click)}/>
       </View>
     );
   }
