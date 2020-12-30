@@ -1,31 +1,26 @@
-import React, { useState } from 'react'
-import { View, StyleSheet, TouchableOpacity } from 'react-native'
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React from 'react';
+import HomeScreen from './src/HomeScreen';
+import Lab2 from './src/Lab2';
+import Lab3 from './src/Lab3';
+import Lab4 from './src/Lab4';
 
-const Apps = () => {
-   const [backgroundColor, setBackgroundColor] = useState('red')
-   return (
-      <View style = {styles.container,{backgroundColor}}>
-         
-         <TouchableOpacity
-        style={styles.button}
-        onPress={() => {
-          if (backgroundColor == 'red') {
-            setBackgroundColor('blue')
-          }
-          else setBackgroundColor('red')
-        }}
-        ></TouchableOpacity>
-         
-      </View>
-   )
-}
 
-const styles = StyleSheet.create ({
-   
-   button: {
-      alignItems: "center",
-      padding: 400
-    },
-})
+const Tab = createBottomTabNavigator();
 
-export default Apps
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name='HomeScreen' component={HomeScreen} />
+        <Tab.Screen name='Lab2' component={Lab2} />
+        <Tab.Screen name='Lab3' component={Lab3} />
+        <Tab.Screen name='Lab4' component={Lab4} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default App;
