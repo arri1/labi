@@ -1,11 +1,13 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import BottomTabRouter from './routers/bottomTabRouter.js'
+import React from 'react'
+import 'react-native-gesture-handler';
+import MainNavigation from './src/navigation/mainNavigation'
 
-export default function App() {
-    return (
-        <NavigationContainer>
-            <BottomTabRouter />
-        </NavigationContainer>
-    );
+const App = () => {
+  global.foo = {uri : 'https://w-dog.ru/wallpapers/15/6/542818431002571.jpg'}
+  return(
+    <MainNavigation>
+      
+    </MainNavigation>
+  )
 }
+export default App;
