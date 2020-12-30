@@ -26,7 +26,7 @@ const MainRouter = () => {
                 }
                 component={Registration}/>
             <Stack.Screen
-                name={'BottomTabRouter'}
+                name={'BottomRouter'}
                 component={BottomTabRouter}
                 options={
                     {headerShown: false}

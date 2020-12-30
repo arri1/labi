@@ -8,10 +8,7 @@ import fetch from 'node-fetch'
 import {API_URL} from "../config"
 import AsyncStorage from '@react-native-async-storage/async-storage'
 const authLink = setContext(async (_, { headers }) => {
-    let token
-    if (typeof window !== 'undefined') {
-        token = await localStorage.getItem('token')
-    }
+    const token = await AsyncStorage.getItem('token')
     return {
         headers: {
             ...headers,
