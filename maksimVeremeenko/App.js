@@ -1,42 +1,13 @@
-
-import React, {useState} from 'react';
-import {
-  SafeAreaView,
-  TouchableOpacity,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import React from 'react'
+import 'react-native-gesture-handler';
+import MainNavigation from './src/navigation/mainNavigation'
 
 const App = () => {
-  const [count, counter] = useState(0);
-  const onPress = () => counter(prevCount => prevCount + 1);
-  return (
-    <View style={styles.block}>
-        <Text>Нажатий: {count} </Text>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={onPress}
-      >
-        <Text>+1</Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  block: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  button: {
-    alignItems: "center",
-    backgroundColor: "#DDDDDD",
-    padding: 15
-  }
-});
-
+  global.foo = {uri : 'https://3.bp.blogspot.com/-cA26SH7yTRI/XG1w2RS57LI/AAAAAAAAG7Q/OyYpfS5U1A42C_MCY1M6nuxKbI0jsXZegCHMYCw/s1600/aero-pink-and-purple-%25E2%259D%25A4-4k-hd-desktop-wallpaper-for-4k-ultra-hd-tv.jpg'}
+  return(
+    <MainNavigation>
+      
+    </MainNavigation>
+  )
+}
 export default App;
