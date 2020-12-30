@@ -6,10 +6,9 @@ import { NavigationContainer } from '@react-navigation/native'
 import 'react-native-gesture-handler';
 import styles from '../styles/styles'
 
-const MainNavigation = () => {
+const BottomTabRouter = () => {
     const Tab = createBottomTabNavigator();
     return (
-      <NavigationContainer>
           <Tab.Navigator 
           tabBarOptions={{
             labelStyle:{
@@ -30,8 +29,7 @@ const MainNavigation = () => {
               options={{
                 tabBarLabel: 'Список задач'
               }}/>
-          </Tab.Navigator>
-      </NavigationContainer>        
+          </Tab.Navigator>  
     )
 }
-export default MainNavigation
+export default BottomTabRouter

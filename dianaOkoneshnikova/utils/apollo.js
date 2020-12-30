@@ -5,6 +5,7 @@ import { ApolloLink } from 'apollo-link'
 import { setContext } from 'apollo-link-context'
 import {createUploadLink} from "apollo-upload-client"
 import fetch from 'node-fetch'
+import {API_URL} from "../config"
 const authLink = setContext(async (_, { headers }) => {
     let token
     if (typeof window !== 'undefined') {
@@ -29,7 +30,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 })
 
 const uploadLink = createUploadLink({
-   uri: `${API_URL = 'https://nefu-server.herokuapp.com'}`,
+   uri: `${API_URL}`,
     credentials: 'same-origin',
     headers: {
         'Accept': 'application/json',
