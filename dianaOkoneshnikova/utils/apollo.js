@@ -6,6 +6,7 @@ import { setContext } from 'apollo-link-context'
 import {createUploadLink} from "apollo-upload-client"
 import fetch from 'node-fetch'
 import {API_URL} from "../config"
+import AsyncStorage from '@react-native-async-storage/async-storage'
 const authLink = setContext(async (_, { headers }) => {
     let token
     if (typeof window !== 'undefined') {

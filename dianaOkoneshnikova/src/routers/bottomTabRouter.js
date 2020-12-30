@@ -9,6 +9,8 @@ import styles from '../styles/styles'
 const BottomTabRouter = () => {
     const Tab = createBottomTabNavigator();
     return (
+        
+        <NavigationContainer>
           <Tab.Navigator 
           tabBarOptions={{
             labelStyle:{
@@ -30,6 +32,8 @@ const BottomTabRouter = () => {
                 tabBarLabel: 'Список задач'
               }}/>
           </Tab.Navigator>  
+          
+          </NavigationContainer>
     )
 }
 export default BottomTabRouter

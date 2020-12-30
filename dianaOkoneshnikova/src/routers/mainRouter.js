@@ -6,7 +6,7 @@ import Registration from "../screens/registration"
 
 const Stack = createStackNavigator()
 
-const mainRouter = () => {
+const MainRouter = () => {
     return (
         <Stack.Navigator>
             <Stack.Screen
@@ -35,4 +35,4 @@ const mainRouter = () => {
         </Stack.Navigator>
     )
 }
-export default mainRouter
+export default MainRouter

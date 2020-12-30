@@ -1,6 +1,6 @@
 import React from 'react'
 import 'react-native-gesture-handler';
-import MainNavigation from './src/routers/mainRouter'
+import MainRouter from './src/routers/mainRouter'
 
 const App = () => {
     return (
@@ -11,11 +11,10 @@ const App = () => {
             }
         }>
             <ApolloProvider client={apollo}>
-                <NavigationContainer>
                     <MainRouter/>
-                </NavigationContainer>
-            </ApolloProvider>
+                    
             <FlashMessage position="top"/>
+            </ApolloProvider>
         </View>
     )
 }
