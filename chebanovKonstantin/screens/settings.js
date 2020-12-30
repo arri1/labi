@@ -1,5 +1,15 @@
 import React, {useState} from 'react'
-import {Button, StyleSheet, Text, TextInput, View} from 'react-native'
+import {Button, StyleSheet, Text, TextInput, View , ActivityIndicator} from 'react-native'
+import {
+    useApolloClient,
+    useMutation,
+    useQuery
+} from '@apollo/client'
+import { UPDATE_USER } from '../utils/graphql'
+import { USER } from '../utils/graphql'
+import { showMessage } from 'react-native-flash-message'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 
 const styles = StyleSheet.create({
     title: {
@@ -18,11 +28,108 @@ const styles = StyleSheet.create({
     }
 })
 
+
+
 const Settings = ({navigation}) => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
-    const [family, setGroup] = useState('')
+    const [group, setGroup] = useState('')
     const [name, setName] = useState('')
+
+    const apollo = useApolloClient()
+
+    const { loading: userLoading } = useQuery(
+        USER,
+        {
+            onCompleted: ({ user }) => {
+                setGroup(user.group)
+                setName(user.name)
+            },
+            onError: () => { }
+        }
+    )
+
+    const [
+        save,
+        { loading: saveLoading }
+    ] = useMutation(UPDATE_USER, {
+        onCompleted: ({ user }) => {
+            apollo.writeQuery({
+                query: USER,
+                data: { user }
+            })
+            showMessage({
+                message: 'Сохранено',
+                type: 'info'
+            })
+        },
+        onError: () => {
+            showMessage({
+                message: 'Что-то пошло не так',
+                type: 'danger'
+            })
+        }
+    })
+
+    const logOut = async () => {
+        apollo.writeQuery({
+            query: USER,
+            data: { user: null }
+        })
+        await AsyncStorage.setItem('token', '')
+        navigation.replace('Login')
+    }
+
+    const validate = () => {
+        if (group === '') {
+            showMessage({
+                message: 'Введите группу',
+                type: 'danger'
+            })
+            return false
+        }
+        if (name === '') {
+            showMessage({
+                message: 'Введите имя',
+                type: 'danger'
+            })
+            return false
+        }
+        if (password === '') {
+            showMessage({
+                message: 'Введите пароль',
+                type: 'danger'
+            })
+            return false
+        }
+        if (password !== confirmPassword) {
+            showMessage({
+                message: 'Пароли не совпадают',
+                type: 'danger'
+            })
+            return false
+        }
+        return true
+    }
+
+    const onSave = () => {
+        if (!validate()) {
+            return null
+        }
+        save({
+            variables: {
+                data: {
+                    group: { set: group },
+                    name: { set: name },
+                    password: { set: password }
+                }
+            }
+        })
+    }
+
+    if (userLoading || saveLoading)
+    return <ActivityIndicator color={'red'} />
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Настройки</Text>
@@ -34,8 +141,8 @@ const Settings = ({navigation}) => {
             />
             <TextInput
                 onChangeText={(text) => setGroup(text)}
-                value={family}
-                placeholder={'Фамилия'}
+                value={group}
+                placeholder={'Группа'}
                 style={styles.input}
             />
             <TextInput
@@ -60,11 +167,7 @@ const Settings = ({navigation}) => {
             >
                 <Button
                     title={'Сохранить'}
-                    onPress={
-                        () => {
-                            navigation.replace('Login')
-                        }
-                    }
+                    onPress={onSave}
                 />
             </View>
             <View
@@ -77,11 +180,7 @@ const Settings = ({navigation}) => {
             >
                 <Button
                     title={'Выйти'}
-                    onPress={
-                        () => {
-                            navigation.replace('Login')
-                        }
-                    }
+                    onPress={logOut}
                 />
             </View>
         </View>

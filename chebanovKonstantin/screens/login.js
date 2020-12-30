@@ -94,6 +94,8 @@ const Login = ({ navigation }) => {
         })
     }
 
+    
+
     if (userLoading || authLoading)
         return <ActivityIndicator color={'red'} />
 
@@ -102,7 +104,7 @@ const Login = ({ navigation }) => {
             <Text style={{
                     fontSize: 28,
                     alignItems: 'center',
-                    color: '#29AB87',
+                    color: 'red',
                     fontWeight: 'bold'
                 }}>
                     ВХОД

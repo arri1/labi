@@ -5,7 +5,7 @@ export const USER = gql`
         user {
             id
             name
-            surname
+            group
             login
         }
     }
@@ -18,7 +18,7 @@ export const AUTH = gql`
             user {
                 id
                 name
-                surname
+                group
                 login
             }
         }
@@ -31,7 +31,7 @@ export const REG = gql`
             user {
                 id
                 name
-                surname
+                group
                 login
             }
         }
@@ -42,7 +42,7 @@ export const UPDATE_USER = gql`
         updateUser(data: $data) {
             id
             name
-            surname
+            group
             login
         }
     }

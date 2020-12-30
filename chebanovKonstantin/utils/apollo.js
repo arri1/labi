@@ -32,7 +32,7 @@ const errorLink = onError(({graphQLErrors, networkError}) => {
 })
 
 const uploadLink = createUploadLink({
-    uri: `${Config.API_URL}`,
+    uri: 'https://nefu-server.herokuapp.com',
     credentials: 'same-origin',
     headers: {
         'Accept': 'application/json',

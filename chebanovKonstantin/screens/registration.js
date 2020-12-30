@@ -100,7 +100,7 @@ const Registration = ({ navigation }) => {
                 <Text style={{
                     fontSize: 24,
                     alignItems: 'center',
-                    color: '#29AB87',
+                    color: 'red',
                     fontWeight: 'bold'
                 }}>
                     РЕГИСТРАЦИЯ
@@ -115,7 +115,8 @@ const Registration = ({ navigation }) => {
                         marginTop: 50,
                         fontSize: 20,
                         color: 'black',
-                        fontWeight: 'bold'
+                        fontWeight: 'bold',
+                        alignItems: 'center'
                     }} >
                         ЛОГИН
                     </Text>
