@@ -1,12 +1,16 @@
 import React from 'react'
-import 'react-native-gesture-handler';
-import MainNavigation from './src/navigation/mainNavigation'
+import { NavigationContainer } from '@react-navigation/native';
+import { ApolloProvider } from '@apollo/react-hooks'
+import client from './src/utils/apollo'
+import MainRouter from './src/routers/mainRouter'
 
 const App = () => {
-    global.foo = { uri: 'https://background.su/files/contents/85/bg5e7b5975c85f9.jpg' }
     return (
-        <MainNavigation>
-            </MainNavigation>
+        <ApolloProvider client={client}>
+            <NavigationContainer>
+                <MainRouter />
+            </NavigationContainer>
+        </ApolloProvider>
     )
 }
 export default App;

@@ -46,10 +46,10 @@ export default StyleSheet.create({
     },
     itemLab2: {
         
-        minHeight: 210,
+        minHeight: 290,
         borderRadius: 20,
-        margin: 100,
-        marginTop: 50,
+        margin: 70,
+        marginTop: 20,
         marginBottom: 200,
         justifyContent: 'center',
         alignItems: 'center'
