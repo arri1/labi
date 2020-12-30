@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ActivityIndicator } from 'react-native';
-import TaskList from './taskList';
+import TaskList from './lab4taskList';
 import 'react-native-get-random-values';
 import axios from 'axios';
 

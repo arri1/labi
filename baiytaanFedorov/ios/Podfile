@@ -8,6 +8,8 @@ target 'baiytaanFedorov' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'RNCCheckbox', :path => '../node_modules/@react-native-community/checkbox'
+
   target 'baiytaanFedorovTests' do
     inherit! :complete
     # Pods for testing

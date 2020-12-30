@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList } from 'react-native';
-import TaskItem from "./taskItem";
+import TaskItem from "./lab4taskItem";
 
 const TaskList = ({ taskItems }) => {
     return (

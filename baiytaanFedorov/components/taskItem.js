@@ -6,31 +6,21 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-const TaskItem = ({ title, isComplete, complete, remove }) => {
+const TaskItem = ({ title, completed }) => {
     return (
         <View style={styles.body}>
             <View style={styles.textContainer}>
-                <Text style={[styles.text, isComplete && styles.textComplete]}>
+                <Text style={[styles.text, completed && styles.textComplete]}>
                     {title}
                 </Text>
             </View>
 
             <View>
                 <TouchableOpacity
-                    style={[styles.button, styles.buttonSuccess]}
-                    onPress={complete}
+                    style={[styles.button, completed && styles.buttonSuccess, !completed && styles.buttonDanger]}
                 >
                     <Text style={styles.buttonText}>
-                        {isComplete ? 'Отменить' : 'Выполнить'}
-                    </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    style={[styles.button, styles.buttonDanger]}
-                    onPress={remove}
-                >
-                    <Text style={styles.buttonText}>
-                        Удалить
+                        {completed ? 'Выполнен' : 'Не выполнен'}
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -40,7 +30,7 @@ const TaskItem = ({ title, isComplete, complete, remove }) => {
 
 TaskItem.defaultProps = {
     title: "Без названия",
-    isComplete: false,
+    completed: false,
     complete: () => { },
     remove: () => { }
 }
@@ -66,7 +56,7 @@ const styles = StyleSheet.create({
         color: '#757575'
     },
     button: {
-        minWidth: 100,
+        minWidth: 115,
         margin: 3,
         paddingHorizontal: 12,
         paddingVertical: 6,
