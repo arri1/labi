@@ -32,6 +32,10 @@ export default class MainPage extends React.Component {
     this.props.navigation.navigate('Lab3')
   }
 
+  Lab4Click = () => {
+    this.props.navigation.navigate('Lab4')
+  }
+
   render()
   {
     return(
@@ -44,6 +48,10 @@ export default class MainPage extends React.Component {
         title="Lab3"
         color={'#000fff'}
         onPress={(this.Lab3Click)}/>
+        <Button 
+        title="Lab4"
+        color={'#000fff'}
+        onPress={(this.Lab4Click)}/>
       </View>
     );
   }
