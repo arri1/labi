@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer } from '@react-navigation/native'
 import 'react-native-gesture-handler';
 import styles from '../styles/styles'
+import Settings from '../screens/settings'
 
 const MainNavigation = () => {
     const Tab = createBottomTabNavigator();
@@ -21,13 +22,17 @@ const MainNavigation = () => {
             }
           }}
           >
-              <Tab.Screen name="Lab 1" component={Lab2StackScreen} 
+              <Tab.Screen name="Lab2" component={Lab2StackScreen} 
               options={{
                 tabBarLabel: 'Фон'
               }} />
-              <Tab.Screen name="Lab 2" component={Lab3StackScreen} 
+              <Tab.Screen name="Lab3" component={Lab3StackScreen} 
               options={{
                 tabBarLabel: 'Заметки'
+              }}/>
+              <Tab.Screen name="Setting" component={Settings} 
+              options={{
+                tabBarLabel: 'Настройки'
               }}/>
           </Tab.Navigator>
       </NavigationContainer>        
