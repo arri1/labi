@@ -1,8 +1,8 @@
 import 'react-native-gesture-handler';
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Lab2 from '../screens/lab2'
-import Lab3 from '../screens/lab3'
+import Lab2 from '../src/screens/lab2'
+import Lab3 from '../src/screens/lab3'
 
 const Tab = createBottomTabNavigator();
 
