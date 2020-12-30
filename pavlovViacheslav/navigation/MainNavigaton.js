@@ -23,7 +23,8 @@ const MainNavigation = () => {
           
                       if (route.name === 'Lab2') {
                         iconName = 'grid-sharp';
-                      } else if (route.name === 'Lab3') {
+                      } 
+                      if (route.name === 'Lab3') {
                         iconName = 'document-sharp';
                       }
                       return <Ionicons name={iconName} size={size} color={color} />;

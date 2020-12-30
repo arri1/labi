@@ -42,14 +42,14 @@ const Lab2 = () => {
 
   return(
     <>
-        <View style={styles.centrify}>
-          <View style={styles.txtContainer}></View>
+      <View style={styles.centrify}>
+        <View style={styles.txtContainer}></View>
           <View style={styles.containers}>
             <TouchableOpacity onPress={colorId} style={styles.changeToRandomColor, {backgroundColor: Color}}>
               <Text>Change Color</Text>
             </TouchableOpacity>
           </View>
-        </View>
+      </View>
     </>
   )
 }
