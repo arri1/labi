@@ -6,48 +6,14 @@
  * @flow strict-local
  */
 
-import React, { useState } from 'react'
-import {
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-  View
-} from 'react-native'
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import BottomTabRouter from './routers/bottomTabRouter.js'
 
-const App = () => {
-  const [count, setCount] = useState(0);
-  const onPress = () => setCount(prevCount => prevCount + 1);
-
+export default function App() {
   return (
-  <View style={styles.container}>
-    <View style={styles.countContainer}>
-      <Text>Вы нажали {count} раз(а)</Text>
-    </View>
-    <TouchableOpacity
-    style={styles.button}
-    onPress={onPress}
-    >
-    <Text>Нажми меня!</Text>
-    </TouchableOpacity>
-  </View>
+    <NavigationContainer>
+    <BottomTabRouter />
+    </NavigationContainer>
   );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    paddingHorizontal: 10
-  },
-  button: {
-    alignItems: "center",
-    backgroundColor: "#DDDDDD",
-    padding: 10
-  },
-  countContainer: {
-    alignItems: "center",
-    padding: 10
-  }
-});
-
-export default App;
+}
