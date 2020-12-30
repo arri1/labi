@@ -5,16 +5,14 @@ import {
     ScrollView,
     StyleSheet,
     View,
-    Text
+    Text,
+    ImageBackground
 } from 'react-native';
 import axios from 'react-native-axios'
 
-
 const Lab3 = () => {
 
-    const [data, setData] = useState()
-
-    
+    const [data, setData] = useState(null)
 
     useEffect(() => {
         axios.get('https://jsonplaceholder.typicode.com/posts', {
@@ -36,15 +34,19 @@ const Lab3 = () => {
                     (item) => {
                         return (
                             <View key={item.id} style={styles.item}>
-                                <Text style={styles.itemtitle}>
-                                    {item.title}
-                                </Text>
-                                <Text style={styles.itembody}>
-                                    {item.body}
-                                </Text>
-                                <View style={styles.configbox}>
-                                    <Text style={styles.itemdate}>12/12/2020</Text>
-                                </View>
+                                <ImageBackground opacity={0.15} source = {{uri : 'https://picsum.photos/seed/'+ item.id +'/600/300?grayscale&blur=2'}} style={{flex: 1}}>
+                                    <View style={styles.box}>
+                                        <Text style={styles.itemtitle}>
+                                            {item.title}
+                                        </Text>
+                                        <Text style={styles.itembody}>
+                                            {item.body}
+                                        </Text>
+                                        <View style={styles.configbox}>
+                                            <Text style={styles.itemdate}>12/12/2020</Text>
+                                        </View>
+                                    </View>
+                                </ImageBackground>
                             </View>
                         )
                     }
@@ -70,9 +72,11 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderBottomWidth: 1,
     borderColor: '#454545',
-    marginTop: 3,
+    marginTop: 3
+  },
+  box: {
     padding: 10,
-    paddingTop: 5,
+    paddingTop: 3,
   },
   container: {
     flex: 1,
