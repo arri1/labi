@@ -5,6 +5,9 @@ import axios from 'react-native-axios'
 import ToDoItem from '../components/ToDoItem'
 import { useFocusEffect } from '@react-navigation/native'
 
+const image1 = { uri : 'https://i.pinimg.com/originals/97/bd/c1/97bdc1df9c28dffc02618004b9a7961b.jpg'};
+const image2 = { uri : 'https://www.worthavegroup.com/media/wysiwyg/img-pages/FreeWallpaper-PhoneTablet-47_th.jpg'}
+
 const Lab3 = () => {
   const [data, setData] = useState(null)
   const [image, setImage] = useState(null)
