@@ -11,7 +11,7 @@ Entypo.loadFont();
 
 const Tab = createBottomTabNavigator();
 
-const BottomTabRouter = () => {
+const BottomTabRouter = (navigation) => {
     return(
         <Tab.Navigator
         tabBarOptions = {{
@@ -43,7 +43,6 @@ const BottomTabRouter = () => {
 const styles = StyleSheet.create({
     tabBar:{
         backgroundColor : colors.black,
-
     }
 })
 
