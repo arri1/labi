@@ -14,6 +14,7 @@ import Title from "./scripts/title";
 import signUp from "./scripts/figma/signUp";
 import signIn from "./scripts/figma/signIn";
 import toDoList from "./scripts/figma/todo";
+import reg from "./scripts/registration";
 import cat from "./scripts/cat";
 
 
@@ -29,6 +30,7 @@ const App = () =>{
         <Drawer.Screen name="Lab3" component={Lab3_2} />
         <Drawer.Screen name="Title" component={Title} />
         <Drawer.Screen name="To do list" component={toDoList} />
+        <Drawer.Screen name="reg" component={reg} />
         <Drawer.Screen name="signUp" component={signUp} />
         <Drawer.Screen name="signIn" component={signIn} />
         <Drawer.Screen name="cat" component={cat} />

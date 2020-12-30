@@ -24,7 +24,6 @@ export default class App extends Component<{}> {
 
   render() {
     return (
-
       <FlatList
         ListHeaderComponent={()=><Text style={styles.title}>Welcome to List</Text>}
         data={this.state.users}
