@@ -6,36 +6,15 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Lab2 from './src/screens/lab2'
 import Lab3 from './src/screens/lab3'
+import MainNavigation from './src/navigation/mainNavigation'
 
-const Tab = createBottomTabNavigator();
-const Lab2Stack = createStackNavigator();
-const Lab2StackScreen = () =>{
-  return(
-    <Lab2Stack.Navigator>
-      <Lab2Stack.Screen name="Lab2" component={Lab2}/>
-    </Lab2Stack .Navigator>
-  )
-}
-const Lab3StackScreen = () =>{
-  return(
-    <Lab2Stack.Navigator>
-      <Lab2Stack.Screen name="Lab3" component={Lab3}/>
-    </Lab2Stack .Navigator>
-  )
-}
 const App = () => {
-    return (
-      <NavigationContainer>
-          <Tab.Navigator tabBarOptions={{
-            labelStyle:{
-              fontSize:30,
-            }
-          }}>
-              <Tab.Screen name="Lab 2" component={Lab2StackScreen} />
-              <Tab.Screen name="Lab 3" component={Lab3StackScreen} />
-          </Tab.Navigator>
-      </NavigationContainer>    
-    )
+  global.foo = {uri : 'https://cdn.cjr.org/wp-content/uploads/2019/07/AdobeStock_100000042-e1563305717660-686x371.jpeg'}
+  return(
+    <MainNavigation>
+
+    </MainNavigation>
+  )
 }
 
 export default App; 
