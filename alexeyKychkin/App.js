@@ -6,14 +6,18 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Lab2 from './src/screens/lab2'
 import Lab3 from './src/screens/lab3'
-import MainNavigation from './src/navigation/mainNavigation'
+import FlashMessage from "react-native-flash-message";
+import { ApolloProvider } from '@apollo/client'
+import RootNav from './src/navigation/rootNav'
+import apollo from './src/utils/apollo'
 
 const App = () => {
-  global.foo = {uri : 'https://cdn.cjr.org/wp-content/uploads/2019/07/AdobeStock_100000042-e1563305717660-686x371.jpeg'}
-  return(
-    <MainNavigation>
-
-    </MainNavigation>
+  global.foo = { uri: 'https://photocasa.ru/uploads/posts/2017-01/1485218882_img_5932.jpg' }
+  return (
+    <ApolloProvider client={apollo}>
+      <RootNav />
+      <FlashMessage position="top" />
+    </ApolloProvider>
   )
 }
 
