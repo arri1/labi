@@ -11,9 +11,8 @@ const Lab2StackScreen = () => {
         <Lab2Stack.Navigator>
             <Lab2Stack.Screen name="Lab2" component={Lab2}
                 options={{
-                    headerTitleAlign: 'center',
                     headerStyle: {
-                        backgroundColor: 'silver'
+                        backgroundColor: 'white'
                     },
                     headerTitle: (
                         <Text

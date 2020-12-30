@@ -6,7 +6,6 @@ import { NavigationContainer } from '@react-navigation/native'
 import 'react-native-gesture-handler';
 import styles from '../styles/styles'
 
-
 const MainNavigation = () => {
     const Tab = createBottomTabNavigator();
     return (
@@ -30,7 +29,7 @@ const MainNavigation = () => {
                     options={{
                         tabBarLabel: 'To do list'
                     }} />
-          </Tab.Navigator>
+            </Tab.Navigator>
       </NavigationContainer>        
     )
 }
