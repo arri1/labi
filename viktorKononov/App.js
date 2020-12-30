@@ -1,18 +1,20 @@
 import 'react-native-gesture-handler';
 import React from 'react'
-import { View, 
-  TouchableOpacity,
-  StyleSheet,
-  Text
-} from 'react-native'
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer, StackActions } from '@react-navigation/native';
+import { createStackNavigator } from "@react-navigation/stack";
 import BottomTabRouter from './routers/bottomTabRouter';
+
+const Stack = createStackNavigator();
 
 export default function App() {
     return (
       <NavigationContainer>
-        <BottomTabRouter/>
+        <Stack.Navigator>
+          <Stack.Screen name = "BottomTabRouter" component = {BottomTabRouter}
+          options={{
+            headerShown: false
+          }}/>
+        </Stack.Navigator>
       </NavigationContainer>
     );
 } 
