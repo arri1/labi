@@ -141,7 +141,7 @@ const Settings = ({navigation}) => {
                 onChangeText={(text) => setConfirmPassword(text)}
                 value={confirmPassword}
                 secureTextEntry={true}
-                placeholder={'Повтарите пароль'}
+                placeholder={'Повторите пароль'}
                 style={styles.input}
             />
             <View
