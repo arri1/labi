@@ -1,15 +1,16 @@
 import React, {useState} from 'react'
-import {AsyncStorage, Button, ScrollView, StyleSheet, Text, TextInput, View} from 'react-native'
+import {AsyncStorage, Button, StyleSheet, Text, TextInput, View} from "react-native"
+import {useApolloClient, useMutation, useQuery} from "@apollo/react-hooks"
 import {showMessage} from "react-native-flash-message"
-import {useApolloClient, useMutation} from "@apollo/react-hooks"
-import {REG} from "../gqls/user/mutations"
 import {USER} from "../gqls/user/queries"
 import LoadingBar from "../components/loadingBar"
+import {AUTH} from "../gqls/user/mutations"
 
 const styles = StyleSheet.create({
     container: {
+        alignItems: 'center',
         flex: 1,
-        margin: 15,
+        margin: 15
     },
     input: {
         borderWidth: 0.5,
@@ -18,30 +19,41 @@ const styles = StyleSheet.create({
     }
 })
 
-const Registration = ({navigation}) => {
+const Login = ({navigation}) => {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
 
     const apollo = useApolloClient()
 
-    const [reg, {loading}] = useMutation(REG, {
-        onCompleted: async ({registerUser}) => {
-            await AsyncStorage.setItem('token', registerUser.token)
+    const {loading: userLoading} = useQuery(USER, {
+        onCompleted: ({user}) => {
+            if (user){
+                navigation.push('BottomRouter')
+            }
+        },
+        onError: () => {
+
+        }
+    })
+
+    const [auth, {loading: authLoading}] = useMutation(AUTH, {
+        onCompleted: async ({authUser}) => {
+            await AsyncStorage.setItem('token', authUser.token)
             showMessage({
                 message: 'Регистрация прошла успешно',
                 type: 'info'
             })
-            apollo.writeQuery({query: USER, data: {user: registerUser.user}})
-            navigation.goBack()
+            apollo.writeQuery({query: USER, data: {user: authUser.user}})
+            navigation.replace('BottomRouter')
         },
         onError: ({message}) => {
-            if (message === 'GraphQL error: Unique constraint failed on the fields: (`login`)') {
+            console.log(message)
+            if (message==='GraphQL error: Incorrect password'){
                 showMessage({
-                    message: 'Такой логин уже существует',
+                    message: 'Неверен пароль',
                     type: 'danger'
                 })
-                return null
+                return  null
             }
             showMessage({
                 message: 'Что то пошло не так',
@@ -53,103 +65,84 @@ const Registration = ({navigation}) => {
     const validate = () => {
         if (login === '') {
             showMessage({
-                message: "Введите логин",
-                type: "danger",
+                message: 'Введите логин',
+                type: 'danger'
             })
             return false
         }
         if (password === '') {
             showMessage({
-                message: "Введите пароль",
-                type: "danger",
-            })
-            return false
-        }
-        if (password !== confirmPassword) {
-            showMessage({
-                message: "Пароли не совпадают",
-                type: "danger",
+                message: 'Введите пароль',
+                type: 'danger'
             })
             return false
         }
         return true
     }
-
-    const createUser = () => {
+    const onAuth = () => {
         if (!validate())
             return null
-        reg({
+        auth({
             variables: {
                 data: {
-                    password,
-                    login
+                    login,
+                    password
                 }
             }
         })
     }
 
-    if (loading)
+    if (userLoading || authLoading)
         return (
             <LoadingBar/>
         )
-
     return (
-        <ScrollView
-            style={styles.container}
-        >
+        <View style={styles.container}>
             <Text>Логин</Text>
             <TextInput
                 onChangeText={text => setLogin(text)}
                 value={login}
-                style={[styles.input,{marginTop: 8}]}
+                style={[styles.input, {marginTop: 8}]}
                 placeholder={'Введите логин'}
             />
             <Text style={{marginTop: 24}}>Пароль</Text>
             <TextInput
                 onChangeText={text => setPassword(text)}
                 value={password}
-                secureTextEntry={true}
                 style={[styles.input, {marginTop: 8}]}
                 placeholder={'Введите пароль'}
-            />
-            <TextInput
-                onChangeText={text => setConfirmPassword(text)}
-                value={confirmPassword}
                 secureTextEntry={true}
-                style={[styles.input, {marginTop: 8}]}
-                placeholder={'Повтарите пароль'}
             />
             <View
                 style={
-                    {
-                        marginTop: 24,
-                        alignItems: 'center'
-                    }
+                    {marginTop: 24}
                 }
+
             >
                 <Button
-                    title={'Создать'}
-                    onPress={createUser}
+                    title={'Войти'}
+                    onPress={onAuth}
                 />
             </View>
             <View
                 style={
                     {
                         marginTop: 24,
-                        alignItems: 'center'
                     }
                 }
+
             >
                 <Button
-                    title={'Назад'}
+                    title={'Регистрация'}
+                    style={{paddingTop: 24}}
                     onPress={
                         () => {
-                            navigation.goBack()
+                            navigation.push('Registration')
                         }
                     }
                 />
             </View>
-        </ScrollView>
+        </View>
     )
 }
-export default Registration
+export default Login
