@@ -5,6 +5,7 @@ import React from 'react';
 import HomeScreen from './src/HomeScreen';
 import Lab2 from './src/Lab2';
 import Lab3 from './src/Lab3';
+import Lab4 from './src/Lab4';
 
 
 const Tab = createBottomTabNavigator();
@@ -16,6 +17,7 @@ const App = () => {
         <Tab.Screen name='HomeScreen' component={HomeScreen} />
         <Tab.Screen name='Lab2' component={Lab2} />
         <Tab.Screen name='Lab3' component={Lab3} />
+        <Tab.Screen name='Lab4' component={Lab4} />
       </Tab.Navigator>
     </NavigationContainer>
   );
