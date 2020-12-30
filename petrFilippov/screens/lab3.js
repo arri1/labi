@@ -3,9 +3,10 @@ import { StyleSheet, SafeAreaView } from 'react-native'
 import ToDo from '../components/ToDo'
 
 const lab3 = () => {
+
     return(
         <SafeAreaView style={styles.container}>
-            <ToDo />
+            <ToDo/>
         </SafeAreaView>
     )
 }

@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import IconEntypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import Octicons from 'react-native-vector-icons/Octicons'
-import Lab1 from "./screens/lab1"
+import Lab4 from "./screens/lab4"
 import Lab2 from "./screens/lab2"
 import Lab3 from "./screens/lab3"
 
@@ -23,6 +23,7 @@ const Tab = createBottomTabNavigator();
 
 
 const App = () => {
+  
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -36,13 +37,9 @@ const App = () => {
             iconName = 'home';
             return <IconEntypo name={iconName} size={size} color={color} />;
           } 
-          if (route.name === 'First lab' || route.name === 'Second lab') {
+          if (route.name === 'lab4' || route.name === 'First lab' || route.name === 'Second lab') {
             iconName = 'folder1';
             return <AntDesign name={iconName} size={size} color={color} />;
-          }
-          if (route.name === 'Settings'){
-            iconName = 'settings';
-            return <Octicons name={iconName} size={size} color={color} />;
           }
         }
       })}
@@ -64,7 +61,7 @@ const App = () => {
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="First lab" component={Lab2} />
         <Tab.Screen name="Second lab" component={Lab3} />
-        <Tab.Screen name="Settings" component={Lab1} />
+        <Tab.Screen name="lab4" component={Lab4} />
       </Tab.Navigator>
     </NavigationContainer>
   );

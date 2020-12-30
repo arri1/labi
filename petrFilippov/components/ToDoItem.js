@@ -1,15 +1,21 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native'
 
 const ToDoItem = ({ title, isComplete }) => {
     return(
-    <View style={styles.container}>
+    <TouchableHighlight style={
+        styles.container
+    }
+    underlayColor={'gray'}
+    onPress={() => {
+       
+    }} >
         <View style={styles.textContainer}>
             <Text style={isComplete && styles.textComplete}>
                 {title}
             </Text>
         </View>
-    </View>
+    </TouchableHighlight>
     )
 }
 
@@ -21,10 +27,12 @@ ToDoItem.defaultProps = {
 const styles = StyleSheet.create({
     container:{
         flexDirection: 'row',
-        alignItems: 'center',
         marginHorizontal: 20,
         paddingVertical: 10,
-        borderBottomWidth: StyleSheet.hairlineWidth
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        backgroundColor: '#007bff',
+        borderRadius: 15,
+        marginTop: 20
     },
     textContainer:{
         flex: 1
