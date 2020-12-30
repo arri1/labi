@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
 const Settings = ({navigation}) => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
-    const [group, setGroup] = useState('')
+    const [family, setGroup] = useState('')
     const [name, setName] = useState('')
     return (
         <View style={styles.container}>
@@ -34,8 +34,8 @@ const Settings = ({navigation}) => {
             />
             <TextInput
                 onChangeText={(text) => setGroup(text)}
-                value={group}
-                placeholder={'Группа'}
+                value={family}
+                placeholder={'Фамилия'}
                 style={styles.input}
             />
             <TextInput
@@ -47,7 +47,7 @@ const Settings = ({navigation}) => {
             <TextInput
                 onChangeText={(text) => setConfirmPassword(text)}
                 value={confirmPassword}
-                placeholder={'Повтарите пароль'}
+                placeholder={'Введите пароль еще раз'}
                 style={styles.input}
             />
             <View
