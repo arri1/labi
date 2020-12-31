@@ -1,20 +1,15 @@
-import 'react-native-gesture-handler';
 import React from 'react'
-import { NavigationContainer, StackActions } from '@react-navigation/native';
-import { createStackNavigator } from "@react-navigation/stack";
-import BottomTabRouter from './routers/bottomTabRouter';
-
-const Stack = createStackNavigator();
+import { NavigationContainer } from '@react-navigation/native';
+import { ApolloProvider } from '@apollo/react-hooks'
+import client from './utils/apollo'
+import MainRouter from './routers/mainRouter'
 
 export default function App() {
     return (
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name = "BottomTabRouter" component = {BottomTabRouter}
-          options={{
-            headerShown: false
-          }}/>
-        </Stack.Navigator>
-      </NavigationContainer>
+      <ApolloProvider client={client}>
+            <NavigationContainer>
+                <MainRouter />
+            </NavigationContainer>
+        </ApolloProvider>
     );
 } 
