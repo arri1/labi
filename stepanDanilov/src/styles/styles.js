@@ -4,9 +4,9 @@ export default StyleSheet.create({
         flex: 1,
         width: '100%',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
-    containerLab2:{
+    containerLab2: {
         flex: 1,
         width: '100%'
     },
@@ -17,7 +17,7 @@ export default StyleSheet.create({
         marginBottom: 10,
         borderRadius: 20,
         backgroundColor: 'transparent',
-        elevation: 0,
+        elevation: 0
     },
     cardContent: {
         flex: 1,
@@ -30,6 +30,7 @@ export default StyleSheet.create({
     lab3Container:{
         flex: 1,
         width: '100%',
+        justifyContent: 'center',
     },
     backgroundImage: {
         flex: 1,
@@ -38,18 +39,18 @@ export default StyleSheet.create({
         width: '100%',
         alignItems: 'center'
     },
-    lab3BackgroundImage:{
-        position:'absolute',
+    lab3BackgroundImage: {
+        position: 'absolute',
         width: '100%',
         height: '100%'
     },
     itemLab2: {
-        flex: 1,
-        minHeight: 210,
+        
+        minHeight: 290,
         borderRadius: 20,
-        margin: 30,
+        margin: 70,
         marginTop: 20,
-        marginBottom: 20,
+        marginBottom: 200,
         justifyContent: 'center',
         alignItems: 'center'
     },

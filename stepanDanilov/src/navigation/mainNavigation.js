@@ -21,11 +21,11 @@ const MainNavigation = () => {
             }
           }}
           >
-              <Tab.Screen name="Lab 1" component={Lab2StackScreen} 
+              <Tab.Screen name="Lab 2" component={Lab2StackScreen} 
               options={{
                 tabBarLabel: 'Задний фон'
               }} />
-              <Tab.Screen name="Lab 2" component={Lab3StackScreen} 
+              <Tab.Screen name="Lab 3" component={Lab3StackScreen} 
               options={{
                 tabBarLabel: 'Список дел'
               }}/>

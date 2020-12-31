@@ -2,7 +2,6 @@ import React from 'react'
 import Lab3 from '../screens/lab3'
 import { Text } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import styles from '../styles/styles'
 
 const Lab3StackScreen = () =>{
