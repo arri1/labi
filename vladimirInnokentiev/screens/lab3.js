@@ -8,7 +8,7 @@ import {
     Text,
     ImageBackground
 } from 'react-native';
-import axios from 'react-native-axios'
+import axios from 'axios'
 
 
 const Lab3 = () => {
@@ -27,6 +27,32 @@ const Lab3 = () => {
             console.error(e.message)
         })
     })
+
+    const todolist = () => {
+        return (
+            <ScrollView>{
+                data.map(
+                    (item) => {
+                        return (
+                            <View key={item.id} style={styles.item}>
+                                    <View style={styles.box}>
+                                        <Text style={styles.itemtitle}>
+                                            {item.title}
+                                        </Text>
+                                        <Text style={styles.itembody}>
+                                            {item.body}
+                                        </Text>
+                                        <View style={styles.configbox}>
+                                            <Text style={styles.itemdate}>12/12/2020</Text>
+                                        </View>
+                                    </View>
+                            </View>
+                        )
+                    }
+                )}
+            </ScrollView>
+        )
+    }
 
     return (
         <View style={styles.container}>    
