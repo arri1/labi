@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
-import {AsyncStorage, Button, StyleSheet, Text, TextInput, View} from "react-native"
+import {Button, StyleSheet, Text, TextInput, View} from "react-native"
 import {useApolloClient, useMutation, useQuery} from "@apollo/client"
 import {showMessage} from "react-native-flash-message"
 import {USER} from "../gqls/user/queries"
 import LoadingBar from "../components/loadingBar"
 import {AUTH} from "../gqls/user/mutations"
-
+import AsyncStorage from '@react-native-async-storage/async-storage'
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
@@ -28,7 +28,7 @@ const Login = ({navigation}) => {
     const {loading: userLoading} = useQuery(USER, {
         onCompleted: ({user}) => {
             if (user)
-                navigation.replace('MainNavigation')
+                navigation.push('BottomRouter')
         },
         onError: () => {
 
@@ -43,7 +43,7 @@ const Login = ({navigation}) => {
                 type: 'info'
             })
             apollo.writeQuery({query: USER, data: {user: authUser.user}})
-            navigation.replace('MainNavigation')
+            navigation.replace('BottomRouter')
         },                                  
         onError: ({message}) => {
             console.log(message)

@@ -1,17 +1,16 @@
 import React from 'react'
-import {View,ActivityIndicator} from 'react-native'
+import { View, ActivityIndicator } from 'react-native'
 
-const LoadingBar = ()=>{
-    return(
+const LoadingBar = () => {
+    return (
         <View style={{
-            flex:1,
-            justifyContent:'center',
-            alignItems:'center'
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center'
         }}>
-            <ActivityIndicator color={'red'}/>
+            <ActivityIndicator color={'red'} />
         </View>
-
     )
 }
 
-export default LoadingBar
+export default LoadingBar 

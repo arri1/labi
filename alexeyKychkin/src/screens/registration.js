@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
-import {AsyncStorage, Button, ScrollView, StyleSheet, Text, TextInput, View} from 'react-native'
+import {Button, ScrollView, StyleSheet, Text, TextInput, View} from 'react-native'
 import {showMessage} from "react-native-flash-message"
 import {useApolloClient, useMutation} from "@apollo/client"
 import {REG} from "../gqls/user/mutations"
 import {USER} from "../gqls/user/queries"
 import LoadingBar from "../components/loadingBar"
-
+import AsyncStorage from '@react-native-async-storage/async-storage'
 const styles = StyleSheet.create({
     container: {
         flex: 1,

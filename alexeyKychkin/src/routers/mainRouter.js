@@ -1,39 +1,38 @@
 import React from 'react'
-import {createStackNavigator} from '@react-navigation/stack'
-import MainNavigation from "./mainNavigation"
+import { createStackNavigator } from '@react-navigation/stack'
+import BottomRouter from "./bottomRouter"
 import Login from "../screens/login"
 import Registration from "../screens/registration"
 
 const Stack = createStackNavigator()
 
-const RootNav = () => {
+const MainRouter = () => {
     return (
         <Stack.Navigator>
             <Stack.Screen
                 name={'Login'}
                 options={
                     {
-                        title: 'Вход'
+                        title: 'Log in'
                     }
                 }
-                component={Login}/>
+                component={Login} />
             <Stack.Screen
                 name={'Registration'}
                 options={
                     {
-                        title: 'Регистрация'
+                        title: 'Registration'
                     }
                 }
-                component={Registration}/>
+                component={Registration} />
             <Stack.Screen
-                name={'MainNavigation'}
+                name={'BottomRouter'}
                 component={BottomRouter}
                 options={
-                    {headerShown: false}
+                    { headerShown: false }
                 }
             />
         </Stack.Navigator>
     )
 }
-
-export default RootNav 
+export default MainRouter 

@@ -51,7 +51,7 @@ const Settings = ({navigation}) => {
         },
         onError: () => {
             showMessage({
-                message: 'что то пошло не так',
+                message: 'Что то пошло не так',
                 type: 'danger'
             })
         }
@@ -141,7 +141,7 @@ const Settings = ({navigation}) => {
                 onChangeText={(text) => setConfirmPassword(text)}
                 value={confirmPassword}
                 secureTextEntry={true}
-                placeholder={'Повтарите пароль'}
+                placeholder={'Повторите пароль'}
                 style={styles.input}
             />
             <View
