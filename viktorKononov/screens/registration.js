@@ -29,7 +29,7 @@ const Registration = ({ navigation }) => {
         onCompleted: async ({ registerUser }) => {
             await AsyncStorage.setItem('token', registerUser.token)
             showMessage({
-                message: 'Registration completed successfully',
+                message: 'Регистрация прошла успешно!',
                 type: 'info'
             })
             apollo.writeQuery({ query: USER, data: { user: registerUser.user } })
@@ -38,13 +38,13 @@ const Registration = ({ navigation }) => {
         onError: ({ message }) => {
             if (message === 'GraphQL error: Unique constraint failed on the fields: (`login`)') {
                 showMessage({
-                    message: 'This login already exists',
+                    message: 'Этот логин уже зарегистрирован!',
                     type: 'danger'
                 })
                 return null
             }
             showMessage({
-                message: 'Something went wrong',
+                message: 'Что-то пошло не так',
                 type: 'danger'
             })
         }
@@ -53,21 +53,21 @@ const Registration = ({ navigation }) => {
     const validate = () => {
         if (login === '') {
             showMessage({
-                message: "Enter login",
+                message: "Введите логин",
                 type: "danger",
             })
             return false
         }
         if (password === '') {
             showMessage({
-                message: "Enter password",
+                message: "Введите пароль",
                 type: "danger",
             })
             return false
         }
         if (password !== confirmPassword) {
             showMessage({
-                message: "Passwords do not match",
+                message: "Пароли не совпадают",
                 type: "danger",
             })
             return false
@@ -97,27 +97,27 @@ const Registration = ({ navigation }) => {
         <ScrollView
             style={styles.container}
         >
-            <Text>Login</Text>
+            <Text>Логин</Text>
             <TextInput
                 onChangeText={text => setLogin(text)}
                 value={login}
                 style={[styles.input, { marginTop: 8 }]}
-                placeholder={'Enter login'}
+                placeholder={'Введите логин'}
             />
-            <Text style={{ marginTop: 24 }}>Password</Text>
+            <Text style={{ marginTop: 24 }}>Пароль</Text>
             <TextInput
                 onChangeText={text => setPassword(text)}
                 value={password}
                 secureTextEntry={true}
                 style={[styles.input, { marginTop: 8 }]}
-                placeholder={'Enter password'}
+                placeholder={'Введите пароль'}
             />
             <TextInput
                 onChangeText={text => setConfirmPassword(text)}
                 value={confirmPassword}
                 secureTextEntry={true}
                 style={[styles.input, { marginTop: 8 }]}
-                placeholder={'Confirm password'}
+                placeholder={'Подтвердите пароль'}
             />
             <View
                 style={
@@ -128,7 +128,7 @@ const Registration = ({ navigation }) => {
                 }
             >
                 <Button
-                    title={'Create'}
+                    title={'Создать'}
                     onPress={createUser}
                 />
             </View>
@@ -141,7 +141,7 @@ const Registration = ({ navigation }) => {
                 }
             >
                 <Button
-                    title={'Back'}
+                    title={'Назад'}
                     onPress={
                         () => {
                             navigation.goBack()

@@ -50,13 +50,13 @@ const Login = ({ navigation }) => {
             console.log(message)
             if (message === 'GraphQL error: Incorrect password') {
                 showMessage({
-                    message: 'Incorrect password',
+                    message: 'Неверный пароль',
                     type: 'danger'
                 })
                 return null
             }
             showMessage({
-                message: 'Something went wrong',
+                message: 'Что-то пошло не так',
                 type: 'danger'
             })
         }
@@ -65,14 +65,14 @@ const Login = ({ navigation }) => {
     const validate = () => {
         if (login === '') {
             showMessage({
-                message: 'Enter login',
+                message: 'Введите логин',
                 type: 'danger'
             })
             return false
         }
         if (password === '') {
             showMessage({
-                message: 'Enter password',
+                message: 'Введите пароль',
                 type: 'danger'
             })
             return false
@@ -98,19 +98,19 @@ const Login = ({ navigation }) => {
         )
     return (
         <View style={styles.container}>
-            <Text>Login</Text>
+            <Text>Логин</Text>
             <TextInput
                 onChangeText={text => setLogin(text)}
                 value={login}
                 style={[styles.input, { marginTop: 8 }]}
-                placeholder={'Enter login'}
+                placeholder={'Введите логин'}
             />
-            <Text style={{ marginTop: 24 }}>Password</Text>
+            <Text style={{ marginTop: 24 }}>Пароль</Text>
             <TextInput
                 onChangeText={text => setPassword(text)}
                 value={password}
                 style={[styles.input, { marginTop: 8 }]}
-                placeholder={'Enter password'}
+                placeholder={'Введите пароль'}
                 secureTextEntry={true}
             />
             <View
@@ -120,7 +120,7 @@ const Login = ({ navigation }) => {
 
             >
                 <Button
-                    title={'Log in'}
+                    title={'Вход'}
                     onPress={onAuth}
                 />
             </View>
@@ -133,7 +133,7 @@ const Login = ({ navigation }) => {
 
             >
                 <Button
-                    title={'Registration'}
+                    title={'Регистрация'}
                     style={{ paddingTop: 24 }}
                     onPress={
                         () => {
