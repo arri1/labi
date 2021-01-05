@@ -1,14 +1,14 @@
 import React from 'react'
-import Lab2 from '../screens/lab2'
+import Settings from '../screens/settings'
 import { Text } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
 import styles from '../styles/styles'
 
-const Lab2StackScreen = () =>{
+const SettingsStackScreen = () =>{
     const Lab2Stack = createStackNavigator();
     return(
       <Lab2Stack.Navigator>
-        <Lab2Stack.Screen name="Lab2" component={Lab2}
+        <Lab2Stack.Screen name="Settings" component={Settings}
           options={{
           headerTitleAlign:'center',
           headerStyle:{
@@ -27,4 +27,4 @@ const Lab2StackScreen = () =>{
       </Lab2Stack.Navigator>
     )
   }
-export default Lab2StackScreen
+export default SettingsStackScreen
