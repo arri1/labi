@@ -1,5 +1,5 @@
 {
-  "name": "AlexKanaev",
+  "name": "alexKanaev",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,12 +10,28 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/checkbox": "^0.5.5",
+    "@react-native-community/masked-view": "^0.1.10",
+    "@react-navigation/bottom-tabs": "^5.9.1",
+    "@react-navigation/native": "^5.7.5",
+    "@react-navigation/stack": "^5.9.2",
+    "axios": "^0.21.0",
     "react": "16.13.1",
-    "react-native": "0.63.3"
+    "react-native": "0.63.2",
+    "react-native-gesture-handler": "^1.8.0",
+    "react-native-get-random-values": "^1.5.0",
+    "react-native-reanimated": "^1.13.1",
+    "react-native-safe-area-context": "^3.1.8",
+    "react-native-screens": "^2.11.0",
+    "react-native-vector-icons": "^7.1.0",
+    "typescript": "^4.0.3",
+    "util": "^0.12.3",
+    "uuid": "^8.3.1",
+    "uuidv4": "^6.2.4"
   },
   "devDependencies": {
-    "@babel/core": "7.12.3",
-    "@babel/runtime": "7.12.1",
+    "@babel/core": "7.11.6",
+    "@babel/runtime": "7.11.2",
     "@react-native-community/eslint-config": "1.1.0",
     "babel-jest": "25.5.1",
     "eslint": "6.8.0",
