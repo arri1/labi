@@ -1,19 +1,5 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React, { useState, useEffect } from 'react'
-import {
-  ScrollView,
-  View,
-  Text,
-  ActivityIndicator,
-  StyleSheet
-} from 'react-native'
+import { ScrollView, View,Text, ActivityIndicator, StyleSheet } from 'react-native'
 import axios from 'react-native-axios'
 
 const Lab3 = () => {
@@ -50,7 +36,7 @@ const Lab3 = () => {
 
     return (
         <View style={styles.container}>
-            {data? renderItems(): <ActivityIndicator size={60} color={'pink'}/>}
+            {data? renderItems(): <ActivityIndicator size={60} color={'red'}/>}
         </View>
     )
 
@@ -69,13 +55,13 @@ const styles=StyleSheet.create({
         justifyContent: 'center',     
     },
     text:{
-        fontSize:16,
+        fontSize:15,
         fontWeight: 'normal',
-        fontFamily:'Calibri',     
+        fontFamily:'Times New Roman',     
      },
      title: {
         fontSize:20,
         fontWeight: "bold",
-        fontFamily:'Calibri',
+        fontFamily:'Times New Roman',
      },})
-export default Lab3 
+export default Lab3

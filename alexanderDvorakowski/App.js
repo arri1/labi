@@ -1,19 +1,20 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React from 'react'
+import 'react-native-gesture-handler';
+import FlashMessage from "react-native-flash-message";
+import { ApolloProvider } from '@apollo/client'
 
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import BottomTabRouter from './routers/bottomTabRouter.js'
+import RootNav from './src/navigation/rootNav'
+import apollo from './src/utils/apollo'
 
-export default function App() {
+
+
+const App = () => {
+  global.foo = { uri: 'https://photocasa.ru/uploads/posts/2017-01/1485218882_img_5932.jpg' }
   return (
-    <NavigationContainer>
-    <BottomTabRouter />
-    </NavigationContainer>
-  );
+    <ApolloProvider client={apollo}>
+      <RootNav />
+      <FlashMessage position="top" />
+    </ApolloProvider>
+  )
 }
+export default App;
