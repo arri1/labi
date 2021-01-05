@@ -7,7 +7,7 @@ const image1 = { uri : 'https://images.unsplash.com/photo-1561835269-1a0a93e1a0d
 const image2 = {uri : 'https://images.unsplash.com/photo-1554328103-f1ab574c5a12?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=564&q=80'};
 
 const Lab2 = (navigation) => {
-  const [image, setImage] = useState(image1)
+  const [image, setImage] = useState(image2)
   const changeBackground1 = ()=>{
     setImage(image1)
     global.foo = image1
