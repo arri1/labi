@@ -3,10 +3,8 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import { Button, Text, View, ImageBackground, Image, TouchableOpacity} from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Lab2 from '../screens/lab2'
-import Lab3 from '../screens/lab3'
-
-const Tab = createBottomTabNavigator();
+import Lab2 from '../lab2.js'
+import Lab3 from '../lab3.js'
 
 function DetailsScreen() {
     return (
@@ -65,14 +63,10 @@ function DetailsScreen() {
   
   export default function BottomTabNavigator() {
     return (
-      <NavigationContainer>
         <Tab.Navigator>
           <Tab.Screen name="Home" component={HomeStackScreen} />
           <Tab.Screen name="Circle" component={SettingsStackScreen} />
           <Tab.Screen name="To do" component={TodoStackScreen}/>
         </Tab.Navigator>
-      </NavigationContainer>
     );
   }
-
-export default BottomTabRouter
