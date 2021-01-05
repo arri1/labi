@@ -10,6 +10,8 @@ target 'alexKanaev' do
 
   pod 'RNCCheckbox', :path => '../node_modules/@react-native-community/checkbox'
 
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-async-storage/async-storage'
+
   target 'alexKanaevTests' do
     inherit! :complete
     # Pods for testing
@@ -26,7 +28,7 @@ target 'alexKanaev' do
 end
 
 target 'alexKanaev-tvOS' do
-  # Pods for alexKanaev-tvOS
+  # Pods for baiytaanFedorov-tvOS
 
   target 'alexKanaev-tvOSTests' do
     inherit! :search_paths
