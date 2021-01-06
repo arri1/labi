@@ -2,10 +2,8 @@ import React, {useEffect, useState} from 'react'
 
 import {
     ActivityIndicator,
-    ScrollView,
     StyleSheet,
     View,
-    Text,
     ImageBackground
 } from 'react-native';
 import axios from 'react-native-axios'

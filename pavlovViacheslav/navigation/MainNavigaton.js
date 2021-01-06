@@ -1,57 +1,49 @@
 import React from 'react';
-
+import { Dimensions, StyleSheet } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-import Ionicons from 'react-native-vector-icons/Ionicons';
-
-import Lab2 from '../screens/Lab2'
-import Lab3 from '../screens/Lab3'
-
+import Lab2 from "../screens/Lab2"
+import Lab3 from "../screens/Lab3"
+import Lab4 from "../screens/lab4"
+import Lab5 from "../screens/settings"
 
 const Tab = createBottomTabNavigator();
 
-const MainNavigation = () => {
-
+const Navigation = () => {
     return (
-
-        <NavigationContainer>
-            <Tab.Navigator
-                screenOptions={({ route }) => ({
-                    tabBarIcon: ({ color, size }) => {
-                      let iconName;
-          
-                      if (route.name === 'Lab2') {
-                        iconName = 'grid-sharp';
-                      } 
-                      if (route.name === 'Lab3') {
-                        iconName = 'document-sharp';
-                      }
-                      return <Ionicons name={iconName} size={size} color={color} />;
-                    },
-                  })}
-                  tabBarOptions={{
-                    activeTintColor: '#6b6b6b',
-                    inactiveTintColor: '#323232',
-                    activeBackgroundColor: '#323232',
-                    inactiveBackgroundColor: '#6b6b6b',
-                    showLabel: false,
-                    showIcon: true,
-                    style:{
-                      borderTopWidth: 1,
-                      borderBottomWidth: 1,
-                      borderTopColor: '#454545',
-                      borderBottomColor: '#454545'
-                    }
-                  }}
-            >
-                <Tab.Screen name="Lab2" component={Lab2} />
-                <Tab.Screen name="Lab3" component={Lab3} />
-            </Tab.Navigator>
-        </NavigationContainer>
-    
-      );
-
+        <Tab.Navigator
+            tabBarOptions={{
+                labelStyle: {
+                    tTransform: "none",
+                    fontSize: 25,
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center"
+				},
+                style:{
+                  borderTopWidth: 2,
+                  borderBottomWidth: 2,
+                }
+          }}
+        >
+            <Tab.Screen 
+                name="Lab2" 
+                component={Lab2} 
+            />
+            <Tab.Screen 
+                name="Lab3" 
+                component={Lab3} 
+            />
+            <Tab.Screen 
+                name="Lab4" 
+                component={Lab4} 
+            />
+            <Tab.Screen 
+                name="Lab5" 
+                component={Lab5} 
+            />
+        </Tab.Navigator>
+    )
 }
 
-export default MainNavigation
+export default Navigation;
