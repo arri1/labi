@@ -1,12 +1,12 @@
+import 'react-native-gesture-handler';
 import React from 'react'
+import Entypo from "react-native-vector-icons/Entypo"
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { NavigationContainer } from '@react-navigation/native'
 import Settings from '../screens/settings'
+import styles from '../styles/styles'
 import Lab2 from '../screens/lab2'
 import Lab3 from '../screens/lab3'
-import 'react-native-gesture-handler';
-import styles from '../styles/styles'
-import Entypo from "react-native-vector-icons/Entypo"
+
 
 Entypo.loadFont();
 
