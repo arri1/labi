@@ -5,7 +5,6 @@ import { showMessage } from 'react-native-flash-message'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import styles from '../styles/styles';
 import LoadingBar from '../components/loadingBar'
-import LinearGradient from 'react-native-linear-gradient'
 import {
     useApolloClient,
     useMutation,
@@ -178,7 +177,7 @@ const Login = ({ navigation }) => {
 
             >
                 <Text style={{fontSize: 16}}>
-                    Вы ещё не зарегистрировали ученную запись? 
+                    Вы ещё не зарегистрировали учетную запись? 
                 </Text>
                 
                 <Text
