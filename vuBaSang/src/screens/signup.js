@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { View, Text } from 'react-native'
 import { TextInput, Button } from 'react-native-paper'
 import styles from '../styles/styles';
-import LinearGradient from 'react-native-linear-gradient'
 import { showMessage } from 'react-native-flash-message'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import LoadingBar from '../components/loadingBar'

@@ -3,12 +3,16 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'AlexKanaev' do
+target 'alexKanaev' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
 
-  target 'AlexKanaevTests' do
+  pod 'RNCCheckbox', :path => '../node_modules/@react-native-community/checkbox'
+
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-async-storage/async-storage'
+
+  target 'alexKanaevTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -23,10 +27,10 @@ target 'AlexKanaev' do
   end
 end
 
-target 'AlexKanaev-tvOS' do
-  # Pods for AlexKanaev-tvOS
+target 'alexKanaev-tvOS' do
+  # Pods for baiytaanFedorov-tvOS
 
-  target 'AlexKanaev-tvOSTests' do
+  target 'alexKanaev-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

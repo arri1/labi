@@ -1,47 +1,28 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React from 'react';
+import { Dimensions, View } from "react-native"
+import { NavigationContainer } from '@react-navigation/native';
+import { ApolloProvider } from '@apollo/react-hooks'
+import FlashMessage from "react-native-flash-message";
+import apollo from './utils/apollo'
+import MainRouter from "./routers/router"
+
+const { width, height } = Dimensions.get('screen')
 
 const App = () => {
-  const [count, setCount] = useState(0);
-  const onPress = () => setCount(prevCount => prevCount + 1);
-
   return (
-    <View style={styles.container}>
-      <View style={styles.countContainer}>
-        <Text>Count: {count}</Text>
-      </View>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={onPress}
-      >
-        <Text>Press Here</Text>
-      </TouchableOpacity>
+    <View style={
+      {
+        width,
+        height
+      }
+    }>
+      <ApolloProvider client={apollo}>
+        <NavigationContainer>
+          <MainRouter />
+        </NavigationContainer>
+      </ApolloProvider>
+      <FlashMessage position="top" />
     </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    paddingHorizontal: 10
-  },
-  button: {
-    alignItems: "center",
-    backgroundColor: "#DDDDDD",
-    padding: 10
-  },
-  countContainer: {
-    alignItems: "center",
-    padding: 10
-  }
-});
-
+  )
+}
 export default App;

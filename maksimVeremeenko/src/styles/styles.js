@@ -45,9 +45,9 @@ export default StyleSheet.create({
     },
     itemLab2: {
         flex: 1,
-        minHeight: 210,
+        minHeight: 290,
         borderRadius: 20,
-        margin: 30,
+        margin: 70,
         marginTop: 20,
         marginBottom: 20,
         justifyContent: 'center',

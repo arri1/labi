@@ -50,5 +50,35 @@ export default StyleSheet.create({
         flex: 1,
         borderRadius: 20,
         backgroundColor: '#ddebe7'
+    }, 
+    
+    containerPosts: {
+        flex: 1,
     },
+    titleAddPost: {
+        textAlign: 'center',
+        fontSize: 24
+    },
+    inputAddPost: {
+        borderWidth: 0.5,
+        borderRadius: 10,
+        alignSelf: 'stretch',
+        marginTop: 18,
+        backgroundColor: '#FFFFFF'
+    },
+    containerAddPost: {
+        alignItems: 'center',
+        flex: 1,
+        margin: 15
+    },
+    itemPostComponent: {
+        flex: 1,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: 'grey',
+        margin: 8,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#FFFFFF'
+    }
 })

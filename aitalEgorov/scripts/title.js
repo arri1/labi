@@ -1,21 +1,16 @@
+import { Link } from '@react-navigation/native';
 import React, {useState} from 'react';
 import { 
   View, 
   TouchableOpacity, 
   Text, 
   StyleSheet, 
-  Button,
   ImageBackground,
   Image,
-  SafeAreaView, 
-  ScrollView,
 } from 'react-native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
 
 const figure = require('../img/title/figure.png');
 const image = require('../img/title/background.jpg');
-const Drawer = createDrawerNavigator();
 
 const Title = () =>{    
   return(
@@ -28,6 +23,7 @@ const Title = () =>{
         <Text style={styles.text}>Sensor-gas</Text>
       </ImageBackground>
       <TouchableOpacity style={styleButton.logIn}>
+        <Link to="/figma/sign">Зарегестрироваться</Link>
         <View style={styleButton.Roctangle}>
           <Text style={styleButton.logInText}>
             ВОЙТИ
@@ -116,11 +112,6 @@ const styleButton = StyleSheet.create({
 })
 
 const styles = StyleSheet.create ({
-  container: {
-    flex: 1,
-    flexDirection: "column"
-  },
-  
   main: {
     flex: 1,
     position: 'absolute',

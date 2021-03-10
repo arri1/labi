@@ -1,11 +1,16 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import BottomTabRouter from './routers/bottomTabRouter.js'
+import { ApolloProvider } from '@apollo/react-hooks'
+import client from './utils/apollo'
+import MainRouter from './src/routers/mainRouter'
 
-export default function App() {
+const App = () => {
     return (
-        <NavigationContainer>
-            <BottomTabRouter />
-        </NavigationContainer>
-    );
+        <ApolloProvider client={client}>
+            <NavigationContainer>
+                <MainRouter />
+            </NavigationContainer>
+        </ApolloProvider>
+    )
 }
+export default App;

@@ -1,7 +1,7 @@
 import React, {useState , useEffect} from 'react';
 import {Image, View, ActivityIndicator, StyleSheet, ScrollView, Alert, ImageBackground} from 'react-native';
 import styles from '../styles/styles'
-import axios from 'axios'
+import axios from 'react-native-axios'
 import ToDoItem from '../components/ToDoItem'
 import { useFocusEffect } from '@react-navigation/native'
 

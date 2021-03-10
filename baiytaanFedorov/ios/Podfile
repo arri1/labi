@@ -8,6 +8,10 @@ target 'baiytaanFedorov' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'RNCCheckbox', :path => '../node_modules/@react-native-community/checkbox'
+
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-async-storage/async-storage'
+
   target 'baiytaanFedorovTests' do
     inherit! :complete
     # Pods for testing

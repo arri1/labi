@@ -1,43 +1,28 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Lab1 from "./screens/lab1"
-import Lab2 from "./screens/lab2"
-import Lab3 from "./screens/lab3"
+import {Dimensions, View} from "react-native"
+import {NavigationContainer} from '@react-navigation/native';
+import {ApolloProvider} from '@apollo/react-hooks'
+import FlashMessage from "react-native-flash-message";
+import apollo from './utils/apollo'
+import MainRouter from "./routers/loginRouter"
 
-const HomeScreen = () => {
-  return(
-    <View style={style.centrify}>
-      <Text>
-        Home!!!
-      </Text>
-    </View>
-  )
-}
-
-const Tab = createBottomTabNavigator();
-
+const {width, height} = Dimensions.get('screen')
 
 const App = () => {
-  return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="First lab" component={Lab1} />
-        <Tab.Screen name="Second lab" component={Lab2} />
-        <Tab.Screen name="To do list" component={Lab3} />
-      </Tab.Navigator>
-    </NavigationContainer>
-  );
+    return (
+        <View style={
+            {
+                width,
+                height
+            }
+        }>
+            <ApolloProvider client={apollo}>
+                <NavigationContainer>
+                    <MainRouter/>
+                </NavigationContainer>
+            </ApolloProvider>
+            <FlashMessage position="top"/>
+        </View>
+    )
 }
-
-const style = StyleSheet.create({
-  centrify: {
-    flex: 1, 
-    justifyContent: 'center', 
-    alignItems: 'center' 
-  },
-})
-
 export default App;

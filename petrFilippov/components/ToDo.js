@@ -1,51 +1,33 @@
-import React, { useState } from 'react'
-import { TextInput, StyleSheet } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { StyleSheet, ActivityIndicator } from 'react-native'
 import ToDoList from './ToDoList'
-import { v4 as uuidv4 } from 'uuid';
-import ToDoItem from './ToDoItem';
+import axios from 'axios'
 
 const ToDo = () => {
-    const [todoItems, setToDoItems] = useState(() => [
-        { id: uuidv4(), title: 'Задача 1', isComplete: false },
-        { id: uuidv4(), title: 'Задача 2', isComplete: false }
-    ])
-    const [text, setText] = useState('')
+    const [todoItems, setToDoItems] = useState()
 
-    const changeText = text => setText(text)
+    useEffect(() => {
+        axios.get('https://jsonplaceholder.typicode.com/todos').then(({ data }) => {
+            const lessData = data.filter(
+                (item) => item.id <= 20
+            )
+            setToDoItems(lessData);
+        }).catch((e) => {
+            console.error(e.message)
+        })
+    })
 
-    const addTodoItem = () => {
-        if(text.length > 0) {
-            setToDoItems([
-                ...todoItems,
-                { id: uuidv4(), title: text, isComplete: false }
-            ])
-        }
-        setText('')
-    }
-
-    const completeTodoItem = id => setToDoItems(todoItems.map(
-        ToDoItem => ToDoItem.id === id
-            ? { ...ToDoItem, isComplete: !ToDoItem.isComplete }
-            : ToDoItem
-    ))
-
-    const removeTodoItem = id => setToDoItems(
-        todoItems.filter(ToDoItem => ToDoItem.id !== id )
-    )
-    return(
+    return (
         <>
-            <ToDoList 
-                todoItems={todoItems}
-                completeTodoItem={completeTodoItem}
-                removeTodoItem={removeTodoItem}
-            />
-            <TextInput 
-                style={styles.textInput}
-                placeholder="Добавить задачу"
-                value={text}
-                onChangeText={changeText}
-                onSubmitEditing={addTodoItem}
-            />
+            {todoItems ?
+                <>
+                    <ToDoList
+                        todoItems={todoItems}
+                    />
+                </>
+                :
+                <ActivityIndicator color={'gray'} />
+            }
         </>
     )
 }

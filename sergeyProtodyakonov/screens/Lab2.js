@@ -3,7 +3,8 @@ import React, { useState } from 'react'
 import {
     StyleSheet,
     View,
-    TouchableOpacity
+    TouchableOpacity,
+    StatusBar
 } from 'react-native';
 
 
@@ -29,10 +30,15 @@ const Lab2 = () => {
             { 
                 flex: 1, 
                 justifyContent: 'center', 
-                alignItems: 'center' 
+                alignItems: 'center' ,
+                backgroundColor: '#222222'
             }
         }>
-    
+            <StatusBar
+                backgroundColor="#323232"
+                barStyle="light-content"
+            />
+
             <View style={styles.blockRow}>
     
                 <TouchableOpacity

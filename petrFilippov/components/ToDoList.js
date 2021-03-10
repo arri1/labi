@@ -9,8 +9,6 @@ const ToDoList = ({ todoItems, completeTodoItem, removeTodoItem }) => (
                 key={item.id}
                 title={item.title}
                 isComplete={item.isComplete}
-                complete={() => completeTodoItem(item.id)}
-                remove={() => removeTodoItem(item.id)}
             />
         ))}
     </ScrollView>

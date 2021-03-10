@@ -1,31 +1,18 @@
-import React, { useState } from 'react'
-import { View, StyleSheet, TouchableOpacity } from 'react-native'
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { ApolloProvider } from '@apollo/react-hooks'
+import client from './utils/apollo'
+import MainRouter from './routers/mainRouter'
 
-const Apps = () => {
-   const [backgroundColor, setBackgroundColor] = useState('red')
-   return (
-      <View style = {styles.container,{backgroundColor}}>
-         
-         <TouchableOpacity
-        style={styles.button}
-        onPress={() => {
-          if (backgroundColor == 'red') {
-            setBackgroundColor('blue')
-          }
-          else setBackgroundColor('red')
-        }}
-        ></TouchableOpacity>
-         
-      </View>
-   )
+
+const App = () => {
+  return (
+    <ApolloProvider client={client}>
+      <NavigationContainer>
+        <MainRouter />
+      </NavigationContainer>
+    </ApolloProvider>
+  )
 }
 
-const styles = StyleSheet.create ({
-   
-   button: {
-      alignItems: "center",
-      padding: 400
-    },
-})
-
-export default Apps
+export default App;

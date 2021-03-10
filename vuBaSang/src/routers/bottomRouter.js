@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import IconIonicons from 'react-native-vector-icons/Ionicons'
 import Lab2 from '../screens/lab2'
 import Lab3 from '../screens/lab3'
+import PostsRouter from './postsRouter'
 import Profile from '../screens/profile'
 
 const Tab = createBottomTabNavigator();
@@ -20,7 +21,7 @@ const Lab2StackScreen = () => {
                 name="Lab2"
                 component={Lab2}
                 options={{
-                    title: 'ЛАБ 2 - Менять цвет БГ',
+                    title: 'Менять цвет БГ',
                     headerTitleAlign: 'center',
                     headerTintColor: '#29AB87',
                     headerTitleStyle: {
@@ -39,7 +40,7 @@ const Lab3StackScreen = () => {
                 name="Lab3"
                 component={Lab3}
                 options={{
-                    title: 'ЛАБ 3 - Список дел',
+                    title: 'Список дел',
                     headerTitleAlign: 'center',
                     headerTintColor: '#29AB87',
                     headerTitleStyle: {
@@ -94,6 +95,13 @@ const BottomRouter = () => {
                             size = 30
                     }
                     if (
+                        route.name === 'Posts'
+                    ){
+                        iconName =
+                            'clipboard-sharp',
+                            size = 30
+                    }
+                    if (
                         route.name === 'Profile'
                     ){
                         iconName =
@@ -136,6 +144,13 @@ const BottomRouter = () => {
                 options={{
                     tabBarLabel:
                         'ЛАБ 3'
+                }}
+            />
+            <Tab.Screen
+                name="Posts"
+                component={PostsRouter}
+                options={{
+                tabBarLabel: 'ЛАБ 6'
                 }}
             />
             <Tab.Screen

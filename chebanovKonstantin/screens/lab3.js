@@ -1,31 +1,39 @@
 import React, {useEffect, useState} from 'react'
-import {ActivityIndicator, ScrollView, StyleSheet, View,Text} from "react-native"
+import {ActivityIndicator, ScrollView, StyleSheet, View, Text, Image} from "react-native"
 import axios from 'axios'
 
 const styles = StyleSheet.create({
-    item: {      
-        flex: 1,
-        minHeight:150,
-        margin: 20,
-        padding: 20,
-        borderRadius: 20,
-        borderStyle:  "solid",
-        borderWidth:5,
-        borderColor: '#000000',
-        alignItems: 'center',
-        justifyContent: 'center',     
+    item: {
+      padding: 24,
+      borderRadius: 24,
+      marginBottom: 24,
+      marginLeft: 24,
+      marginRight: 24,
+      borderColor: 'black',
+      borderBottomWidth: 5,
+      borderWidth: StyleSheet.hairlineWidth,
+      backgroundColor: 'white'
     },
-    text:{
-        fontSize:15,
-        fontWeight: 'normal',
-        fontFamily:'Times New Roman',     
-     },
-     title: {
-        fontSize:20,
-        fontWeight: "bold",
-        fontFamily:'Times New Roman',
-     },
-})
+    container: {
+      backgroundColor: '#DCDCDC',
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    imageContainer: {
+      padding: 10,
+      marginLeft: 50,
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 200,
+      height: 200
+    },
+    image: {
+      flex: 1,
+      borderRadius: 50,
+      resizeMode: 'contain'
+    }
+  })
 
 const Lab3 = (props) => {
     const [data, setData] = useState()
@@ -51,9 +59,12 @@ const Lab3 = (props) => {
                                 <Text style={styles.title}>
                                     {item.title}
                                 </Text>
-                                <Text style={styles.text}>
-                                    {item.body}
-                                </Text>
+                                <View style={styles.imageContainer}>
+                                    <Image
+                                        style={styles.image}
+                                         source={require("../resources/image.jpg")}
+                                        />
+                </View>
                             </View>
                         )
                     }

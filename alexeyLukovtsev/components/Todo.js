@@ -5,8 +5,10 @@ import { v4 as uuidv4 } from 'uuid'
 
 const Todo = () => {
     const [todoItems, setTodoItems] = useState (() => [
-        { id: uuidv4(), title: 'Задача 1', isComplete: false},
-        { id: uuidv4(), title: 'Задача 2', isComplete: false}
+        { id: uuidv4(), title: 'Сделать Фигму', isComplete: false},
+        { id: uuidv4(), title: 'Задача 2', isComplete: false},
+        { id: uuidv4(), title: 'Задача 3', isComplete: false},
+        { id: uuidv4(), title: 'Задача 4', isComplete: false}
     ])
     const [text, setText] = useState('')
 
