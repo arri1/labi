@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
-import {AsyncStorage, Button, StyleSheet, Text, TextInput, View} from 'react-native'
-import {useApolloClient, useMutation, useQuery} from "@apollo/react-hooks"
-import {USER} from "../gqls/user/queries"
-import LoadingBar from "../components/loadingBar"
-import {UPDATE_USER} from "../gqls/user/mutations"
-import {showMessage} from "react-native-flash-message"
+import {AsyncStorage, Button, SafeAreaView, StyleSheet, Text, TextInput, View} from 'react-native'
+import {useMutation, useQuery} from '@apollo/react-hooks'
+import {USER} from '../gqls/user/queries'
+import LoadingBar from '../components/loadingBar'
+import {UPDATE_USER} from '../gqls/user/mutations'
+import {showMessage} from 'react-native-flash-message'
 
 const styles = StyleSheet.create({
     title: {
@@ -29,8 +29,6 @@ const Settings = ({navigation}) => {
     const [group, setGroup] = useState('')
     const [name, setName] = useState('')
 
-    const apollo = useApolloClient()
-
     const {loading: userLoading} = useQuery(USER, {
         onCompleted: ({user}) => {
             setGroup(user.group)
@@ -43,7 +41,6 @@ const Settings = ({navigation}) => {
 
     const [save, {loading: saveLoading}] = useMutation(UPDATE_USER, {
         onCompleted: ({user}) => {
-            apollo.writeQuery({query: USER, data: {user}})
             showMessage({
                 message: 'Сохранено',
                 type: 'info'
@@ -54,6 +51,9 @@ const Settings = ({navigation}) => {
                 message: 'что то пошло не так',
                 type: 'danger'
             })
+        },
+        update: (cache, {data: {user}}) => {
+            cache.writeQuery({query: USER, data: {user}})
         }
     })
 
@@ -78,13 +78,6 @@ const Settings = ({navigation}) => {
             })
             return false
         }
-        if (password === '') {
-            showMessage({
-                message: 'Введите пароль',
-                type: 'danger'
-            })
-            return false
-        }
         if (password !== confirmPassword) {
             showMessage({
                 message: 'Пароли не совпадают',
@@ -99,15 +92,15 @@ const Settings = ({navigation}) => {
         if (!validate()) {
             return null
         }
-        save({
-            variables: {
-                data: {
-                    group: {set: group},
-                    name: {set: name},
-                    password: {set: password}
-                }
+        const variables = {
+            data: {
+                group: {set: group},
+                name: {set: name},
             }
-        })
+        }
+        if (password)
+            variables.data.password = {set: password}
+        save({variables})
     }
 
     if (userLoading || saveLoading)
@@ -116,7 +109,7 @@ const Settings = ({navigation}) => {
         )
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Настройки</Text>
             <TextInput
                 onChangeText={(text) => setName(text)}
@@ -170,7 +163,7 @@ const Settings = ({navigation}) => {
                     onPress={logOut}
                 />
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 export default Settings

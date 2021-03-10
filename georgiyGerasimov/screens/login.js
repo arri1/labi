@@ -28,11 +28,12 @@ const Login = ({navigation}) => {
     const {loading: userLoading} = useQuery(USER, {
         onCompleted: ({user}) => {
             if (user)
-                navigation.push('BottomRouter')
+                navigation.replace('BottomRouter')
         },
         onError: () => {
 
-        }
+        },
+        fetchPolicy:'network-only'
     })
 
     const [auth, {loading: authLoading}] = useMutation(AUTH, {
