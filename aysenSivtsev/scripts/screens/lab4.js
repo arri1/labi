@@ -1,3 +1,11 @@
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow strict-local
+ */
+
 import React, { useEffect, useState } from 'react'
 import {
     ActivityIndicator,
@@ -13,7 +21,7 @@ import axios from 'react-native-axios'
 const Lab4 = () => {
     const [data, setData] = useState()
     useEffect(() => {
-        axios.get('https://picsum.photos/v2/list?limit=10')
+        axios.get('https://picsum.photos/v2/list?limit=20')
         .then(({ data }) => {
             setData(data)
         })
