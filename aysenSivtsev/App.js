@@ -9,4 +9,3 @@ const App = () => {
 
 export default App;
 
-"Rollback 3 lab"
