@@ -1,1 +1,0 @@
-[Ссылка на дизайн приложения на Figma](https://www.figma.com/file/QM5lKoZiLkueIzNHaOzDkF/Untitled?node-id=0%3A1)

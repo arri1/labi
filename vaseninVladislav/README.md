@@ -1,1 +1,0 @@
-Figma link: https://www.figma.com/file/pdygNwljEDS2lhcKkMriXo/VVN?node-id=0%3A1
