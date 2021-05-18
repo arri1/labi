@@ -8,6 +8,7 @@ import {
   StatusBar,
   Button,
   Alert,
+  Dimensions,
 } from 'react-native';
 
 import {
@@ -17,6 +18,47 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+import Settings from '../screens/Settings'
+
+const MainPage = () => {
+
+  return (
+  <Tab.Navigator
+    screenOptions={({ route }) => ({
+        tabBarIcon: ({ color, size }) => {
+          let iconName;
+          if (route.name === 'Settings') {
+            iconName = 'settings';
+          }
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+      })}
+      tabBarOptions={{
+        activeTintColor: '#6b6b6b',
+        inactiveTintColor: '#323232',
+        activeBackgroundColor: '#323232',
+        inactiveBackgroundColor: '#6b6b6b',
+        showLabel: false,
+        showIcon: true,
+        style:{
+          borderTopWidth: 1,
+          borderBottomWidth: 1,
+          borderTopColor: '#454545',
+          borderBottomColor: '#454545'
+        }
+      }}
+>
+    <Tab.Screen name="Lab2" component={Lab2} />
+    <Tab.Screen name="Lab3" component={Lab3} />
+    <Tab.Screen name="Settings" component={Settings} />
+</Tab.Navigator>
+  );
+}
 
 export default class MainPage extends React.Component {
   state = 
@@ -35,6 +77,8 @@ export default class MainPage extends React.Component {
   Lab4Click = () => {
     this.props.navigation.navigate('Lab4')
   }
+
+  
 
   render()
   {
@@ -67,3 +111,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   }
 })
+
+export default MainPage

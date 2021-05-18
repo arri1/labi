@@ -5,6 +5,11 @@ import Lab2 from "./components/Lab2";
 import Lab3 from "./components/Lab3";
 import Lab4 from "./components/Lab4";
 import MainPage from "./components/MainPage";
+import MainPage from "./screens/Login";
+
+const {width, height} = Dimensions.get('screen')
+
+
 
 const RootStack = createStackNavigator(
   {
@@ -21,6 +26,19 @@ export default class App extends React.Component {
 
   
   render() {
-    return <AppContainer />;
+    return <AppContainer />+
+    <View style={
+      {
+          width,
+          height
+      }
+  }>
+      <ApolloProvider client={apollo}>
+          <NavigationContainer>
+              <LoginNav/>
+          </NavigationContainer>
+      </ApolloProvider>
+      <FlashMessage position="top"/>
+  </View>;
   }
 }
