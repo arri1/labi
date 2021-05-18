@@ -1,1 +1,0 @@
-ссылка на фигму - https://www.figma.com/file/UrwIwsVOHkhvrAcGQjkTbJ/Figma-alexAnisimov?node-id=0%3A1
