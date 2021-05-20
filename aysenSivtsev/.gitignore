@@ -61,10 +61,6 @@ buck-out/
 #Vscode
 .vscode/*
 !.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-*.code-workspace
 
 index.android.bundle
 package-lock.json
