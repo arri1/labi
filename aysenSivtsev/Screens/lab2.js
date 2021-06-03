@@ -3,42 +3,87 @@ import {
   StyleSheet,
   View,
   Button,
+  TouchableOpacity
 } from 'react-native';
 
+import {
+  Colors,
+} from 'react-native/Libraries/NewAppScreen';
 
-const App: () => React$Node = () => {
+const Lab2 = () => {
+  const [color, setColor] = useState('green');
+    const [count, setCount] = useState(0);
 
-  const buttonColors = [
-    '#ffffff',
-    '#7fffd4',
-    '#00fa9a',
-    '#ffa07a'
-  ];
+    const getRandomInt = (max) => {
+        return Math.floor(Math.random() * Math.floor(max));
+    };
 
-  const [currentCol,setCurrentCol] = useState('#000fff')
+    const randomColor = () => {
+        const x = getRandomInt(4);
+        switch (x) {
+            case 0:
+                setColor('yellow')
+                break;
+            case 1:
+                setColor('green')
+                break;
+            case 2:
+                setColor('red')
+                break;
+            case 3:
+                setColor('blue')
+                break;
+            default:
+        }
+    };
 
-  const buttonColorReplacement = () => {
-    const randomIndex = Math.floor(Math.random()*buttonColors.length);
-    setCurrentCol(buttonColors[randomIndex]);
-  }
+    return (
+        <View
+            style={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+            }}>
 
-  return(
-    <View style = {styles.container}>
-      <Button 
-      title="ТЫК"
-      color={currentCol}
-      onPress={() => buttonColorReplacement()}/>
-    </View>
-  )
+            <TouchableOpacity
+                onPress={() => {
+                    randomColor();
+                    setCount(count + 1);
+                }}>
+
+                <View
+                    style={{
+                        backgroundColor: color,
+                        width: 300,
+                        height: 300
+                    }}>
+                    <View
+                        style={{
+                            flex: 1,
+                            justifyContent: "center",
+                            alignItems: "center"
+                        }}>
+                        <Text
+                            style={{
+                                fontSize: 50
+                            }}>
+                            {count}
+                        </Text>
+                    </View>
+                </View>
+            </TouchableOpacity>
+        </View>
+    );
 };
 
 const styles = StyleSheet.create({
-  container:{
-    flex: 1,
-    backgroundColor: '#000000',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
+  scrollView: {
+    backgroundColor: Colors.lighter,
+  },
+
+  body: {
+    backgroundColor: Colors.white,
+  },
 })
 
-export default App;
+export default Lab2;

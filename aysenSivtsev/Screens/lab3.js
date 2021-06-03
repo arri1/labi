@@ -1,61 +1,84 @@
 import React, {useState} from 'react';
 import {
-  SafeAreaView,
+  ActivityIndicator,
   StyleSheet,
   ScrollView,
   View,
   Text,
-  StatusBar,
-  Button,
-  Alert,
 } from 'react-native';
+import axios from 'react-native-axios'
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const Lab3 = () => {
+  const [data, setData] = useState()
+  useEffect(() => {
+      axios.get('https://jsonplaceholder.typicode.com/posts', {
+          params: {
+              "userId": 1
+          }
+      })
+      .then(({ data }) => {
+          setData(data)
+      })
+      .catch((e) => {
+          console.error(e.message)
+      })
+  })
 
-export default class MainPage extends React.Component {
-  state = 
-  {
-    daze: false
-  };
-
-  Lab2Click = () => {
-    this.props.navigation.navigate('Lab2')
+  const todolist = () => {
+      return (
+          <ScrollView>{
+              data.map(
+                  (item) => {
+                      return (
+                          <View key={item.id} style={styles.item}>
+                              <Text style={styles.itemtitle}>
+                                  {item.title}
+                              </Text>
+                              <Text style={styles.itembody}>
+                                  {item.body}
+                              </Text>
+                          </View>
+                      )
+                  }
+              )}
+          </ScrollView>
+      )
   }
 
-  Lab3Click = () => {
-    this.props.navigation.navigate('Lab3')
-  }
-
-  render()
-  {
-    return(
-      <View style = {styles.container}>
-        <Button 
-        title="Lab2"
-        color={'#000fff'}
-        onPress={(this.Lab2Click)}/>
-        <Button 
-        title="Lab3"
-        color={'#000fff'}
-        onPress={(this.Lab3Click)}/>
+  return (
+      <View style={styles.container}>
+          {data ? todolist() : <ActivityIndicator/>}
       </View>
-    );
-  }
+  )
 }
 
-
-
 const styles = StyleSheet.create({
+  item: {
+    borderColor: '#000000',
+    borderWidth: 2,
+    marginBottom: 10,
+    marginLeft: 10,
+    marginRight: 10,
+    marginTop: 10,
+    padding: 10,
+},
   container:{
     flex: 1,
-    backgroundColor: '#000000',
     alignItems: 'center',
     justifyContent: 'center'
-  }
+  },
+  configbox: {
+    marginTop: 10
+  },
+  itemtitle: {
+    color: '#000000',
+    fontSize: 20,
+    marginBottom: 10
+  },
+  itembody: {
+    color: '#000000',
+    fontSize: 15
+},
 })
+
+export default Lab3
