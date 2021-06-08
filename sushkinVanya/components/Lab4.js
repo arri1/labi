@@ -43,7 +43,7 @@ const Lab4 = () => {
 
 const styles = StyleSheet.create({
     item: {
-        borderColor: '#fff',
+        borderColor: '#000000',
         borderWidth: 3,
         marginBottom: 12,
         marginLeft: 12,

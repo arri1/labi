@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 
 
-const App: () => React$Node = () => {
+const App = () => {
 
   const buttonColors = [
     '#ffffff',
